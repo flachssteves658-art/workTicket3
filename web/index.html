@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>工作票智能识别台</title>
+    <link rel="stylesheet" href="/static/styles.css?v=20260626-6" />
+  </head>
+  <body>
+    <main class="app">
+      <aside class="sidebar">
+        <header class="brand">
+          <div class="brand__mark">WT</div>
+          <div>
+            <p>Work Ticket OCR</p>
+            <h1>工作票智能识别台</h1>
+          </div>
+        </header>
+
+        <div class="health">
+          <span class="state-dot" id="healthDot"></span>
+          <span id="healthText">正在检查服务</span>
+        </div>
+
+        <div class="mode-tabs" role="tablist" aria-label="识别模式">
+          <button class="tab tab--active" type="button" data-tab="structure">结构化识别</button>
+          <button class="tab" type="button" data-tab="vision">图片直传</button>
+        </div>
+
+        <section class="mode mode--active" id="mode-structure">
+          <div class="mode-copy">
+            <span>OCR + LLM</span>
+            <strong>工作票字段抽取</strong>
+          </div>
+
+          <label class="dropzone" id="structureDrop">
+            <input id="structureFile" type="file" accept=".jpg,.jpeg,.png,.bmp,.webp,.pdf" />
+            <span class="dropzone__icon">+</span>
+            <strong>选择工作票文件</strong>
+            <small id="structureName">JPG / PNG / BMP / WEBP / PDF</small>
+          </label>
+
+          <button class="primary-action" id="structureStreamBtn" type="button">
+            开始识别
+          </button>
+        </section>
+
+        <section class="mode" id="mode-vision">
+          <div class="mode-copy">
+            <span>Vision LLM</span>
+            <strong>图片自由识别</strong>
+          </div>
+
+          <label class="dropzone" id="visionDrop">
+            <input id="visionFile" type="file" accept=".jpg,.jpeg,.png,.bmp,.webp" />
+            <span class="dropzone__icon">+</span>
+            <strong>选择图片</strong>
+            <small id="visionName">JPG / PNG / BMP / WEBP</small>
+          </label>
+
+          <label class="prompt-field">
+            <span>提示词</span>
+            <textarea
+              id="visionPrompt"
+              placeholder="请识别图片中的所有文字，并按原始顺序输出。"
+            ></textarea>
+          </label>
+
+          <button class="primary-action" id="visionStreamBtn" type="button">
+            开始识别
+          </button>
+        </section>
+      </aside>
+
+      <section class="content">
+        <header class="content-head">
+          <div>
+            <p class="kicker">Realtime Run</p>
+            <h2>运行监控</h2>
+          </div>
+          <span class="run-badge" id="runBadge">待上传</span>
+        </header>
+
+        <section class="metrics">
+          <article class="metric" data-metric="upload">
+            <span id="metricUploadLabel">文件接收</span>
+            <strong id="metricUpload">--</strong>
+          </article>
+          <article class="metric" data-metric="ocr">
+            <span id="metricOcrLabel">OCR</span>
+            <strong id="metricOcr">--</strong>
+          </article>
+          <article class="metric" data-metric="firstToken">
+            <span id="metricFirstTokenLabel">首字返回</span>
+            <strong id="metricFirstToken">--</strong>
+          </article>
+          <article class="metric" data-metric="llm">
+            <span id="metricLlmLabel">模型生成</span>
+            <strong id="metricLlm">--</strong>
+          </article>
+          <article class="metric metric--total" data-metric="total">
+            <span>总耗时</span>
+            <strong id="metricTotal">--</strong>
+          </article>
+        </section>
+
+        <section class="work-area">
+          <article class="timeline-panel">
+            <div class="panel-head">
+              <div>
+                <p class="kicker">Steps</p>
+                <h3>执行轨迹</h3>
+              </div>
+              <span id="endTime">结束时间 --</span>
+            </div>
+            <ol class="timeline" id="timeline"></ol>
+            <div class="status-line" id="status">等待上传文件</div>
+          </article>
+
+          <article class="result-panel">
+            <div class="panel-head">
+              <div>
+                <p class="kicker">Output</p>
+                <h3>识别结果</h3>
+              </div>
+              <button class="ghost-action" id="copyBtn" type="button">复制</button>
+            </div>
+            <pre id="result">{}</pre>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <div class="toast" id="toast"></div>
+    <script src="/static/app.js?v=20260626-6"></script>
+  </body>
+</html>

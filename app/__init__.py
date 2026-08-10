@@ -1,0 +1,1 @@
+"""Work ticket OCR application."""

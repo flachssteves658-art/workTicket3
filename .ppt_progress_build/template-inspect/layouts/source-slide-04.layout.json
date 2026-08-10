@@ -1,0 +1,978 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/jyx0ra1s",
+    "id": "jyx0ra1s",
+    "slide": 4,
+    "layoutId": "/ppt/slideLayouts/slideLayout10.xml",
+    "layoutName": "空白",
+    "layoutType": "blank",
+    "masterLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 960,
+      "height": 540
+    }
+  },
+  "theme": {
+    "colorSchemeName": "Office",
+    "colors": {
+      "accent1": "#5B9BD5",
+      "accent2": "#ED7D31",
+      "accent3": "#A5A5A5",
+      "accent4": "#FFC000",
+      "accent5": "#4472C4",
+      "accent6": "#70AD47",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#44546A",
+      "lt2": "#E7E6E6",
+      "hlink": "#0563C1",
+      "folHlink": "#954F72"
+    },
+    "fontScheme": {
+      "name": "Arial Black-Arial",
+      "majorFont": {
+        "latinTypeface": "Arial Black"
+      },
+      "minorFont": {
+        "latinTypeface": "Arial"
+      }
+    },
+    "typefaces": [
+      "+mj-ea",
+      "Arial",
+      "Arial Black",
+      "Times New Roman",
+      "微软雅黑"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "/ppt/slideLayouts/slideLayout10.xml",
+      "name": "空白",
+      "type": "blank",
+      "parentLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+      "elements": [
+        {
+          "order": 1,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout10.xml/2",
+          "id": "2",
+          "name": "日期占位符 1",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "order": 2,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout10.xml/3",
+          "id": "3",
+          "name": "页脚占位符 2",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "order": 3,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout10.xml/4",
+          "id": "4",
+          "name": "灯片编号占位符 3",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "scope": "master",
+      "id": "/ppt/slideMasters/slideMaster1.xml",
+      "type": "master",
+      "backgroundColor": "bg1",
+      "elements": [
+        {
+          "order": 1,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/2",
+          "id": "2",
+          "name": "标题占位符 1",
+          "bbox": [
+            66,
+            28.75,
+            828,
+            104.38
+          ],
+          "geometry": "rect",
+          "text": "单击此处编辑母版标题样式",
+          "textPreview": "单击此处编辑母版标题样式",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "单击此处编辑母版标题样式",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "单击此处编辑母版标题样式"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/3",
+          "id": "3",
+          "name": "文本占位符 2",
+          "bbox": [
+            66,
+            143.75,
+            828,
+            342.63
+          ],
+          "geometry": "rect",
+          "text": "单击此处编辑母版文本样式\n第二级\n第三级\n第四级\n第五级",
+          "textPreview": "单击此处编辑母版文本样式 | 第二级 | 第三级 | 第四级 | 第五级",
+          "resolvedTextStyle": {
+            "vertical": 1,
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "单击此处编辑母版文本样式",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "单击此处编辑母版文本样式"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "text": "第二级",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "第二级"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "text": "第三级",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "第三级"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "text": "第四级",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "第四级"
+                }
+              ]
+            },
+            {
+              "index": 5,
+              "text": "第五级",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "第五级"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/4",
+          "id": "4",
+          "name": "日期占位符 3",
+          "bbox": [
+            66,
+            500.5,
+            216,
+            28.75
+          ],
+          "geometry": "rect",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          }
+        },
+        {
+          "order": 4,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/5",
+          "id": "5",
+          "name": "页脚占位符 4",
+          "bbox": [
+            318,
+            500.5,
+            324,
+            28.75
+          ],
+          "geometry": "rect",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          }
+        },
+        {
+          "order": 5,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/6",
+          "id": "6",
+          "name": "灯片编号占位符 5",
+          "bbox": [
+            678,
+            500.5,
+            216,
+            28.75
+          ],
+          "geometry": "rect",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          }
+        },
+        {
+          "order": 6,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/7",
+          "id": "7",
+          "name": "矩形 6",
+          "bbox": [
+            0,
+            0,
+            960,
+            540
+          ],
+          "geometry": "rect",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "verticalAlignment": "middle"
+          },
+          "lineWidth": 0
+        }
+      ]
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/1cj2d8b6",
+      "id": "2",
+      "name": "矩形 1",
+      "bbox": [
+        33.97,
+        5.46,
+        213.26,
+        87.24
+      ],
+      "geometry": "rect",
+      "text": "一、项目内容\n",
+      "textPreview": "一、项目内容 |",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Arial",
+        "color": "tx1",
+        "alignment": "left",
+        "wrap": "none",
+        "autoFit": "resizeShapeToFitText",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "一、项目内容"
+          },
+          {
+            "index": 2,
+            "text": ""
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "一、项目内容",
+          "runs": [
+            {
+              "index": 1,
+              "text": "一、项目内容",
+              "fontSize": 32,
+              "typeface": "微软雅黑",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/ed4nel0n",
+      "id": "11",
+      "name": "Picture 2",
+      "bbox": [
+        729.48,
+        1.97,
+        230.52,
+        73.67
+      ],
+      "contentType": "image/jpeg",
+      "imageCrop": {
+        "left": 0.68782,
+        "top": 0.01129,
+        "right": 0.01331,
+        "bottom": 0.85966
+      },
+      "asset": {
+        "assetId": "/ppt/media/image2.jpeg",
+        "contentType": "image/jpeg",
+        "byteLength": 88733
+      },
+      "fillImage": {
+        "assetId": "/ppt/media/image2.jpeg",
+        "contentType": "image/jpeg",
+        "byteLength": 88733
+      }
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/kbm987y5",
+      "id": "10",
+      "name": "Text Box 4",
+      "bbox": [
+        303.91,
+        7.14,
+        370.43,
+        41.64
+      ],
+      "geometry": "rect",
+      "text": "问题背景",
+      "textPreview": "问题背景",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 18,
+        "typeface": "Arial",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "resizeShapeToFitText",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "n问题背景"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "问题背景",
+          "lineSpacingPercent": 120000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "问题背景",
+              "typeface": "+mj-ea",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 1
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0ba143al",
+      "id": "3",
+      "name": "矩形 2",
+      "bbox": [
+        35.64,
+        80.39,
+        888.72,
+        114.2
+      ],
+      "geometry": "rect",
+      "text": "        电网作业现场环境复杂、票证与现场脱节、数据孤立，导致违章识别、风险预警、远程督查均存在短板。采用多模态智能管控技术，融合多源数据实现智能分析、风险识别与预警回溯，全面提升电网安全管控水平。",
+      "textPreview": "电网作业现场环境复杂、票证与现场脱节、数据孤立，导致违章识别、风险预警、远程督查均存在短板。采用多模态智能管控技术，融合多源数据实现智能分析、风险识别与预警回溯，全面提升电网安全管控水平。",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Arial",
+        "color": "tx1",
+        "alignment": "left",
+        "wrap": "square",
+        "autoFit": "resizeShapeToFitText",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 4,
+        "lines": [
+          {
+            "index": 1,
+            "text": "        "
+          },
+          {
+            "index": 2,
+            "text": "电网作业现场环境复杂、票证与现场脱节、数据孤立，导致违章识别、风险预警、"
+          },
+          {
+            "index": 3,
+            "text": "远程督查均存在短板。采用多模态智能管控技术，融合多源数据实现智能分析、风"
+          },
+          {
+            "index": 4,
+            "text": "险识别与预警回溯，全面提升电网安全管控水平。"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "        电网作业现场环境复杂、票证与现场脱节、数据孤立，导致违章识别、风险预警、远程督查均存在短板。采用多模态智能管控技术，融合多源数据实现智能分析、风险识别与预警回溯，全面提升电网安全管控水平。",
+          "lineSpacingPercent": 120000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "        ",
+              "fontSize": 24
+            },
+            {
+              "index": 2,
+              "text": "电网作业现场环境复杂、票证与现场脱节、数据孤立，导致违章识别、风险预警、远程督查均存在短板。采用多模态智能管控技术，融合多源数据实现智能分析、风险识别与预警回溯，全面提升电网安全管控水平。",
+              "fontSize": 24,
+              "typeface": "微软雅黑"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineColor": "#0070C0",
+      "lineWidth": 1.33
+    },
+    {
+      "order": 5,
+      "kind": "table",
+      "scope": "slide",
+      "aid": "tb/1g3ex4zu",
+      "id": "12",
+      "name": "表格 3",
+      "bbox": [
+        26.07,
+        209.47,
+        915.19,
+        314.79
+      ],
+      "text": "故障名称 | 故障性质 | 故障描述\n工作票信息解析与关联不足 | 直接问题 | 工作票关键信息多为非结构化文本，传统 OCR 与人工处理效率低、准确率不高，解析结果难以与设备、视频自动关联，造成票证与现场脱节。\n现场违章行为识别不及时 | 本体问题 | 作业现场长期依赖人工巡查和视频抽查，容易受疲劳、疏忽等因素影响，导致未佩戴安全帽、着装不规范、区域入侵、吊车作业姿态异常等典型风险行为难以及时发现。\n预警生成与远程督查能力不足 | 次生问题 | 现有视频、工作票、设备等多源信息割裂，缺乏统一融合与智能分析，无法自动生成规范预警报告，也不支持自然语言检索回溯历史视频，制约现场远程督查与风险闭环管控",
+      "textPreview": "故障名称 | 故障性质 | 故障描述 | 工作票信息解析与关联不足 | 直接问题 | 工作票关键信息多为非结构化文本，传统 OCR 与人工处理效率低、准确率不高，解析结果难以与设备、视频自动关联，造成票证与现场脱节。 | 现场违章行为识别不及时 | 本体问题 | 作业现场长...",
+      "rows": 4,
+      "cols": 3,
+      "cells": [
+        {
+          "index": 1,
+          "row": 1,
+          "column": 1,
+          "bbox": [
+            26.07,
+            209.47,
+            147.33,
+            26.53
+          ],
+          "text": "故障名称",
+          "textPreview": "故障名称",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "故障名称",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "故障名称",
+                  "fontSize": 21.33,
+                  "typeface": "Times New Roman"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "row": 1,
+          "column": 2,
+          "bbox": [
+            173.4,
+            209.47,
+            147.33,
+            26.53
+          ],
+          "text": "故障性质",
+          "textPreview": "故障性质",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "故障性质",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "故障性质",
+                  "fontSize": 21.33,
+                  "typeface": "Times New Roman"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "row": 1,
+          "column": 3,
+          "bbox": [
+            320.73,
+            209.47,
+            620.53,
+            26.53
+          ],
+          "text": "故障描述",
+          "textPreview": "故障描述",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "故障描述",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "故障描述",
+                  "fontSize": 21.33,
+                  "typeface": "Times New Roman"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "row": 2,
+          "column": 1,
+          "bbox": [
+            26.07,
+            236,
+            147.33,
+            89.93
+          ],
+          "text": "工作票信息解析与关联不足",
+          "textPreview": "工作票信息解析与关联不足",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "工作票信息解析与关联不足",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "工作票信息解析与关联不足",
+                  "fontSize": 21.33,
+                  "typeface": "Times New Roman",
+                  "bold": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "row": 2,
+          "column": 2,
+          "bbox": [
+            173.4,
+            236,
+            147.33,
+            89.93
+          ],
+          "text": "直接问题",
+          "textPreview": "直接问题",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "直接问题",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "直接",
+                  "fontSize": 21.33,
+                  "typeface": "Times New Roman"
+                },
+                {
+                  "index": 2,
+                  "text": "问题",
+                  "fontSize": 21.33,
+                  "typeface": "Times New Roman"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "row": 2,
+          "column": 3,
+          "bbox": [
+            320.73,
+            236,
+            620.53,
+            89.93
+          ],
+          "text": "工作票关键信息多为非结构化文本，传统 OCR 与人工处理效率低、准确率不高，解析结果难以与设备、视频自动关联，造成票证与现场脱节。",
+          "textPreview": "工作票关键信息多为非结构化文本，传统 OCR 与人工处理效率低、准确率不高，解析结果难以与设备、视频自动关联，造成票证与现场脱节。",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "工作票关键信息多为非结构化文本，传统 OCR 与人工处理效率低、准确率不高，解析结果难以与设备、视频自动关联，造成票证与现场脱节。",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "工作票关键信息多为非结构化文本，传统",
+                  "fontSize": 21.33,
+                  "typeface": "Times New Roman"
+                },
+                {
+                  "index": 2,
+                  "text": " OCR ",
+                  "fontSize": 21.33,
+                  "typeface": "Times New Roman"
+                },
+                {
+                  "index": 3,
+                  "text": "与人工处理效率低、准确率不高，解析结果难以与设备、视频自动关联，造成票证与现场脱节。",
+                  "fontSize": 21.33,
+                  "typeface": "Times New Roman"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "row": 3,
+          "column": 1,
+          "bbox": [
+            26.07,
+            325.93,
+            147.33,
+            99.2
+          ],
+          "text": "现场违章行为识别不及时",
+          "textPreview": "现场违章行为识别不及时",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "现场违章行为识别不及时",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "现场违章行为识别不及时",
+                  "fontSize": 21.33,
+                  "typeface": "Times New Roman",
+                  "bold": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "row": 3,
+          "column": 2,
+          "bbox": [
+            173.4,
+            325.93,
+            147.33,
+            99.2
+          ],
+          "text": "本体问题",
+          "textPreview": "本体问题",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "本体问题",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "本体",
+                  "fontSize": 21.33,
+                  "typeface": "Times New Roman"
+                },
+                {
+                  "index": 2,
+                  "text": "问题",
+                  "fontSize": 21.33,
+                  "typeface": "Times New Roman"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "row": 3,
+          "column": 3,
+          "bbox": [
+            320.73,
+            325.93,
+            620.53,
+            99.2
+          ],
+          "text": "作业现场长期依赖人工巡查和视频抽查，容易受疲劳、疏忽等因素影响，导致未佩戴安全帽、着装不规范、区域入侵、吊车作业姿态异常等典型风险行为难以及时发现。",
+          "textPreview": "作业现场长期依赖人工巡查和视频抽查，容易受疲劳、疏忽等因素影响，导致未佩戴安全帽、着装不规范、区域入侵、吊车作业姿态异常等典型风险行为难以及时发现。",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "作业现场长期依赖人工巡查和视频抽查，容易受疲劳、疏忽等因素影响，导致未佩戴安全帽、着装不规范、区域入侵、吊车作业姿态异常等典型风险行为难以及时发现。",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "作业现场长期依赖人工巡查和视频抽查，容易受疲劳、疏忽等因素影响，导致未佩戴安全帽、着装不规范、区域入侵、吊车作业姿态异常等典型风险行为难以及时发现。",
+                  "fontSize": 21.33,
+                  "typeface": "Times New Roman"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "row": 4,
+          "column": 1,
+          "bbox": [
+            26.07,
+            425.13,
+            147.33,
+            99.13
+          ],
+          "text": "预警生成与远程督查能力不足",
+          "textPreview": "预警生成与远程督查能力不足",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "预警生成与远程督查能力不足",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "预警生成与远程督查能力不足",
+                  "fontSize": 21.33,
+                  "typeface": "Times New Roman",
+                  "bold": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "row": 4,
+          "column": 2,
+          "bbox": [
+            173.4,
+            425.13,
+            147.33,
+            99.13
+          ],
+          "text": "次生问题",
+          "textPreview": "次生问题",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "次生问题",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "次生",
+                  "fontSize": 21.33,
+                  "typeface": "Times New Roman"
+                },
+                {
+                  "index": 2,
+                  "text": "问题",
+                  "fontSize": 21.33,
+                  "typeface": "Times New Roman"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "row": 4,
+          "column": 3,
+          "bbox": [
+            320.73,
+            425.13,
+            620.53,
+            99.13
+          ],
+          "text": "现有视频、工作票、设备等多源信息割裂，缺乏统一融合与智能分析，无法自动生成规范预警报告，也不支持自然语言检索回溯历史视频，制约现场远程督查与风险闭环管控",
+          "textPreview": "现有视频、工作票、设备等多源信息割裂，缺乏统一融合与智能分析，无法自动生成规范预警报告，也不支持自然语言检索回溯历史视频，制约现场远程督查与风险闭环管控",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "现有视频、工作票、设备等多源信息割裂，缺乏统一融合与智能分析，无法自动生成规范预警报告，也不支持自然语言检索回溯历史视频，制约现场远程督查与风险闭环管控",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "现有视频、工作票、设备等多源信息割裂，缺乏统一融合与智能分析，无法自动生成规范预警报告，也不支持自然语言检索回溯历史视频，制约现场远程督查与风险闭环管控",
+                  "fontSize": 21.33,
+                  "typeface": "Times New Roman"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "composeRuns": []
+}

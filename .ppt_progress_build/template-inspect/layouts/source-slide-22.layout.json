@@ -1,0 +1,3106 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/5onypobq",
+    "id": "5onypobq",
+    "slide": 22,
+    "layoutId": "/ppt/slideLayouts/slideLayout10.xml",
+    "layoutName": "空白",
+    "layoutType": "blank",
+    "masterLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 960,
+      "height": 540
+    }
+  },
+  "theme": {
+    "colorSchemeName": "Office",
+    "colors": {
+      "accent1": "#5B9BD5",
+      "accent2": "#ED7D31",
+      "accent3": "#A5A5A5",
+      "accent4": "#FFC000",
+      "accent5": "#4472C4",
+      "accent6": "#70AD47",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#44546A",
+      "lt2": "#E7E6E6",
+      "hlink": "#0563C1",
+      "folHlink": "#954F72"
+    },
+    "fontScheme": {
+      "name": "Arial Black-Arial",
+      "majorFont": {
+        "latinTypeface": "Arial Black"
+      },
+      "minorFont": {
+        "latinTypeface": "Arial"
+      }
+    },
+    "typefaces": [
+      "+mj-ea",
+      "Arial",
+      "Arial Black",
+      "微软雅黑"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "/ppt/slideLayouts/slideLayout10.xml",
+      "name": "空白",
+      "type": "blank",
+      "parentLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+      "elements": [
+        {
+          "order": 1,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout10.xml/2",
+          "id": "2",
+          "name": "日期占位符 1",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "order": 2,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout10.xml/3",
+          "id": "3",
+          "name": "页脚占位符 2",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "order": 3,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout10.xml/4",
+          "id": "4",
+          "name": "灯片编号占位符 3",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "scope": "master",
+      "id": "/ppt/slideMasters/slideMaster1.xml",
+      "type": "master",
+      "backgroundColor": "bg1",
+      "elements": [
+        {
+          "order": 1,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/2",
+          "id": "2",
+          "name": "标题占位符 1",
+          "bbox": [
+            66,
+            28.75,
+            828,
+            104.38
+          ],
+          "geometry": "rect",
+          "text": "单击此处编辑母版标题样式",
+          "textPreview": "单击此处编辑母版标题样式",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "单击此处编辑母版标题样式",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "单击此处编辑母版标题样式"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/3",
+          "id": "3",
+          "name": "文本占位符 2",
+          "bbox": [
+            66,
+            143.75,
+            828,
+            342.63
+          ],
+          "geometry": "rect",
+          "text": "单击此处编辑母版文本样式\n第二级\n第三级\n第四级\n第五级",
+          "textPreview": "单击此处编辑母版文本样式 | 第二级 | 第三级 | 第四级 | 第五级",
+          "resolvedTextStyle": {
+            "vertical": 1,
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "单击此处编辑母版文本样式",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "单击此处编辑母版文本样式"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "text": "第二级",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "第二级"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "text": "第三级",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "第三级"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "text": "第四级",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "第四级"
+                }
+              ]
+            },
+            {
+              "index": 5,
+              "text": "第五级",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "第五级"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/4",
+          "id": "4",
+          "name": "日期占位符 3",
+          "bbox": [
+            66,
+            500.5,
+            216,
+            28.75
+          ],
+          "geometry": "rect",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          }
+        },
+        {
+          "order": 4,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/5",
+          "id": "5",
+          "name": "页脚占位符 4",
+          "bbox": [
+            318,
+            500.5,
+            324,
+            28.75
+          ],
+          "geometry": "rect",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          }
+        },
+        {
+          "order": 5,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/6",
+          "id": "6",
+          "name": "灯片编号占位符 5",
+          "bbox": [
+            678,
+            500.5,
+            216,
+            28.75
+          ],
+          "geometry": "rect",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          }
+        },
+        {
+          "order": 6,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/7",
+          "id": "7",
+          "name": "矩形 6",
+          "bbox": [
+            0,
+            0,
+            960,
+            540
+          ],
+          "geometry": "rect",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "verticalAlignment": "middle"
+          },
+          "lineWidth": 0
+        }
+      ]
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "table",
+      "scope": "slide",
+      "aid": "tb/uxwnupw3",
+      "id": "10",
+      "name": "表格 1",
+      "bbox": [
+        3.73,
+        58.33,
+        472.47,
+        466.87
+      ],
+      "text": "科　　目 | 预算金额 | 备   注\n（一）直接费用 | 103.15\n1.人工费 | 44.65 | 研究成果为报告、自行开发软件等以人员智力投入为主的研究项目人工费不得超过项目总费用的65%；研究成果为硬件产品，材料费及外协加工费比重较大的研究项目人工费不得超过项目总费用的35%。其它类型的研究项目人工费不得超过项目总费用的50%。\n（1）专职研究人员费 | 44.65 | 投入高级研究人员8人，4个月，1.15万元/人月，合计36.8万元；投入中级研究人员2人，5个月，0.785万元/人月，合计7.85万元。\n（2）劳务外包人员人工费 | 0 | /\n（3）临时性研究人员人工费 | 0 | /\n2.设备费 | 0 | /\n（1）仪器设备使用费 | 0 | /\n（2）软件使用费 | 0 | /\n3.业务费 | 53.5\n（1）材料费 | 48 | 详见附件5-3",
+      "textPreview": "科　　目 | 预算金额 | 备   注 | （一）直接费用 | 103.15 | 1.人工费 | 44.65 | 研究成果为报告、自行开发软件等以人员智力投入为主的研究项目人工费不得超过项目总费用的65%；研究成果为硬件产品，材料费及外协加工费比重较大的研究项目人工费不得超...",
+      "rows": 11,
+      "cols": 3,
+      "cells": [
+        {
+          "index": 1,
+          "row": 1,
+          "column": 1,
+          "bbox": [
+            3.73,
+            58.33,
+            124,
+            40.2
+          ],
+          "text": "科　　目",
+          "textPreview": "科　　目",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "科　　目",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "科　　目",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "row": 1,
+          "column": 2,
+          "bbox": [
+            127.73,
+            58.33,
+            46.07,
+            40.2
+          ],
+          "text": "预算金额",
+          "textPreview": "预算金额",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "预算金额",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "预算金额",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "row": 1,
+          "column": 3,
+          "bbox": [
+            173.8,
+            58.33,
+            302.4,
+            40.2
+          ],
+          "text": "备   注",
+          "textPreview": "备   注",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "备   注",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "备",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "   ",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 3,
+                  "text": "注",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "row": 2,
+          "column": 1,
+          "bbox": [
+            3.73,
+            98.53,
+            124,
+            26.67
+          ],
+          "text": "（一）直接费用",
+          "textPreview": "（一）直接费用",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "（一）直接费用",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "（一）直接费用",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "row": 2,
+          "column": 2,
+          "bbox": [
+            127.73,
+            98.53,
+            46.07,
+            26.67
+          ],
+          "text": "103.15",
+          "textPreview": "103.15",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "103.15",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "103.15",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "row": 2,
+          "column": 3,
+          "bbox": [
+            173.8,
+            98.53,
+            302.4,
+            26.67
+          ],
+          "paragraphs": [
+            {
+              "index": 1,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": " ",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "row": 3,
+          "column": 1,
+          "bbox": [
+            3.73,
+            125.2,
+            124,
+            80
+          ],
+          "text": "1.人工费",
+          "textPreview": "1.人工费",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "1.人工费",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "1.",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "人工费",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "row": 3,
+          "column": 2,
+          "bbox": [
+            127.73,
+            125.2,
+            46.07,
+            80
+          ],
+          "text": "44.65",
+          "textPreview": "44.65",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "44.65",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "44.65",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "row": 3,
+          "column": 3,
+          "bbox": [
+            173.8,
+            125.2,
+            302.4,
+            80
+          ],
+          "text": "研究成果为报告、自行开发软件等以人员智力投入为主的研究项目人工费不得超过项目总费用的65%；研究成果为硬件产品，材料费及外协加工费比重较大的研究项目人工费不得超过项目总费用的35%。其它类型的研究项目人工费不得超过项目总费用的50%。",
+          "textPreview": "研究成果为报告、自行开发软件等以人员智力投入为主的研究项目人工费不得超过项目总费用的65%；研究成果为硬件产品，材料费及外协加工费比重较大的研究项目人工费不得超过项目总费用的35%。其它类型的研究项目人工费不得超过项目总费用的50%。",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "研究成果为报告、自行开发软件等以人员智力投入为主的研究项目人工费不得超过项目总费用的65%；研究成果为硬件产品，材料费及外协加工费比重较大的研究项目人工费不得超过项目总费用的35%。其它类型的研究项目人工费不得超过项目总费用的50%。",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "研究成果为报告、自行开发软件等以人员智力投入为主的研究项目人工费不得超过项目总费用的",
+                  "fontSize": 12
+                },
+                {
+                  "index": 2,
+                  "text": "65%",
+                  "fontSize": 12
+                },
+                {
+                  "index": 3,
+                  "text": "；研究成果为硬件产品，材料费及外协加工费比重较大的研究项目人工费不得超过项目总费用的",
+                  "fontSize": 12
+                },
+                {
+                  "index": 4,
+                  "text": "35%",
+                  "fontSize": 12
+                },
+                {
+                  "index": 5,
+                  "text": "。其它类型的研究项目人工费不得超过项目总费用的",
+                  "fontSize": 12
+                },
+                {
+                  "index": 6,
+                  "text": "50%",
+                  "fontSize": 12
+                },
+                {
+                  "index": 7,
+                  "text": "。",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "row": 4,
+          "column": 1,
+          "bbox": [
+            3.73,
+            205.2,
+            124,
+            53.33
+          ],
+          "text": "（1）专职研究人员费",
+          "textPreview": "（1）专职研究人员费",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "（1）专职研究人员费",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "（",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "1",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 3,
+                  "text": "）专职研究人员费",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "row": 4,
+          "column": 2,
+          "bbox": [
+            127.73,
+            205.2,
+            46.07,
+            53.33
+          ],
+          "text": "44.65",
+          "textPreview": "44.65",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "44.65",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "44.65",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "row": 4,
+          "column": 3,
+          "bbox": [
+            173.8,
+            205.2,
+            302.4,
+            53.33
+          ],
+          "text": "投入高级研究人员8人，4个月，1.15万元/人月，合计36.8万元；投入中级研究人员2人，5个月，0.785万元/人月，合计7.85万元。",
+          "textPreview": "投入高级研究人员8人，4个月，1.15万元/人月，合计36.8万元；投入中级研究人员2人，5个月，0.785万元/人月，合计7.85万元。",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "投入高级研究人员8人，4个月，1.15万元/人月，合计36.8万元；投入中级研究人员2人，5个月，0.785万元/人月，合计7.85万元。",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "投入高级研究人员",
+                  "fontSize": 12
+                },
+                {
+                  "index": 2,
+                  "text": "8",
+                  "fontSize": 12
+                },
+                {
+                  "index": 3,
+                  "text": "人，",
+                  "fontSize": 12
+                },
+                {
+                  "index": 4,
+                  "text": "4",
+                  "fontSize": 12
+                },
+                {
+                  "index": 5,
+                  "text": "个月，",
+                  "fontSize": 12
+                },
+                {
+                  "index": 6,
+                  "text": "1.15",
+                  "fontSize": 12
+                },
+                {
+                  "index": 7,
+                  "text": "万元",
+                  "fontSize": 12
+                },
+                {
+                  "index": 8,
+                  "text": "/",
+                  "fontSize": 12
+                },
+                {
+                  "index": 9,
+                  "text": "人月，合计",
+                  "fontSize": 12
+                },
+                {
+                  "index": 10,
+                  "text": "36.8",
+                  "fontSize": 12
+                },
+                {
+                  "index": 11,
+                  "text": "万元；投入中级研究人员",
+                  "fontSize": 12
+                },
+                {
+                  "index": 12,
+                  "text": "2",
+                  "fontSize": 12
+                },
+                {
+                  "index": 13,
+                  "text": "人，",
+                  "fontSize": 12
+                },
+                {
+                  "index": 14,
+                  "text": "5",
+                  "fontSize": 12
+                },
+                {
+                  "index": 15,
+                  "text": "个月，",
+                  "fontSize": 12
+                },
+                {
+                  "index": 16,
+                  "text": "0.785",
+                  "fontSize": 12
+                },
+                {
+                  "index": 17,
+                  "text": "万元",
+                  "fontSize": 12
+                },
+                {
+                  "index": 18,
+                  "text": "/",
+                  "fontSize": 12
+                },
+                {
+                  "index": 19,
+                  "text": "人",
+                  "fontSize": 12
+                },
+                {
+                  "index": 20,
+                  "text": "月，合计",
+                  "fontSize": 12
+                },
+                {
+                  "index": 21,
+                  "text": "7.85",
+                  "fontSize": 12
+                },
+                {
+                  "index": 22,
+                  "text": "万元。",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "row": 5,
+          "column": 1,
+          "bbox": [
+            3.73,
+            258.53,
+            124,
+            53.33
+          ],
+          "text": "（2）劳务外包人员人工费",
+          "textPreview": "（2）劳务外包人员人工费",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "（2）劳务外包人员人工费",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "（",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "2",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 3,
+                  "text": "）劳务外包人员人工费",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 14,
+          "row": 5,
+          "column": 2,
+          "bbox": [
+            127.73,
+            258.53,
+            46.07,
+            53.33
+          ],
+          "text": "0",
+          "textPreview": "0",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "0",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "0",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "row": 5,
+          "column": 3,
+          "bbox": [
+            173.8,
+            258.53,
+            302.4,
+            53.33
+          ],
+          "text": "/",
+          "textPreview": "/",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "/",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "/",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "row": 6,
+          "column": 1,
+          "bbox": [
+            3.73,
+            311.87,
+            124,
+            53.33
+          ],
+          "text": "（3）临时性研究人员人工费",
+          "textPreview": "（3）临时性研究人员人工费",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "（3）临时性研究人员人工费",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "（",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "3",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 3,
+                  "text": "）临时性研究人员人工费",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "row": 6,
+          "column": 2,
+          "bbox": [
+            127.73,
+            311.87,
+            46.07,
+            53.33
+          ],
+          "text": "0",
+          "textPreview": "0",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "0",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "0",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "row": 6,
+          "column": 3,
+          "bbox": [
+            173.8,
+            311.87,
+            302.4,
+            53.33
+          ],
+          "text": "/",
+          "textPreview": "/",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "/",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "/",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "row": 7,
+          "column": 1,
+          "bbox": [
+            3.73,
+            365.2,
+            124,
+            26.67
+          ],
+          "text": "2.设备费",
+          "textPreview": "2.设备费",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "2.设备费",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "2.",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "设备费",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 20,
+          "row": 7,
+          "column": 2,
+          "bbox": [
+            127.73,
+            365.2,
+            46.07,
+            26.67
+          ],
+          "text": "0",
+          "textPreview": "0",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "0",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "0",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 21,
+          "row": 7,
+          "column": 3,
+          "bbox": [
+            173.8,
+            365.2,
+            302.4,
+            26.67
+          ],
+          "text": "/",
+          "textPreview": "/",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "/",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "/",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 22,
+          "row": 8,
+          "column": 1,
+          "bbox": [
+            3.73,
+            391.87,
+            124,
+            53.33
+          ],
+          "text": "（1）仪器设备使用费",
+          "textPreview": "（1）仪器设备使用费",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "（1）仪器设备使用费",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "（",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "1",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 3,
+                  "text": "）仪器设备使用费",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 23,
+          "row": 8,
+          "column": 2,
+          "bbox": [
+            127.73,
+            391.87,
+            46.07,
+            53.33
+          ],
+          "text": "0",
+          "textPreview": "0",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "0",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "0",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 24,
+          "row": 8,
+          "column": 3,
+          "bbox": [
+            173.8,
+            391.87,
+            302.4,
+            53.33
+          ],
+          "text": "/",
+          "textPreview": "/",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "/",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "/",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 25,
+          "row": 9,
+          "column": 1,
+          "bbox": [
+            3.73,
+            445.2,
+            124,
+            26.67
+          ],
+          "text": "（2）软件使用费",
+          "textPreview": "（2）软件使用费",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "（2）软件使用费",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "（",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "2",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 3,
+                  "text": "）软件使用费",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 26,
+          "row": 9,
+          "column": 2,
+          "bbox": [
+            127.73,
+            445.2,
+            46.07,
+            26.67
+          ],
+          "text": "0",
+          "textPreview": "0",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "0",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "0",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 27,
+          "row": 9,
+          "column": 3,
+          "bbox": [
+            173.8,
+            445.2,
+            302.4,
+            26.67
+          ],
+          "text": "/",
+          "textPreview": "/",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "/",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "/",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 28,
+          "row": 10,
+          "column": 1,
+          "bbox": [
+            3.73,
+            471.87,
+            124,
+            26.67
+          ],
+          "text": "3.业务费",
+          "textPreview": "3.业务费",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "3.业务费",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "3.",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "业务费",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 29,
+          "row": 10,
+          "column": 2,
+          "bbox": [
+            127.73,
+            471.87,
+            46.07,
+            26.67
+          ],
+          "text": "53.5",
+          "textPreview": "53.5",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "53.5",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "53.5",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 30,
+          "row": 10,
+          "column": 3,
+          "bbox": [
+            173.8,
+            471.87,
+            302.4,
+            26.67
+          ],
+          "paragraphs": [
+            {
+              "index": 1,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": " ",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 31,
+          "row": 11,
+          "column": 1,
+          "bbox": [
+            3.73,
+            498.53,
+            124,
+            26.67
+          ],
+          "text": "（1）材料费",
+          "textPreview": "（1）材料费",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "（1）材料费",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "（",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "1",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 3,
+                  "text": "）材料费",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 32,
+          "row": 11,
+          "column": 2,
+          "bbox": [
+            127.73,
+            498.53,
+            46.07,
+            26.67
+          ],
+          "text": "48",
+          "textPreview": "48",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "48",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "48",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 33,
+          "row": 11,
+          "column": 3,
+          "bbox": [
+            173.8,
+            498.53,
+            302.4,
+            26.67
+          ],
+          "text": "详见附件5-3",
+          "textPreview": "详见附件5-3",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "详见附件5-3",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "详见附件5-3",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "kind": "table",
+      "scope": "slide",
+      "aid": "tb/vi543udo",
+      "id": "11",
+      "name": "表格 2",
+      "bbox": [
+        485.71,
+        88.47,
+        472.45,
+        283.52
+      ],
+      "text": "（2）资料、印刷及知识产权费 | 1 | 论文费用0.33万元，论文3项，合计1万元。\n（3）会议、差旅及国际合作交流费 | 4.5 | 项目执行过程开展现场调研、交流和学术会议，共开展9次，每次2人，共计18人次，每人次按 0.25万元计算，共4.5万元。\n4.场地使用费 | 0\n（1）场地物业费 | 0 | /\n（2）场地使用租金 | 0 | /\n5.专家咨询费 | 5 | 本项目按预召开5次会议，每次聘请专家高级专业技术职称人员的专家5人，按照2000元／人标准发放，合计5*5*2000=5万元\n（二）间接费 | 0 | /\n（三）外委支出 | 47\n1．外委研究支出 | 47 | 详见附件5-4。\n2。仪器设备租赁费 | 0 | /\n3．外委测试试验与加工费 | 0 | /\n（四）税金 | 0 | 税金=增值税+城市维护建设税+教育费附加\n合  计 | 159.159",
+      "textPreview": "（2）资料、印刷及知识产权费 | 1 | 论文费用0.33万元，论文3项，合计1万元。 | （3）会议、差旅及国际合作交流费 | 4.5 | 项目执行过程开展现场调研、交流和学术会议，共开展9次，每次2人，共计18人次，每人次按 0.25万元计算，共4.5万元。 | 4.场...",
+      "rows": 13,
+      "cols": 3,
+      "cells": [
+        {
+          "index": 1,
+          "row": 1,
+          "column": 1,
+          "bbox": [
+            485.71,
+            88.47,
+            120.2,
+            19.79
+          ],
+          "text": "（2）资料、印刷及知识产权费",
+          "textPreview": "（2）资料、印刷及知识产权费",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "（2）资料、印刷及知识产权费",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "（",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "2",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 3,
+                  "text": "）资料、印刷及知识产权费",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "row": 1,
+          "column": 2,
+          "bbox": [
+            605.91,
+            88.47,
+            55.67,
+            19.79
+          ],
+          "text": "1",
+          "textPreview": "1",
+          "fillColor": "#EAEFF7",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "1",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "1",
+                  "fontSize": 12,
+                  "typeface": "Arial",
+                  "color": "dk1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "row": 1,
+          "column": 3,
+          "bbox": [
+            661.58,
+            88.47,
+            296.58,
+            19.79
+          ],
+          "text": "论文费用0.33万元，论文3项，合计1万元。",
+          "textPreview": "论文费用0.33万元，论文3项，合计1万元。",
+          "fillColor": "#EAEFF7",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "论文费用0.33万元，论文3项，合计1万元。",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "论文费用",
+                  "fontSize": 12,
+                  "typeface": "Arial",
+                  "color": "dk1"
+                },
+                {
+                  "index": 2,
+                  "text": "0.33",
+                  "fontSize": 12,
+                  "typeface": "Arial",
+                  "color": "dk1"
+                },
+                {
+                  "index": 3,
+                  "text": "万元，论文",
+                  "fontSize": 12,
+                  "typeface": "Arial",
+                  "color": "dk1"
+                },
+                {
+                  "index": 4,
+                  "text": "3",
+                  "fontSize": 12,
+                  "typeface": "Arial",
+                  "color": "dk1"
+                },
+                {
+                  "index": 5,
+                  "text": "项，合计",
+                  "fontSize": 12,
+                  "typeface": "Arial",
+                  "color": "dk1"
+                },
+                {
+                  "index": 6,
+                  "text": "1",
+                  "fontSize": 12,
+                  "typeface": "Arial",
+                  "color": "dk1"
+                },
+                {
+                  "index": 7,
+                  "text": "万元。",
+                  "fontSize": 12,
+                  "typeface": "Arial",
+                  "color": "dk1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "row": 2,
+          "column": 1,
+          "bbox": [
+            485.71,
+            108.26,
+            120.2,
+            33.01
+          ],
+          "text": "（3）会议、差旅及国际合作交流费",
+          "textPreview": "（3）会议、差旅及国际合作交流费",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "（3）会议、差旅及国际合作交流费",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "（",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "3",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 3,
+                  "text": "）会议、差旅及国际合作交流费",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "row": 2,
+          "column": 2,
+          "bbox": [
+            605.91,
+            108.26,
+            55.67,
+            33.01
+          ],
+          "text": "4.5",
+          "textPreview": "4.5",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "4.5",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "4.5",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "row": 2,
+          "column": 3,
+          "bbox": [
+            661.58,
+            108.26,
+            296.58,
+            33.01
+          ],
+          "text": "项目执行过程开展现场调研、交流和学术会议，共开展9次，每次2人，共计18人次，每人次按 0.25万元计算，共4.5万元。",
+          "textPreview": "项目执行过程开展现场调研、交流和学术会议，共开展9次，每次2人，共计18人次，每人次按 0.25万元计算，共4.5万元。",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "项目执行过程开展现场调研、交流和学术会议，共开展9次，每次2人，共计18人次，每人次按 0.25万元计算，共4.5万元。",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "项目执行过程开展现场调研、交流和学术会议，共开展",
+                  "fontSize": 12
+                },
+                {
+                  "index": 2,
+                  "text": "9",
+                  "fontSize": 12
+                },
+                {
+                  "index": 3,
+                  "text": "次，每次",
+                  "fontSize": 12
+                },
+                {
+                  "index": 4,
+                  "text": "2",
+                  "fontSize": 12
+                },
+                {
+                  "index": 5,
+                  "text": "人，共计",
+                  "fontSize": 12
+                },
+                {
+                  "index": 6,
+                  "text": "18",
+                  "fontSize": 12
+                },
+                {
+                  "index": 7,
+                  "text": "人次，每人次按",
+                  "fontSize": 12
+                },
+                {
+                  "index": 8,
+                  "text": " 0.25",
+                  "fontSize": 12
+                },
+                {
+                  "index": 9,
+                  "text": "万元计算，共",
+                  "fontSize": 12
+                },
+                {
+                  "index": 10,
+                  "text": "4.5",
+                  "fontSize": 12
+                },
+                {
+                  "index": 11,
+                  "text": "万元。",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "row": 3,
+          "column": 1,
+          "bbox": [
+            485.71,
+            141.27,
+            120.2,
+            19.79
+          ],
+          "text": "4.场地使用费",
+          "textPreview": "4.场地使用费",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "4.场地使用费",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "4.",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "场地使用费",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "row": 3,
+          "column": 2,
+          "bbox": [
+            605.91,
+            141.27,
+            55.67,
+            19.79
+          ],
+          "text": "0",
+          "textPreview": "0",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "0",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "0",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "row": 3,
+          "column": 3,
+          "bbox": [
+            661.58,
+            141.27,
+            296.58,
+            19.79
+          ],
+          "fillColor": "#EAEFF7",
+          "paragraphs": [
+            {
+              "index": 1,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": " ",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "row": 4,
+          "column": 1,
+          "bbox": [
+            485.71,
+            161.06,
+            120.2,
+            19.79
+          ],
+          "text": "（1）场地物业费",
+          "textPreview": "（1）场地物业费",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "（1）场地物业费",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "（",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "1",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 3,
+                  "text": "）场地物业费",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "row": 4,
+          "column": 2,
+          "bbox": [
+            605.91,
+            161.06,
+            55.67,
+            19.79
+          ],
+          "text": "0",
+          "textPreview": "0",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "0",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "0",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "row": 4,
+          "column": 3,
+          "bbox": [
+            661.58,
+            161.06,
+            296.58,
+            19.79
+          ],
+          "text": "/",
+          "textPreview": "/",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "/",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "/",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "row": 5,
+          "column": 1,
+          "bbox": [
+            485.71,
+            180.85,
+            120.2,
+            19.79
+          ],
+          "text": "（2）场地使用租金",
+          "textPreview": "（2）场地使用租金",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "（2）场地使用租金",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "（",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "2",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 3,
+                  "text": "）场地使用租金",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 14,
+          "row": 5,
+          "column": 2,
+          "bbox": [
+            605.91,
+            180.85,
+            55.67,
+            19.79
+          ],
+          "text": "0",
+          "textPreview": "0",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "0",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "0",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "row": 5,
+          "column": 3,
+          "bbox": [
+            661.58,
+            180.85,
+            296.58,
+            19.79
+          ],
+          "text": "/",
+          "textPreview": "/",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "/",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "/",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "row": 6,
+          "column": 1,
+          "bbox": [
+            485.71,
+            200.64,
+            120.2,
+            26.32
+          ],
+          "text": "5.专家咨询费",
+          "textPreview": "5.专家咨询费",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "5.专家咨询费",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "5.",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "专家咨询费",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "row": 6,
+          "column": 2,
+          "bbox": [
+            605.91,
+            200.64,
+            55.67,
+            26.32
+          ],
+          "text": "5",
+          "textPreview": "5",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "5",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "5",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "row": 6,
+          "column": 3,
+          "bbox": [
+            661.58,
+            200.64,
+            296.58,
+            26.32
+          ],
+          "text": "本项目按预召开5次会议，每次聘请专家高级专业技术职称人员的专家5人，按照2000元／人标准发放，合计5*5*2000=5万元",
+          "textPreview": "本项目按预召开5次会议，每次聘请专家高级专业技术职称人员的专家5人，按照2000元／人标准发放，合计5*5*2000=5万元",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "本项目按预召开5次会议，每次聘请专家高级专业技术职称人员的专家5人，按照2000元／人标准发放，合计5*5*2000=5万元",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "本项目按预召开",
+                  "fontSize": 12
+                },
+                {
+                  "index": 2,
+                  "text": "5",
+                  "fontSize": 12
+                },
+                {
+                  "index": 3,
+                  "text": "次会议，每次聘请专家高级专业技术职称人员的专家",
+                  "fontSize": 12
+                },
+                {
+                  "index": 4,
+                  "text": "5",
+                  "fontSize": 12
+                },
+                {
+                  "index": 5,
+                  "text": "人，按照",
+                  "fontSize": 12
+                },
+                {
+                  "index": 6,
+                  "text": "2000",
+                  "fontSize": 12
+                },
+                {
+                  "index": 7,
+                  "text": "元／人标准发放，合计",
+                  "fontSize": 12
+                },
+                {
+                  "index": 8,
+                  "text": "5",
+                  "fontSize": 12
+                },
+                {
+                  "index": 9,
+                  "text": "*5*2000=5",
+                  "fontSize": 12
+                },
+                {
+                  "index": 10,
+                  "text": "万元",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "row": 7,
+          "column": 1,
+          "bbox": [
+            485.71,
+            226.96,
+            120.2,
+            19.79
+          ],
+          "text": "（二）间接费",
+          "textPreview": "（二）间接费",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "（二）间接费",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "（二）间接费",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 20,
+          "row": 7,
+          "column": 2,
+          "bbox": [
+            605.91,
+            226.96,
+            55.67,
+            19.79
+          ],
+          "text": "0",
+          "textPreview": "0",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "0",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "0",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 21,
+          "row": 7,
+          "column": 3,
+          "bbox": [
+            661.58,
+            226.96,
+            296.58,
+            19.79
+          ],
+          "text": "/",
+          "textPreview": "/",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "/",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "/",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 22,
+          "row": 8,
+          "column": 1,
+          "bbox": [
+            485.71,
+            246.75,
+            120.2,
+            19.79
+          ],
+          "text": "（三）外委支出",
+          "textPreview": "（三）外委支出",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "（三）外委支出",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "（三）外委支出",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 23,
+          "row": 8,
+          "column": 2,
+          "bbox": [
+            605.91,
+            246.75,
+            55.67,
+            19.79
+          ],
+          "text": "47",
+          "textPreview": "47",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "47",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "47",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 24,
+          "row": 8,
+          "column": 3,
+          "bbox": [
+            661.58,
+            246.75,
+            296.58,
+            19.79
+          ]
+        },
+        {
+          "index": 25,
+          "row": 9,
+          "column": 1,
+          "bbox": [
+            485.71,
+            266.54,
+            120.2,
+            19.79
+          ],
+          "text": "1．外委研究支出",
+          "textPreview": "1．外委研究支出",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "1．外委研究支出",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "1",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "．外委研究支出",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 26,
+          "row": 9,
+          "column": 2,
+          "bbox": [
+            605.91,
+            266.54,
+            55.67,
+            19.79
+          ],
+          "text": "47",
+          "textPreview": "47",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "47",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "47",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 27,
+          "row": 9,
+          "column": 3,
+          "bbox": [
+            661.58,
+            266.54,
+            296.58,
+            19.79
+          ],
+          "text": "详见附件5-4。",
+          "textPreview": "详见附件5-4。",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "详见附件5-4。",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "详见附件5-4。",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 28,
+          "row": 10,
+          "column": 1,
+          "bbox": [
+            485.71,
+            286.33,
+            120.2,
+            19.79
+          ],
+          "text": "2。仪器设备租赁费",
+          "textPreview": "2。仪器设备租赁费",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "2。仪器设备租赁费",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "2",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "。仪器设备租赁费",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 29,
+          "row": 10,
+          "column": 2,
+          "bbox": [
+            605.91,
+            286.33,
+            55.67,
+            19.79
+          ],
+          "text": "0",
+          "textPreview": "0",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "0",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "0",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 30,
+          "row": 10,
+          "column": 3,
+          "bbox": [
+            661.58,
+            286.33,
+            296.58,
+            19.79
+          ],
+          "text": "/",
+          "textPreview": "/",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "/",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "/",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 31,
+          "row": 11,
+          "column": 1,
+          "bbox": [
+            485.71,
+            306.12,
+            120.2,
+            26.29
+          ],
+          "text": "3．外委测试试验与加工费",
+          "textPreview": "3．外委测试试验与加工费",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "3．外委测试试验与加工费",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "3",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "．外委测试试验与加工费",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 32,
+          "row": 11,
+          "column": 2,
+          "bbox": [
+            605.91,
+            306.12,
+            55.67,
+            26.29
+          ],
+          "text": "0",
+          "textPreview": "0",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "0",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "0",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 33,
+          "row": 11,
+          "column": 3,
+          "bbox": [
+            661.58,
+            306.12,
+            296.58,
+            26.29
+          ],
+          "text": "/",
+          "textPreview": "/",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "/",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "/",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 34,
+          "row": 12,
+          "column": 1,
+          "bbox": [
+            485.71,
+            332.41,
+            120.2,
+            19.79
+          ],
+          "text": "（四）税金",
+          "textPreview": "（四）税金",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "（四）税金",
+              "resolvedTextStyle": {
+                "alignment": "left"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "（四）税金",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 35,
+          "row": 12,
+          "column": 2,
+          "bbox": [
+            605.91,
+            332.41,
+            55.67,
+            19.79
+          ],
+          "text": "0",
+          "textPreview": "0",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "0",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "0",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 36,
+          "row": 12,
+          "column": 3,
+          "bbox": [
+            661.58,
+            332.41,
+            296.58,
+            19.79
+          ],
+          "text": "税金=增值税+城市维护建设税+教育费附加",
+          "textPreview": "税金=增值税+城市维护建设税+教育费附加",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "税金=增值税+城市维护建设税+教育费附加",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "税金",
+                  "fontSize": 12
+                },
+                {
+                  "index": 2,
+                  "text": "=",
+                  "fontSize": 12
+                },
+                {
+                  "index": 3,
+                  "text": "增值税",
+                  "fontSize": 12
+                },
+                {
+                  "index": 4,
+                  "text": "+",
+                  "fontSize": 12
+                },
+                {
+                  "index": 5,
+                  "text": "城市维护建设税",
+                  "fontSize": 12
+                },
+                {
+                  "index": 6,
+                  "text": "+",
+                  "fontSize": 12
+                },
+                {
+                  "index": 7,
+                  "text": "教育费附加",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 37,
+          "row": 13,
+          "column": 1,
+          "bbox": [
+            485.71,
+            352.2,
+            120.2,
+            19.79
+          ],
+          "text": "合  计",
+          "textPreview": "合  计",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "合  计",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "合",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 2,
+                  "text": "  ",
+                  "fontSize": 13.33
+                },
+                {
+                  "index": 3,
+                  "text": "计",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 38,
+          "row": 13,
+          "column": 2,
+          "bbox": [
+            605.91,
+            352.2,
+            55.67,
+            19.79
+          ],
+          "text": "159.159",
+          "textPreview": "159.159",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "159.159",
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "159.159",
+                  "fontSize": 13.33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 39,
+          "row": 13,
+          "column": 3,
+          "bbox": [
+            661.58,
+            352.2,
+            296.58,
+            19.79
+          ],
+          "paragraphs": [
+            {
+              "index": 1,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": " ",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/58zqpov6",
+      "id": "5",
+      "name": "文本框 4",
+      "bbox": [
+        321.24,
+        28.11,
+        340.2,
+        35.54
+      ],
+      "geometry": "rect",
+      "text": "国网公司科技项目经费预算表",
+      "textPreview": "国网公司科技项目经费预算表",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Arial",
+        "color": "tx1",
+        "alignment": "left",
+        "wrap": "square",
+        "autoFit": "resizeShapeToFitText",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "国网公司科技项目经费预算表"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "国网公司科技项目经费预算表",
+          "resolvedTextStyle": {
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "国网公司科技项目经费预算表",
+              "fontSize": 21.33,
+              "typeface": "+mj-ea",
+              "color": "dk1"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/jmh8nyd0",
+      "id": "7",
+      "name": "文本框 6",
+      "bbox": [
+        852.24,
+        71.19,
+        105.84,
+        29.08
+      ],
+      "geometry": "rect",
+      "text": "单位：万元",
+      "textPreview": "单位：万元",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Arial",
+        "color": "tx1",
+        "alignment": "left",
+        "wrap": "square",
+        "autoFit": "resizeShapeToFitText",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "单位：万元"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "单位：万元",
+          "runs": [
+            {
+              "index": 1,
+              "text": "单位：万元",
+              "fontSize": 16
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/k3il0721",
+      "id": "12",
+      "name": "Picture 2",
+      "bbox": [
+        729.48,
+        1.97,
+        230.52,
+        73.67
+      ],
+      "contentType": "image/jpeg",
+      "imageCrop": {
+        "left": 0.68782,
+        "top": 0.01129,
+        "right": 0.01331,
+        "bottom": 0.85966
+      },
+      "asset": {
+        "assetId": "/ppt/media/image2.jpeg",
+        "contentType": "image/jpeg",
+        "byteLength": 88733
+      },
+      "fillImage": {
+        "assetId": "/ppt/media/image2.jpeg",
+        "contentType": "image/jpeg",
+        "byteLength": 88733
+      }
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p43q1sva",
+      "id": "9",
+      "name": "矩形 8",
+      "bbox": [
+        33.97,
+        5.46,
+        213.26,
+        48.47
+      ],
+      "geometry": "rect",
+      "text": "三、实施计划",
+      "textPreview": "三、实施计划",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Arial",
+        "color": "tx1",
+        "alignment": "left",
+        "wrap": "none",
+        "autoFit": "resizeShapeToFitText",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "三、实施计划"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "三、实施计划",
+          "runs": [
+            {
+              "index": 1,
+              "text": "三、实施计划",
+              "fontSize": 32,
+              "typeface": "微软雅黑",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    }
+  ],
+  "composeRuns": []
+}

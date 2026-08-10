@@ -1,0 +1,698 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/fu1gfa1s",
+    "id": "fu1gfa1s",
+    "slide": 8,
+    "layoutId": "/ppt/slideLayouts/slideLayout10.xml",
+    "layoutName": "空白",
+    "layoutType": "blank",
+    "masterLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 960,
+      "height": 540
+    }
+  },
+  "theme": {
+    "colorSchemeName": "Office",
+    "colors": {
+      "accent1": "#5B9BD5",
+      "accent2": "#ED7D31",
+      "accent3": "#A5A5A5",
+      "accent4": "#FFC000",
+      "accent5": "#4472C4",
+      "accent6": "#70AD47",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#44546A",
+      "lt2": "#E7E6E6",
+      "hlink": "#0563C1",
+      "folHlink": "#954F72"
+    },
+    "fontScheme": {
+      "name": "Arial Black-Arial",
+      "majorFont": {
+        "latinTypeface": "Arial Black"
+      },
+      "minorFont": {
+        "latinTypeface": "Arial"
+      }
+    },
+    "typefaces": [
+      "+mj-ea",
+      "Arial",
+      "Arial Black",
+      "微软雅黑"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "/ppt/slideLayouts/slideLayout10.xml",
+      "name": "空白",
+      "type": "blank",
+      "parentLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+      "elements": [
+        {
+          "order": 1,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout10.xml/2",
+          "id": "2",
+          "name": "日期占位符 1",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "order": 2,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout10.xml/3",
+          "id": "3",
+          "name": "页脚占位符 2",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "order": 3,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout10.xml/4",
+          "id": "4",
+          "name": "灯片编号占位符 3",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "scope": "master",
+      "id": "/ppt/slideMasters/slideMaster1.xml",
+      "type": "master",
+      "backgroundColor": "bg1",
+      "elements": [
+        {
+          "order": 1,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/2",
+          "id": "2",
+          "name": "标题占位符 1",
+          "bbox": [
+            66,
+            28.75,
+            828,
+            104.38
+          ],
+          "geometry": "rect",
+          "text": "单击此处编辑母版标题样式",
+          "textPreview": "单击此处编辑母版标题样式",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "单击此处编辑母版标题样式",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "单击此处编辑母版标题样式"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/3",
+          "id": "3",
+          "name": "文本占位符 2",
+          "bbox": [
+            66,
+            143.75,
+            828,
+            342.63
+          ],
+          "geometry": "rect",
+          "text": "单击此处编辑母版文本样式\n第二级\n第三级\n第四级\n第五级",
+          "textPreview": "单击此处编辑母版文本样式 | 第二级 | 第三级 | 第四级 | 第五级",
+          "resolvedTextStyle": {
+            "vertical": 1,
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "单击此处编辑母版文本样式",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "单击此处编辑母版文本样式"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "text": "第二级",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "第二级"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "text": "第三级",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "第三级"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "text": "第四级",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "第四级"
+                }
+              ]
+            },
+            {
+              "index": 5,
+              "text": "第五级",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "第五级"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/4",
+          "id": "4",
+          "name": "日期占位符 3",
+          "bbox": [
+            66,
+            500.5,
+            216,
+            28.75
+          ],
+          "geometry": "rect",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          }
+        },
+        {
+          "order": 4,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/5",
+          "id": "5",
+          "name": "页脚占位符 4",
+          "bbox": [
+            318,
+            500.5,
+            324,
+            28.75
+          ],
+          "geometry": "rect",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          }
+        },
+        {
+          "order": 5,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/6",
+          "id": "6",
+          "name": "灯片编号占位符 5",
+          "bbox": [
+            678,
+            500.5,
+            216,
+            28.75
+          ],
+          "geometry": "rect",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          }
+        },
+        {
+          "order": 6,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/7",
+          "id": "7",
+          "name": "矩形 6",
+          "bbox": [
+            0,
+            0,
+            960,
+            540
+          ],
+          "geometry": "rect",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "verticalAlignment": "middle"
+          },
+          "lineWidth": 0
+        }
+      ]
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/18byd4zy",
+      "id": "2",
+      "name": "矩形 1",
+      "bbox": [
+        33.97,
+        5.46,
+        213.26,
+        87.24
+      ],
+      "geometry": "rect",
+      "text": "一、项目内容\n",
+      "textPreview": "一、项目内容 |",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Arial",
+        "color": "tx1",
+        "alignment": "left",
+        "wrap": "none",
+        "autoFit": "resizeShapeToFitText",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "一、项目内容"
+          },
+          {
+            "index": 2,
+            "text": ""
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "一、项目内容",
+          "runs": [
+            {
+              "index": 1,
+              "text": "一、项目内容",
+              "fontSize": 32,
+              "typeface": "微软雅黑",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/z2h036hs",
+      "id": "5",
+      "name": "Picture 2",
+      "bbox": [
+        729.48,
+        1.97,
+        230.52,
+        73.67
+      ],
+      "contentType": "image/jpeg",
+      "imageCrop": {
+        "left": 0.68782,
+        "top": 0.01129,
+        "right": 0.01331,
+        "bottom": 0.85966
+      },
+      "asset": {
+        "assetId": "/ppt/media/image2.jpeg",
+        "contentType": "image/jpeg",
+        "byteLength": 88733
+      },
+      "fillImage": {
+        "assetId": "/ppt/media/image2.jpeg",
+        "contentType": "image/jpeg",
+        "byteLength": 88733
+      }
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ri9g7uhw",
+      "id": "4",
+      "name": "文本框 3",
+      "bbox": [
+        41.38,
+        126.35,
+        884.51,
+        363.4
+      ],
+      "geometry": "rect",
+      "text": "课题3：基于大语言模型智能体（Agent）的预警与远程督查技术研究\n（1）多源信息融合与预警生成\n研究基于大语言模型智能体的多源信息融合与预警生成技术，整合风险事件、工作票信息和设备信息，自动形成结构化、语义清晰的预警报告，提升风险表达与辅助决策能力。\n（2）自然语言视频检索与远程督查\n研究基于自然语言的视频内容检索技术，支持管理人员通过自然语言指令对海量历史视频进行快速、精准检索与回溯，支撑现场作业远程督查与过程核查。",
+      "textPreview": "课题3：基于大语言模型智能体（Agent）的预警与远程督查技术研究 | （1）多源信息融合与预警生成 | 研究基于大语言模型智能体的多源信息融合与预警生成技术，整合风险事件、工作票信息和设备信息，自动形成结构化、语义清晰的预警报告，提升风险表达与辅助决策能力。 | （2）自...",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Arial",
+        "color": "tx1",
+        "alignment": "left",
+        "wrap": "square",
+        "autoFit": "resizeShapeToFitText",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 7,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Ø课题3：基于大语言模型智能体（Agent）的预警与远程督查技术研究"
+          },
+          {
+            "index": 2,
+            "text": "（1）多源信息融合与预警生成"
+          },
+          {
+            "index": 3,
+            "text": "研究基于大语言模型智能体的多源信息融合与预警生成技术，整合风险事件、工作票信息和设备信息，"
+          },
+          {
+            "index": 4,
+            "text": "自动形成结构化、语义清晰的预警报告，提升风险表达与辅助决策能力。"
+          },
+          {
+            "index": 5,
+            "text": "（2）自然语言视频检索与远程督查"
+          },
+          {
+            "index": 6,
+            "text": "研究基于自然语言的视频内容检索技术，支持管理人员通过自然语言指令对海量历史视频进行快速、精"
+          },
+          {
+            "index": 7,
+            "text": "准检索与回溯，支撑现场作业远程督查与过程核查。"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "课题3：基于大语言模型智能体（Agent）的预警与远程督查技术研究",
+          "lineSpacingPercent": 150000,
+          "resolvedTextStyle": {
+            "alignment": "justify"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "课题",
+              "fontSize": 26.67,
+              "typeface": "+mj-ea",
+              "color": "#000000",
+              "bold": true
+            },
+            {
+              "index": 2,
+              "text": "3",
+              "fontSize": 26.67,
+              "typeface": "+mj-ea",
+              "color": "#000000",
+              "bold": true
+            },
+            {
+              "index": 3,
+              "text": "：基于大语言模型智能体（",
+              "fontSize": 26.67,
+              "typeface": "+mj-ea",
+              "color": "#000000",
+              "bold": true
+            },
+            {
+              "index": 4,
+              "text": "Agent",
+              "fontSize": 26.67,
+              "typeface": "+mj-ea",
+              "color": "#000000",
+              "bold": true
+            },
+            {
+              "index": 5,
+              "text": "）的预警与远程督查技术研究",
+              "fontSize": 26.67,
+              "typeface": "+mj-ea",
+              "color": "#000000",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "（1）多源信息融合与预警生成",
+          "lineSpacingPercent": 150000,
+          "resolvedTextStyle": {
+            "alignment": "justify"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "（",
+              "typeface": "+mj-ea",
+              "color": "#000000"
+            },
+            {
+              "index": 2,
+              "text": "1",
+              "typeface": "+mj-ea",
+              "color": "#000000"
+            },
+            {
+              "index": 3,
+              "text": "）多源信息融合与预警生成",
+              "typeface": "+mj-ea",
+              "color": "#000000"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 3,
+          "text": "研究基于大语言模型智能体的多源信息融合与预警生成技术，整合风险事件、工作票信息和设备信息，自动形成结构化、语义清晰的预警报告，提升风险表达与辅助决策能力。",
+          "lineSpacingPercent": 150000,
+          "resolvedTextStyle": {
+            "alignment": "justify"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "研究基于大语言模型智能体的多源信息融合与预警生成技术，整合风险事件、工作票信息和设备信息，自动形成结构化、语义清晰的预警报告，提升风险表达与辅助决策能力。",
+              "typeface": "+mj-ea",
+              "color": "#000000"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 4,
+          "text": "（2）自然语言视频检索与远程督查",
+          "lineSpacingPercent": 150000,
+          "resolvedTextStyle": {
+            "alignment": "justify"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "（",
+              "typeface": "+mj-ea",
+              "color": "#000000"
+            },
+            {
+              "index": 2,
+              "text": "2",
+              "typeface": "+mj-ea",
+              "color": "#000000"
+            },
+            {
+              "index": 3,
+              "text": "）自然语言视频检索与远程督查",
+              "typeface": "+mj-ea",
+              "color": "#000000"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 5,
+          "text": "研究基于自然语言的视频内容检索技术，支持管理人员通过自然语言指令对海量历史视频进行快速、精准检索与回溯，支撑现场作业远程督查与过程核查。",
+          "lineSpacingPercent": 150000,
+          "resolvedTextStyle": {
+            "alignment": "justify"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "研究基于自然语言的视频内容检索技术，支持管理人员通过自然语言指令对海量历史视频进行快速、精准检索与回溯，支撑现场作业远程督查与过程核查。",
+              "typeface": "+mj-ea",
+              "color": "#000000"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/g72x4zyd",
+      "id": "3",
+      "name": "Text Box 4",
+      "bbox": [
+        49.09,
+        65.84,
+        370.43,
+        41.64
+      ],
+      "geometry": "rect",
+      "text": "研究内容",
+      "textPreview": "研究内容",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 18,
+        "typeface": "Arial",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "resizeShapeToFitText",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "n研究内容"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "研究内容",
+          "lineSpacingPercent": 120000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "研究内容",
+              "typeface": "+mj-ea",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 1
+    }
+  ],
+  "composeRuns": []
+}

@@ -1,0 +1,182 @@
+{"kind":"deck","id":"pr/8ygw2u","name":"Deck"}
+{"kind":"layout","layoutId":"/ppt/slideMasters/slideMaster1.xml","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout1.xml","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/2x4nap4r","slide":1,"title":"2026.06.13 - 2026.06.26 / 双周汇报","textShapes":8}
+{"kind":"shape","id":"sh/nap4r65w","slide":1,"name":"cover-rail","bbox":[0,390,1280,176]}
+{"kind":"shape","id":"sh/cvixczed","slide":1,"name":"cover-accent","bbox":[42,412,18,118]}
+{"kind":"textbox","id":"sh/5gbq1ory","slide":1,"name":"cover-kicker","text":"2026.06.13 - 2026.06.26 / 双周汇报","textPreview":"2026.06.13 - 2026.06.26 / 双周汇报","textChars":30,"textLines":1,"bbox":[42,42,600,34]}
+{"kind":"textbox","id":"sh/udg7adsj","slide":1,"name":"cover-title","text":"工作票智能识别项目\n阶段周报","textPreview":"工作票智能识别项目 | 阶段周报","textChars":14,"textLines":2,"bbox":[42,106,1040,210]}
+{"kind":"textbox","id":"sh/nyd0z610","slide":1,"name":"cover-subtitle","text":"本期重点：补齐工程化能力与可汇报闭环；下期重点：启动工作票识别论文写作。","textPreview":"本期重点：补齐工程化能力与可汇报闭环；下期重点：启动工作票识别论文写作。","textChars":36,"textLines":1,"bbox":[72,420,560,82]}
+{"kind":"textbox","id":"sh/cj6tovah","slide":1,"name":"cover-boundary","text":"说明：OCR + LLM 核心识别链路属于前期任务，本期只作为系统基础，不计入本阶段工作量。","textPreview":"说明：OCR + LLM 核心识别链路属于前期任务，本期只作为系统基础，不计入本阶段工作量。","textChars":46,"textLines":1,"bbox":[678,421,520,86]}
+{"kind":"shape","id":"sh/54zidony","slide":1,"name":"cover-mini-1","bbox":[678,528,18,18]}
+{"kind":"textbox","id":"sh/u9knih4b","slide":1,"name":"cover-mini-1-t","text":"系统补充","textPreview":"系统补充","textChars":4,"textLines":1,"bbox":[708,522,168,34]}
+{"kind":"shape","id":"sh/judg7ads","slide":1,"name":"cover-mini-2","bbox":[894,528,18,18]}
+{"kind":"textbox","id":"sh/nyd0z610","slide":1,"name":"cover-mini-2-t","text":"论文启动","textPreview":"论文启动","textChars":4,"textLines":1,"bbox":[924,522,168,34]}
+{"kind":"textbox","id":"sh/udg7adsj","slide":1,"name":"footer-label-1","text":"工作票识别项目阶段周报","textPreview":"工作票识别项目阶段周报","textChars":11,"textLines":1,"bbox":[42,660,360,28]}
+{"kind":"textbox","id":"sh/54zidony","slide":1,"name":"footer-no-1","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[1168,660,70,28]}
+{"kind":"notes","id":"nt/2x4nap4r","slide":1,"text":""}
+{"kind":"slide","id":"sl/pg3ex0nu","slide":2,"title":"本阶段任务边界","textShapes":10}
+{"kind":"textbox","id":"sh/yxobm58z","slide":2,"name":"s2-title","text":"本阶段任务边界","textPreview":"本阶段任务边界","textChars":7,"textLines":1,"bbox":[42,36,780,58]}
+{"kind":"textbox","id":"sh/5o7qpg3e","slide":2,"name":"s2-lead","text":"把“识别功能已有”与“这两周新增”分开汇报，避免把前期 OCR + LLM 主链路重复计入。","textPreview":"把“识别功能已有”与“这两周新增”分开汇报，避免把前期 OCR + LLM 主链路重复计入。","textChars":46,"textLines":1,"bbox":[42,112,980,42]}
+{"kind":"shape","id":"sh/g3ex0nux","slide":2,"name":"s2-left-panel","bbox":[42,206,548,352]}
+{"kind":"shape","id":"sh/r65wjudg","slide":2,"name":"s2-right-panel","bbox":[650,206,548,352]}
+{"kind":"textbox","id":"sh/ylc7u54z","slide":2,"name":"s2-left-h","text":"前期基础能力","textPreview":"前期基础能力","textChars":6,"textLines":1,"bbox":[74,238,450,42]}
+{"kind":"textbox","id":"sh/9cvixcze","slide":2,"name":"s2-left-b","text":"• PPStructureV3 对工作票版面、表格、文字识别\n• LLM 将 OCR 结果整理为固定 JSON 字段\n• 图片/PDF 上传后的基础识别闭环\n• 字段缺失时不编造、保留不确定字段思路","textPreview":"• PPStructureV3 对工作票版面、表格、文字识别 | • LLM 将 OCR 结果整理为固定 JSON 字段 | • 图片/PDF 上传后的基础识别闭环 | • 字段缺失时不编造、保留不确定字段思路","textChars":99,"textLines":4,"bbox":[74,304,460,180]}
+{"kind":"textbox","id":"sh/gr2p8nqx","slide":2,"name":"s2-left-note","text":"本期汇报中只作为项目基线呈现。","textPreview":"本期汇报中只作为项目基线呈现。","textChars":15,"textLines":1,"bbox":[74,500,360,34]}
+{"kind":"textbox","id":"sh/rytsvu9k","slide":2,"name":"s2-right-h","text":"这两周完善补充","textPreview":"这两周完善补充","textChars":7,"textLines":1,"bbox":[682,238,450,42]}
+{"kind":"textbox","id":"sh/yd0z6103","slide":2,"name":"s2-right-b","text":"• 流式接口：边处理边输出步骤事件\n• 运行监控：上传、OCR、首字、生成、总耗时\n• 前端识别台：双模式、拖拽上传、结果复制\n• 配置、启动、文档和调试脚本","textPreview":"• 流式接口：边处理边输出步骤事件 | • 运行监控：上传、OCR、首字、生成、总耗时 | • 前端识别台：双模式、拖拽上传、结果复制 | • 配置、启动、文档和调试脚本","textChars":79,"textLines":4,"bbox":[682,304,450,190]}
+{"kind":"textbox","id":"sh/wb2hwfyx","slide":2,"name":"s2-right-note","text":"本期成果更偏工程化、可观测和可展示。","textPreview":"本期成果更偏工程化、可观测和可展示。","textChars":18,"textLines":1,"bbox":[682,506,430,34]}
+{"kind":"textbox","id":"sh/lwval87e","slide":2,"name":"footer-label-2","text":"工作票识别项目阶段周报","textPreview":"工作票识别项目阶段周报","textChars":11,"textLines":1,"bbox":[42,660,360,28]}
+{"kind":"textbox","id":"sh/e9cvixcz","slide":2,"name":"footer-no-2","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1168,660,70,28]}
+{"kind":"notes","id":"nt/pg3ex0nu","slide":2,"text":""}
+{"kind":"slide","id":"sl/s72x4nap","slide":3,"title":"本期完成：流式识别与运行可观测","textShapes":17}
+{"kind":"textbox","id":"sh/vmtwra5g","slide":3,"name":"s3-title","text":"本期完成：流式识别与运行可观测","textPreview":"本期完成：流式识别与运行可观测","textChars":15,"textLines":1,"bbox":[42,36,1100,58]}
+{"kind":"textbox","id":"sh/o7qpg3ex","slide":3,"name":"s3-lead","text":"新增的价值不是再做一次识别算法，而是让识别过程能被看到、被计时、被保存。","textPreview":"新增的价值不是再做一次识别算法，而是让识别过程能被看到、被计时、被保存。","textChars":36,"textLines":1,"bbox":[42,108,1030,48]}
+{"kind":"shape","id":"sh/dsji5sne","slide":3,"name":"s3-card-0","bbox":[42,214,270,278]}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":3,"name":"s3-num-0","text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[70,232,120,82]}
+{"kind":"textbox","id":"sh/vy90je9c","slide":3,"name":"s3-label-0","text":"流式接口","textPreview":"流式接口","textChars":4,"textLines":1,"bbox":[70,335,206,38]}
+{"kind":"textbox","id":"sh/oj2t83it","slide":3,"name":"s3-body-0","text":"结构化识别流式端点\n图片直传流式端点","textPreview":"结构化识别流式端点 | 图片直传流式端点","textChars":18,"textLines":2,"bbox":[70,399,206,70]}
+{"kind":"shape","id":"sh/d4vmtwra","slide":3,"name":"s3-card-1","bbox":[351,214,270,278]}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":3,"name":"s3-num-1","text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[379,232,120,82]}
+{"kind":"textbox","id":"sh/z25kb6xk","slide":3,"name":"s3-label-1","text":"耗时指标","textPreview":"耗时指标","textChars":4,"textLines":1,"bbox":[379,335,206,38]}
+{"kind":"textbox","id":"sh/vy90je9c","slide":3,"name":"s3-body-1","text":"文件接收、OCR/编码\n首字返回、生成、总耗时","textPreview":"文件接收、OCR/编码 | 首字返回、生成、总耗时","textChars":23,"textLines":2,"bbox":[379,399,206,70]}
+{"kind":"shape","id":"sh/6dcbulwv","slide":3,"name":"s3-card-2","bbox":[660,214,270,278]}
+{"kind":"textbox","id":"sh/d4vmtwra","slide":3,"name":"s3-num-2","text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[688,232,120,82]}
+{"kind":"textbox","id":"sh/oj2t83it","slide":3,"name":"s3-label-2","text":"识别入口","textPreview":"识别入口","textChars":4,"textLines":1,"bbox":[688,335,206,38]}
+{"kind":"textbox","id":"sh/vmtwra5g","slide":3,"name":"s3-body-2","text":"OCR + LLM 结构化\nVision LLM 自由识别","textPreview":"OCR + LLM 结构化 | Vision LLM 自由识别","textChars":29,"textLines":2,"bbox":[688,399,206,70]}
+{"kind":"shape","id":"sh/61032lsz","slide":3,"name":"s3-card-3","bbox":[969,214,270,278]}
+{"kind":"textbox","id":"sh/dsji5sne","slide":3,"name":"s3-num-3","text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[997,232,120,82]}
+{"kind":"textbox","id":"sh/o7qpg3ex","slide":3,"name":"s3-label-3","text":"结果闭环","textPreview":"结果闭环","textChars":4,"textLines":1,"bbox":[997,335,206,38]}
+{"kind":"textbox","id":"sh/vahoza1g","slide":3,"name":"s3-body-3","text":"llm_result.json\n包含解析结果与 timing","textPreview":"llm_result.json | 包含解析结果与 timing","textChars":30,"textLines":2,"bbox":[997,399,206,70]}
+{"kind":"shape","id":"sh/6tovahoz","slide":3,"name":"s3-bottom-band","bbox":[0,565,1280,92]}
+{"kind":"textbox","id":"sh/epkzupwb","slide":3,"name":"s3-bottom-text","text":"对应代码：/api/recognize-structure-stream、/api/direct-vision-stream、前端 SSE 解析和运行指标面板。","textPreview":"对应代码：/api/recognize-structure-stream、/api/direct-vision-stream、前端 SSE 解析和运行指标面板。","textChars":80,"textLines":1,"bbox":[42,590,980,38]}
+{"kind":"textbox","id":"sh/7adsji5s","slide":3,"name":"footer-label-3","text":"工作票识别项目阶段周报","textPreview":"工作票识别项目阶段周报","textChars":11,"textLines":1,"bbox":[42,660,360,28]}
+{"kind":"textbox","id":"sh/wval87ed","slide":3,"name":"footer-no-3","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1168,660,70,28]}
+{"kind":"notes","id":"nt/s72x4nap","slide":3,"text":""}
+{"kind":"slide","id":"sl/val87ed8","slide":4,"title":"本期完成：前端识别台补齐","textShapes":22}
+{"kind":"textbox","id":"sh/1gvy90je","slide":4,"name":"s4-title","text":"本期完成：前端识别台补齐","textPreview":"本期完成：前端识别台补齐","textChars":12,"textLines":1,"bbox":[42,36,780,58]}
+{"kind":"textbox","id":"sh/qtcj6tov","slide":4,"name":"s4-lead","text":"前端从“提交文件看结果”扩展为可演示的工作台：模式切换、运行轨迹、指标面板和输出区同屏可见。","textPreview":"前端从“提交文件看结果”扩展为可演示的工作台：模式切换、运行轨迹、指标面板和输出区同屏可见。","textChars":46,"textLines":1,"bbox":[42,108,1100,44]}
+{"kind":"shape","id":"sh/je9cvixc","slide":4,"name":"s4-sidebar","bbox":[42,212,310,372]}
+{"kind":"textbox","id":"sh/87ed8bat","slide":4,"name":"s4-brand","text":"WT\n工作票智能识别台","textPreview":"WT | 工作票智能识别台","textChars":11,"textLines":2,"bbox":[72,240,230,72]}
+{"kind":"shape","id":"sh/xs72x4na","slide":4,"name":"s4-tab1","bbox":[72,336,112,34]}
+{"kind":"shape","id":"sh/q1orytsv","slide":4,"name":"s4-tab2","bbox":[192,336,112,34]}
+{"kind":"textbox","id":"sh/fmlkjm1c","slide":4,"name":"s4-tab1t","text":"结构化","textPreview":"结构化","textChars":3,"textLines":1,"bbox":[86,343,84,22]}
+{"kind":"textbox","id":"sh/8jqh0fep","slide":4,"name":"s4-tab2t","text":"图片直传","textPreview":"图片直传","textChars":4,"textLines":1,"bbox":[204,343,84,22]}
+{"kind":"shape","id":"sh/x4nap4r6","slide":4,"name":"s4-drop","bbox":[72,396,230,112]}
+{"kind":"textbox","id":"sh/1w7mp0bi","slide":4,"name":"s4-dropt","text":"+\n选择文件","textPreview":"+ | 选择文件","textChars":6,"textLines":2,"bbox":[112,420,150,60]}
+{"kind":"shape","id":"sh/8bat47y1","slide":4,"name":"s4-runbtn","bbox":[72,526,230,36]}
+{"kind":"textbox","id":"sh/jqh0fepk","slide":4,"name":"s4-runbtnt","text":"开始识别","textPreview":"开始识别","textChars":4,"textLines":1,"bbox":[116,533,140,24]}
+{"kind":"shape","id":"sh/q5o7qpg3","slide":4,"name":"s4-main","bbox":[396,212,842,372]}
+{"kind":"textbox","id":"sh/18jqh0fe","slide":4,"name":"s4-mainh","text":"运行监控","textPreview":"运行监控","textChars":4,"textLines":1,"bbox":[426,238,220,42]}
+{"kind":"shape","id":"sh/8nqxs72x","slide":4,"name":"s4-metric-0","bbox":[426,304,132,76]}
+{"kind":"textbox","id":"sh/j2t83itg","slide":4,"name":"s4-metric-l-0","text":"文件接收","textPreview":"文件接收","textChars":4,"textLines":1,"bbox":[0,600,1280,48]}
+{"kind":"textbox","id":"sh/qh0fepkz","slide":4,"name":"s4-metric-v-0","text":"--","textPreview":"--","textChars":2,"textLines":1,"bbox":[42,612,1080,30]}
+{"kind":"shape","id":"sh/1cfa9w3m","slide":4,"name":"s4-metric-1","bbox":[580,304,132,76]}
+{"kind":"textbox","id":"sh/crmhk3q5","slide":4,"name":"s4-metric-l-1","text":"OCR","textPreview":"OCR","textChars":3,"textLines":1,"bbox":[592,316,110,20]}
+{"kind":"textbox","id":"sh/sfil0rqd","slide":4,"name":"s4-metric-v-1","text":"--","textPreview":"--","textChars":2,"textLines":1,"bbox":[592,344,90,26]}
+{"kind":"shape","id":"sh/h0fepkzu","slide":4,"name":"s4-metric-2","bbox":[734,304,132,76]}
+{"kind":"textbox","id":"sh/a9w3m94f","slide":4,"name":"s4-metric-l-2","text":"首字返回","textPreview":"首字返回","textChars":4,"textLines":1,"bbox":[746,316,110,20]}
+{"kind":"textbox","id":"sh/zupwb2hw","slide":4,"name":"s4-metric-v-2","text":"--","textPreview":"--","textChars":2,"textLines":1,"bbox":[746,344,90,26]}
+{"kind":"shape","id":"sh/orytsvu9","slide":4,"name":"s4-metric-3","bbox":[888,304,132,76]}
+{"kind":"textbox","id":"sh/hcrmhk3q","slide":4,"name":"s4-metric-l-3","text":"模型生成","textPreview":"模型生成","textChars":4,"textLines":1,"bbox":[900,316,110,20]}
+{"kind":"textbox","id":"sh/al87ed8b","slide":4,"name":"s4-metric-v-3","text":"--","textPreview":"--","textChars":2,"textLines":1,"bbox":[900,344,90,26]}
+{"kind":"shape","id":"sh/z61032ls","slide":4,"name":"s4-metric-4","bbox":[1042,304,132,76]}
+{"kind":"textbox","id":"sh/oza1gvy9","slide":4,"name":"s4-metric-l-4","text":"总耗时","textPreview":"总耗时","textChars":3,"textLines":1,"bbox":[1054,316,110,20]}
+{"kind":"textbox","id":"sh/hk3q5o7q","slide":4,"name":"s4-metric-v-4","text":"--","textPreview":"--","textChars":2,"textLines":1,"bbox":[1054,344,90,26]}
+{"kind":"shape","id":"sh/7mp0bi9s","slide":4,"name":"s4-timeline","bbox":[426,408,328,140]}
+{"kind":"shape","id":"sh/e1w7mp0b","slide":4,"name":"s4-result","bbox":[780,408,424,140]}
+{"kind":"textbox","id":"sh/psfil0rq","slide":4,"name":"s4-timeline-t","text":"执行轨迹\n上传完成 → OCR 完成 → 首字返回 → 生成完成","textPreview":"执行轨迹 | 上传完成 → OCR 完成 → 首字返回 → 生成完成","textChars":32,"textLines":2,"bbox":[448,428,270,80]}
+{"kind":"textbox","id":"sh/w7mp0bi9","slide":4,"name":"s4-result-t","text":"{\n  \"parsed_json\": {...},\n  \"timing\": {...}\n}","textPreview":"{ |   \"parsed_json\": {...}, |   \"timing\": {...} | }","textChars":45,"textLines":4,"bbox":[810,428,340,86]}
+{"kind":"textbox","id":"sh/7adsji5s","slide":4,"name":"footer-label-4","text":"工作票识别项目阶段周报","textPreview":"工作票识别项目阶段周报","textChars":11,"textLines":1,"bbox":[42,660,360,28]}
+{"kind":"textbox","id":"sh/epkzupwb","slide":4,"name":"footer-no-4","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1168,660,70,28]}
+{"kind":"notes","id":"nt/val87ed8","slide":4,"text":""}
+{"kind":"slide","id":"sl/mlkjm1cf","slide":5,"title":"本期完成：工程化补充","textShapes":12}
+{"kind":"textbox","id":"sh/vahoza1g","slide":5,"name":"s5-title","text":"本期完成：工程化补充","textPreview":"本期完成：工程化补充","textChars":10,"textLines":1,"bbox":[42,36,760,58]}
+{"kind":"textbox","id":"sh/ovahoza1","slide":5,"name":"s5-lead","text":"围绕“能启动、能配置、能调试、能复现输出”补齐项目支撑件。","textPreview":"围绕“能启动、能配置、能调试、能复现输出”补齐项目支撑件。","textChars":29,"textLines":1,"bbox":[42,108,980,40]}
+{"kind":"shape","id":"sh/dg7adsji","slide":5,"name":"s5-box-0","bbox":[42,216,548,152]}
+{"kind":"shape","id":"sh/6hcrmhk3","slide":5,"name":"s5-icon-0","bbox":[72,250,24,24]}
+{"kind":"textbox","id":"sh/z25kb6xk","slide":5,"name":"s5-h-0","text":"配置分层","textPreview":"配置分层","textChars":4,"textLines":1,"bbox":[114,242,400,34]}
+{"kind":"textbox","id":"sh/onyd0z61","slide":5,"name":"s5-b-0","text":".env.example 区分 LLM、Vision、Server；Vision 可独立配置，也可回退到 LLM。","textPreview":".env.example 区分 LLM、Vision、Server；Vision 可独立配置，也可回退到 LLM。","textChars":57,"textLines":1,"bbox":[114,292,420,54]}
+{"kind":"shape","id":"sh/d8v6psfi","slide":5,"name":"s5-box-1","bbox":[650,216,548,152]}
+{"kind":"shape","id":"sh/6dcbulwv","slide":5,"name":"s5-icon-1","bbox":[680,250,24,24]}
+{"kind":"textbox","id":"sh/vy90je9c","slide":5,"name":"s5-h-1","text":"启动脚本","textPreview":"启动脚本","textChars":4,"textLines":1,"bbox":[722,242,400,34]}
+{"kind":"textbox","id":"sh/nuxc3ylc","slide":5,"name":"s5-b-1","text":"start.ps1 设置 UTF-8 环境并用 uvicorn reload 启动，降低 Windows 运行成本。","textPreview":"start.ps1 设置 UTF-8 环境并用 uvicorn reload 启动，降低 Windows 运行成本。","textChars":58,"textLines":1,"bbox":[722,292,420,54]}
+{"kind":"shape","id":"sh/y90je9cv","slide":5,"name":"s5-box-2","bbox":[42,438,548,152]}
+{"kind":"shape","id":"sh/5wjudg7a","slide":5,"name":"s5-icon-2","bbox":[72,472,24,24]}
+{"kind":"textbox","id":"sh/gbq1oryt","slide":5,"name":"s5-h-2","text":"输出组织","textPreview":"输出组织","textChars":4,"textLines":1,"bbox":[114,464,400,34]}
+{"kind":"textbox","id":"sh/n29gr2p8","slide":5,"name":"s5-b-2","text":"上传原始文件；保存 JSON、Markdown、visual 与 llm_result.json。","textPreview":"上传原始文件；保存 JSON、Markdown、visual 与 llm_result.json。","textChars":49,"textLines":1,"bbox":[114,514,420,54]}
+{"kind":"shape","id":"sh/yhgn29gr","slide":5,"name":"s5-box-3","bbox":[650,438,548,152]}
+{"kind":"shape","id":"sh/58z25kb6","slide":5,"name":"s5-icon-3","bbox":[680,472,24,24]}
+{"kind":"textbox","id":"sh/gn29gr2p","slide":5,"name":"s5-h-3","text":"调试与健康检查","textPreview":"调试与健康检查","textChars":7,"textLines":1,"bbox":[722,464,400,34]}
+{"kind":"textbox","id":"sh/neloj2t8","slide":5,"name":"s5-b-3","text":"/api/health 暴露配置状态；test_api_debug.py 检查 base_url 与 key 是否有效。","textPreview":"/api/health 暴露配置状态；test_api_debug.py 检查 base_url 与 key 是否有效。","textChars":60,"textLines":1,"bbox":[722,514,420,54]}
+{"kind":"textbox","id":"sh/ytsvu9kn","slide":5,"name":"footer-label-5","text":"工作票识别项目阶段周报","textPreview":"工作票识别项目阶段周报","textChars":11,"textLines":1,"bbox":[42,660,360,28]}
+{"kind":"textbox","id":"sh/2x4nap4r","slide":5,"name":"footer-no-5","text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1168,660,70,28]}
+{"kind":"notes","id":"nt/mlkjm1cf","slide":5,"text":""}
+{"kind":"slide","id":"sl/58z25kb6","slide":6,"title":"当前系统形态：可演示、可观测、可追溯","textShapes":21}
+{"kind":"textbox","id":"sh/9cvixcze","slide":6,"name":"s6-title","text":"当前系统形态：可演示、可观测、可追溯","textPreview":"当前系统形态：可演示、可观测、可追溯","textChars":18,"textLines":1,"bbox":[42,36,960,58]}
+{"kind":"textbox","id":"sh/ylc7u54z","slide":6,"name":"s6-lead","text":"识别主链路是前期基础；本期把它接入流式进度、前端运行监控和结果持久化。","textPreview":"识别主链路是前期基础；本期把它接入流式进度、前端运行监控和结果持久化。","textChars":35,"textLines":1,"bbox":[42,108,1000,40]}
+{"kind":"shape","id":"sh/r65wjudg","slide":6,"name":"s6-node-0","bbox":[52,258,176,126]}
+{"kind":"textbox","id":"sh/g3ex0nux","slide":6,"name":"s6-node-h-0","text":"上传文件","textPreview":"上传文件","textChars":4,"textLines":1,"bbox":[70,282,140,30]}
+{"kind":"textbox","id":"sh/5o7qpg3e","slide":6,"name":"s6-node-b-0","text":"图片 / PDF","textPreview":"图片 / PDF","textChars":8,"textLines":1,"bbox":[70,326,140,42]}
+{"kind":"textbox","id":"sh/yxobm58z","slide":6,"name":"s6-arrow-0","text":"→","textPreview":"→","textChars":1,"textLines":1,"bbox":[242,294,34,48]}
+{"kind":"shape","id":"sh/nih4byhg","slide":6,"name":"s6-node-1","bbox":[290,258,176,126]}
+{"kind":"textbox","id":"sh/g7adsji5","slide":6,"name":"s6-node-h-1","text":"FastAPI","textPreview":"FastAPI","textChars":7,"textLines":1,"bbox":[308,282,140,30]}
+{"kind":"textbox","id":"sh/9s36hcrm","slide":6,"name":"s6-node-b-1","text":"接收请求\n生成 SSE","textPreview":"接收请求 | 生成 SSE","textChars":11,"textLines":2,"bbox":[308,326,140,42]}
+{"kind":"textbox","id":"sh/d8v6psfi","slide":6,"name":"s6-arrow-1","text":"→","textPreview":"→","textChars":1,"textLines":1,"bbox":[480,294,34,48]}
+{"kind":"shape","id":"sh/onyd0z61","slide":6,"name":"s6-node-2","bbox":[528,258,176,126]}
+{"kind":"textbox","id":"sh/z25kb6xk","slide":6,"name":"s6-node-h-2","text":"识别基础","textPreview":"识别基础","textChars":4,"textLines":1,"bbox":[546,282,140,30]}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":6,"name":"s6-node-b-2","text":"PPStructureV3\n或 Vision LLM","textPreview":"PPStructureV3 | 或 Vision LLM","textChars":26,"textLines":2,"bbox":[546,326,140,42]}
+{"kind":"textbox","id":"sh/dg7adsji","slide":6,"name":"s6-arrow-2","text":"→","textPreview":"→","textChars":1,"textLines":1,"bbox":[718,294,34,48]}
+{"kind":"shape","id":"sh/ovahoza1","slide":6,"name":"s6-node-3","bbox":[766,258,176,126]}
+{"kind":"textbox","id":"sh/vahoza1g","slide":6,"name":"s6-node-h-3","text":"LLM 输出","textPreview":"LLM 输出","textChars":6,"textLines":1,"bbox":[784,282,140,30]}
+{"kind":"textbox","id":"sh/6tovahoz","slide":6,"name":"s6-node-b-3","text":"JSON / 原文","textPreview":"JSON / 原文","textChars":9,"textLines":1,"bbox":[784,326,140,42]}
+{"kind":"textbox","id":"sh/dsji5sne","slide":6,"name":"s6-arrow-3","text":"→","textPreview":"→","textChars":1,"textLines":1,"bbox":[956,294,34,48]}
+{"kind":"shape","id":"sh/o7qpg3ex","slide":6,"name":"s6-node-4","bbox":[1004,258,176,126]}
+{"kind":"textbox","id":"sh/kjm1cfa9","slide":6,"name":"s6-node-h-4","text":"前端展示","textPreview":"前端展示","textChars":4,"textLines":1,"bbox":[1022,282,140,30]}
+{"kind":"textbox","id":"sh/94fu18jq","slide":6,"name":"s6-node-b-4","text":"轨迹 / 指标\n结果复制","textPreview":"轨迹 / 指标 | 结果复制","textChars":12,"textLines":2,"bbox":[1022,326,140,42]}
+{"kind":"shape","id":"sh/2hwfyxob","slide":6,"name":"s6-artifact-band","bbox":[42,470,1196,94]}
+{"kind":"textbox","id":"sh/r2p8nqxs","slide":6,"name":"s6-artifact-h","text":"可追溯输出","textPreview":"可追溯输出","textChars":5,"textLines":1,"bbox":[72,496,180,30]}
+{"kind":"textbox","id":"sh/gvy90je9","slide":6,"name":"s6-artifact-b","text":"storage/uploads 保存原始文件；storage/outputs/ticket_xxxxxxxx 保存 PPStructure JSON、Markdown、visual 和 llm_result.json。","textPreview":"storage/uploads 保存原始文件；storage/outputs/ticket_xxxxxxxx 保存 PPStructure JSON、Markdown、visual 和 llm_result.json。","textChars":109,"textLines":1,"bbox":[268,497,840,42]}
+{"kind":"textbox","id":"sh/9gr2p8nq","slide":6,"name":"s6-note","text":"本页用于说明项目当前形态，不把 OCR + LLM 识别算法本身计入本期工作。","textPreview":"本页用于说明项目当前形态，不把 OCR + LLM 识别算法本身计入本期工作。","textChars":39,"textLines":1,"bbox":[72,588,800,30]}
+{"kind":"textbox","id":"sh/2p8nqxs7","slide":6,"name":"footer-label-6","text":"工作票识别项目阶段周报","textPreview":"工作票识别项目阶段周报","textChars":11,"textLines":1,"bbox":[42,660,360,28]}
+{"kind":"textbox","id":"sh/ra5gbq1o","slide":6,"name":"footer-no-6","text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1168,660,70,28]}
+{"kind":"notes","id":"nt/58z25kb6","slide":6,"text":""}
+{"kind":"slide","id":"sl/0z61032l","slide":7,"title":"接下来两周：开始工作票识别论文","textShapes":15}
+{"kind":"textbox","id":"sh/qd4vmtwr","slide":7,"name":"s7-title","text":"接下来两周：开始工作票识别论文","textPreview":"接下来两周：开始工作票识别论文","textChars":15,"textLines":1,"bbox":[42,36,900,58]}
+{"kind":"textbox","id":"sh/x4nap4r6","slide":7,"name":"s7-lead","text":"论文方向先从“问题定义 + 系统方法 + 实验设计”立起来，再把项目代码转化为图、表和实验材料。","textPreview":"论文方向先从“问题定义 + 系统方法 + 实验设计”立起来，再把项目代码转化为图、表和实验材料。","textChars":48,"textLines":1,"bbox":[42,108,1080,42]}
+{"kind":"shape","id":"sh/8jqh0fep","slide":7,"name":"s7-row-0","bbox":[42,204,1196,56]}
+{"kind":"textbox","id":"sh/fa9w3m94","slide":7,"name":"s7-rh-0","text":"研究问题","textPreview":"研究问题","textChars":4,"textLines":1,"bbox":[72,217,160,28]}
+{"kind":"textbox","id":"sh/qpg3ex0n","slide":7,"name":"s7-rb-0","text":"复杂版面工作票的字段、表格与签名信息如何可靠结构化。","textPreview":"复杂版面工作票的字段、表格与签名信息如何可靠结构化。","textChars":26,"textLines":1,"bbox":[260,217,880,28]}
+{"kind":"shape","id":"sh/xczed8v6","slide":7,"name":"s7-row-1","bbox":[42,278,1196,56]}
+{"kind":"textbox","id":"sh/8v6psfil","slide":7,"name":"s7-rh-1","text":"相关工作","textPreview":"相关工作","textChars":4,"textLines":1,"bbox":[72,291,160,28]}
+{"kind":"textbox","id":"sh/je9cvixc","slide":7,"name":"s7-rb-1","text":"OCR / 版面分析 / 文档信息抽取 / 多模态大模型。","textPreview":"OCR / 版面分析 / 文档信息抽取 / 多模态大模型。","textChars":29,"textLines":1,"bbox":[260,291,880,28]}
+{"kind":"shape","id":"sh/qtcj6tov","slide":7,"name":"s7-row-2","bbox":[42,352,1196,56]}
+{"kind":"textbox","id":"sh/svu9knih","slide":7,"name":"s7-rh-2","text":"数据与标注","textPreview":"数据与标注","textChars":5,"textLines":1,"bbox":[72,365,160,28]}
+{"kind":"textbox","id":"sh/hgn29gr2","slide":7,"name":"s7-rb-2","text":"整理样本、字段 schema、表格保真、uncertain_fields 规则。","textPreview":"整理样本、字段 schema、表格保真、uncertain_fields 规则。","textChars":40,"textLines":1,"bbox":[260,365,880,28]}
+{"kind":"shape","id":"sh/ap4r65wj","slide":7,"name":"s7-row-3","bbox":[42,426,1196,56]}
+{"kind":"textbox","id":"sh/za1gvy90","slide":7,"name":"s7-rh-3","text":"实验设计","textPreview":"实验设计","textChars":4,"textLines":1,"bbox":[72,439,160,28]}
+{"kind":"textbox","id":"sh/s36hcrmh","slide":7,"name":"s7-rb-3","text":"PPStructure + LLM、图片直传 Vision、规则/模板基线对比。","textPreview":"PPStructure + LLM、图片直传 Vision、规则/模板基线对比。","textChars":40,"textLines":1,"bbox":[260,439,880,28]}
+{"kind":"shape","id":"sh/hoza1gvy","slide":7,"name":"s7-row-4","bbox":[42,500,1196,56]}
+{"kind":"textbox","id":"sh/a1gvy90j","slide":7,"name":"s7-rh-4","text":"评价指标","textPreview":"评价指标","textChars":4,"textLines":1,"bbox":[72,513,160,28]}
+{"kind":"textbox","id":"sh/zidonyd0","slide":7,"name":"s7-rb-4","text":"字段准确率、JSON 合法率、表格覆盖、延迟、错误类型。","textPreview":"字段准确率、JSON 合法率、表格覆盖、延迟、错误类型。","textChars":28,"textLines":1,"bbox":[260,513,880,28]}
+{"kind":"textbox","id":"sh/s72x4nap","slide":7,"name":"s7-topic","text":"题目候选：基于版面分析与大语言模型的工作票结构化识别方法研究","textPreview":"题目候选：基于版面分析与大语言模型的工作票结构化识别方法研究","textChars":30,"textLines":1,"bbox":[42,594,1040,38]}
+{"kind":"textbox","id":"sh/lszqtcj6","slide":7,"name":"footer-label-7","text":"工作票识别项目阶段周报","textPreview":"工作票识别项目阶段周报","textChars":11,"textLines":1,"bbox":[42,660,360,28]}
+{"kind":"textbox","id":"sh/pg3ex0nu","slide":7,"name":"footer-no-7","text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1168,660,70,28]}
+{"kind":"notes","id":"nt/0z61032l","slide":7,"text":""}
+{"kind":"slide","id":"sl/fu18jqh0","slide":8,"title":"下两周排期与预期产出","textShapes":11}
+{"kind":"textbox","id":"sh/1032lszq","slide":8,"name":"s8-title","text":"下两周排期与预期产出","textPreview":"下两周排期与预期产出","textChars":10,"textLines":1,"bbox":[42,36,800,58]}
+{"kind":"textbox","id":"sh/u9knih4b","slide":8,"name":"s8-lead","text":"目标不是立刻写完整论文，而是把论文骨架、综述材料和实验方案先固定下来。","textPreview":"目标不是立刻写完整论文，而是把论文骨架、综述材料和实验方案先固定下来。","textChars":35,"textLines":1,"bbox":[42,108,990,42]}
+{"kind":"shape","id":"sh/judg7ads","slide":8,"name":"s8-marker-0","bbox":[42,360,34,34]}
+{"kind":"textbox","id":"sh/c7u54zid","slide":8,"name":"s8-h-0","text":"第 1 周","textPreview":"第 1 周","textChars":5,"textLines":1,"bbox":[42,420,280,36]}
+{"kind":"textbox","id":"sh/1orytsvu","slide":8,"name":"s8-b-0","text":"确定论文题目与摘要草稿\n完成论文大纲和章节分工\n建立相关工作阅读表\n定义数据字段和标注规范","textPreview":"确定论文题目与摘要草稿 | 完成论文大纲和章节分工 | 建立相关工作阅读表 | 定义数据字段和标注规范","textChars":45,"textLines":4,"bbox":[42,474,340,132]}
+{"kind":"shape","id":"sh/u18jqh0f","slide":8,"name":"s8-marker-1","bbox":[453,360,34,34]}
+{"kind":"textbox","id":"sh/jm1cfa9w","slide":8,"name":"s8-h-1","text":"第 2 周","textPreview":"第 2 周","textChars":5,"textLines":1,"bbox":[453,420,280,36]}
+{"kind":"textbox","id":"sh/cvixczed","slide":8,"name":"s8-b-1","text":"绘制系统架构与流程图\n设计对比实验和评价指标\n补跑必要样例并记录误差\n开始撰写引言、方法和实验设置","textPreview":"绘制系统架构与流程图 | 设计对比实验和评价指标 | 补跑必要样例并记录误差 | 开始撰写引言、方法和实验设置","textChars":49,"textLines":4,"bbox":[453,474,340,132]}
+{"kind":"shape","id":"sh/5gbq1ory","slide":8,"name":"s8-marker-2","bbox":[864,360,34,34]}
+{"kind":"textbox","id":"sh/18jqh0fe","slide":8,"name":"s8-h-2","text":"阶段产出","textPreview":"阶段产出","textChars":4,"textLines":1,"bbox":[864,420,280,36]}
+{"kind":"textbox","id":"sh/8nqxs72x","slide":8,"name":"s8-b-2","text":"论文提纲 v1\n相关工作表格\n实验设计清单\n系统图与误差案例\n导师沟通问题列表","textPreview":"论文提纲 v1 | 相关工作表格 | 实验设计清单 | 系统图与误差案例 | 导师沟通问题列表","textChars":39,"textLines":5,"bbox":[864,474,340,132]}
+{"kind":"shape","id":"sh/j2t83itg","slide":8,"name":"s8-band","bbox":[0,640,1280,80]}
+{"kind":"textbox","id":"sh/qh0fepkz","slide":8,"name":"s8-close","text":"汇报落点：本期项目已具备论文材料雏形；下期开始把工程实现转化为研究叙事和实验论证。","textPreview":"汇报落点：本期项目已具备论文材料雏形；下期开始把工程实现转化为研究叙事和实验论证。","textChars":41,"textLines":1,"bbox":[42,660,1020,34]}
+{"kind":"textbox","id":"sh/1w7mp0bi","slide":8,"name":"footer-label-8","text":"工作票识别项目阶段周报","textPreview":"工作票识别项目阶段周报","textChars":11,"textLines":1,"bbox":[42,660,360,28]}
+{"kind":"textbox","id":"sh/8bat47y1","slide":8,"name":"footer-no-8","text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1168,660,70,28]}
+{"kind":"notes","id":"nt/fu18jqh0","slide":8,"text":""}

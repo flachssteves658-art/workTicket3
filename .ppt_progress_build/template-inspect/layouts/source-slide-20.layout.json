@@ -1,0 +1,1548 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/zyxsni5k",
+    "id": "zyxsni5k",
+    "slide": 20,
+    "layoutId": "/ppt/slideLayouts/slideLayout10.xml",
+    "layoutName": "空白",
+    "layoutType": "blank",
+    "masterLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 960,
+      "height": 540
+    }
+  },
+  "theme": {
+    "colorSchemeName": "Office",
+    "colors": {
+      "accent1": "#5B9BD5",
+      "accent2": "#ED7D31",
+      "accent3": "#A5A5A5",
+      "accent4": "#FFC000",
+      "accent5": "#4472C4",
+      "accent6": "#70AD47",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#44546A",
+      "lt2": "#E7E6E6",
+      "hlink": "#0563C1",
+      "folHlink": "#954F72"
+    },
+    "fontScheme": {
+      "name": "Arial Black-Arial",
+      "majorFont": {
+        "latinTypeface": "Arial Black"
+      },
+      "minorFont": {
+        "latinTypeface": "Arial"
+      }
+    },
+    "typefaces": [
+      "+mj-ea",
+      "Arial",
+      "Arial Black",
+      "微软雅黑"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "/ppt/slideLayouts/slideLayout10.xml",
+      "name": "空白",
+      "type": "blank",
+      "parentLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+      "elements": [
+        {
+          "order": 1,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout10.xml/2",
+          "id": "2",
+          "name": "日期占位符 1",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "order": 2,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout10.xml/3",
+          "id": "3",
+          "name": "页脚占位符 2",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "order": 3,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout10.xml/4",
+          "id": "4",
+          "name": "灯片编号占位符 3",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "scope": "master",
+      "id": "/ppt/slideMasters/slideMaster1.xml",
+      "type": "master",
+      "backgroundColor": "bg1",
+      "elements": [
+        {
+          "order": 1,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/2",
+          "id": "2",
+          "name": "标题占位符 1",
+          "bbox": [
+            66,
+            28.75,
+            828,
+            104.38
+          ],
+          "geometry": "rect",
+          "text": "单击此处编辑母版标题样式",
+          "textPreview": "单击此处编辑母版标题样式",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "单击此处编辑母版标题样式",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "单击此处编辑母版标题样式"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/3",
+          "id": "3",
+          "name": "文本占位符 2",
+          "bbox": [
+            66,
+            143.75,
+            828,
+            342.63
+          ],
+          "geometry": "rect",
+          "text": "单击此处编辑母版文本样式\n第二级\n第三级\n第四级\n第五级",
+          "textPreview": "单击此处编辑母版文本样式 | 第二级 | 第三级 | 第四级 | 第五级",
+          "resolvedTextStyle": {
+            "vertical": 1,
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "单击此处编辑母版文本样式",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "单击此处编辑母版文本样式"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "text": "第二级",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "第二级"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "text": "第三级",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "第三级"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "text": "第四级",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "第四级"
+                }
+              ]
+            },
+            {
+              "index": 5,
+              "text": "第五级",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "第五级"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/4",
+          "id": "4",
+          "name": "日期占位符 3",
+          "bbox": [
+            66,
+            500.5,
+            216,
+            28.75
+          ],
+          "geometry": "rect",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          }
+        },
+        {
+          "order": 4,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/5",
+          "id": "5",
+          "name": "页脚占位符 4",
+          "bbox": [
+            318,
+            500.5,
+            324,
+            28.75
+          ],
+          "geometry": "rect",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          }
+        },
+        {
+          "order": 5,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/6",
+          "id": "6",
+          "name": "灯片编号占位符 5",
+          "bbox": [
+            678,
+            500.5,
+            216,
+            28.75
+          ],
+          "geometry": "rect",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          }
+        },
+        {
+          "order": 6,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/7",
+          "id": "7",
+          "name": "矩形 6",
+          "bbox": [
+            0,
+            0,
+            960,
+            540
+          ],
+          "geometry": "rect",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "verticalAlignment": "middle"
+          },
+          "lineWidth": 0
+        }
+      ]
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/2lczih8r",
+      "id": "6",
+      "name": "Rectangle 163",
+      "bbox": [
+        0,
+        0,
+        960,
+        0
+      ],
+      "geometry": "rect",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "vertical": 1,
+        "fontSize": 18,
+        "typeface": "Arial",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "none",
+        "autoFit": "resizeShapeToFitText",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/8bmhgryl",
+      "id": "9",
+      "name": "Picture 2",
+      "bbox": [
+        729.48,
+        1.97,
+        230.52,
+        73.67
+      ],
+      "contentType": "image/jpeg",
+      "imageCrop": {
+        "left": 0.68782,
+        "top": 0.01129,
+        "right": 0.01331,
+        "bottom": 0.85966
+      },
+      "asset": {
+        "assetId": "/ppt/media/image2.jpeg",
+        "contentType": "image/jpeg",
+        "byteLength": 88733
+      },
+      "fillImage": {
+        "assetId": "/ppt/media/image2.jpeg",
+        "contentType": "image/jpeg",
+        "byteLength": 88733
+      }
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gjuhg7ql",
+      "id": "8",
+      "name": "矩形 7",
+      "bbox": [
+        33.97,
+        5.46,
+        213.26,
+        48.47
+      ],
+      "geometry": "rect",
+      "text": "三、实施计划",
+      "textPreview": "三、实施计划",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Arial",
+        "color": "tx1",
+        "alignment": "left",
+        "wrap": "none",
+        "autoFit": "resizeShapeToFitText",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "三、实施计划"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "三、实施计划",
+          "runs": [
+            {
+              "index": 1,
+              "text": "三、实施计划",
+              "fontSize": 32,
+              "typeface": "微软雅黑",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "table",
+      "scope": "slide",
+      "aid": "tb/ixsv2xcf",
+      "id": "10",
+      "name": "表格 3",
+      "bbox": [
+        49.07,
+        88.54,
+        861.73,
+        388.9
+      ],
+      "text": "时间 | 任务书要求 | 工作内容 | 考核目标\n合同签订日期- 2026年11月 | 课题1：\n基于多模态大模型的工作票智能解析与时空关联技术研究 | 完成课题1：基于多模态大模型的工作票智能解析与时空关联技术研究\n | （1）基于多模态大模型的工作票关键信息抽取技术研究；\n（2）融合多模态语义理解的监控视频内容关联技术研究。\n2026年11月 | 第一次中期检查 | 提交《基于多模态大模型的工作票智能解析与时空关联技术研究》技术分报告，申请并受理发明专利1项，发表中文核心或三大检索论文1篇\n2026年11月-\n2027年10月 | 课题2：\n基于视觉大/小模型融合的安全管控风险智能识别技术研究 | 完成课题2：基于视觉大/小模型融合的安全管控风险智能识别技术研究 | （1）现场行为的安全风险智能识别模型研究；\n（2）视觉大/小模型协同的违章行为二级复核机制研究。\n2027年10月 | 第二次中期检查 | 提交《基于视觉大/小模型融合的安全管控风险智能识别技术研究》技术分报告，申请并受理发明专利1项，发表中文核心或三大检索论文1篇",
+      "textPreview": "时间 | 任务书要求 | 工作内容 | 考核目标 | 合同签订日期- 2026年11月 | 课题1： | 基于多模态大模型的工作票智能解析与时空关联技术研究 | 完成课题1：基于多模态大模型的工作票智能解析与时空关联技术研究 |  | （1）基于多模态大模型的工作票关键信息...",
+      "rows": 5,
+      "cols": 4,
+      "cells": [
+        {
+          "index": 1,
+          "row": 1,
+          "column": 1,
+          "bbox": [
+            49.07,
+            88.54,
+            124.72,
+            36.41
+          ],
+          "text": "时间",
+          "textPreview": "时间",
+          "fillColor": {
+            "type": "theme",
+            "value": "accent1",
+            "transform": {
+              "lighten": 0.4
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "时间",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "时间",
+                  "fontSize": 21.33,
+                  "typeface": "+mj-ea"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "row": 1,
+          "column": 2,
+          "bbox": [
+            173.8,
+            88.54,
+            196.54,
+            36.41
+          ],
+          "text": "任务书要求",
+          "textPreview": "任务书要求",
+          "fillColor": {
+            "type": "theme",
+            "value": "accent1",
+            "transform": {
+              "lighten": 0.4
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "任务书要求",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "任务书要求",
+                  "fontSize": 21.33,
+                  "typeface": "+mj-ea",
+                  "color": "#000000"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "row": 1,
+          "column": 3,
+          "bbox": [
+            370.33,
+            88.54,
+            238.11,
+            36.41
+          ],
+          "text": "工作内容",
+          "textPreview": "工作内容",
+          "fillColor": {
+            "type": "theme",
+            "value": "accent1",
+            "transform": {
+              "lighten": 0.4
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "工作内容",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "工作内容",
+                  "fontSize": 21.33,
+                  "typeface": "+mj-ea"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "row": 1,
+          "column": 4,
+          "bbox": [
+            608.44,
+            88.54,
+            302.36,
+            36.41
+          ],
+          "text": "考核目标",
+          "textPreview": "考核目标",
+          "fillColor": {
+            "type": "theme",
+            "value": "accent1",
+            "transform": {
+              "lighten": 0.4
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "考核目标",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "考核目标",
+                  "fontSize": 21.33,
+                  "typeface": "+mj-ea"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "row": 2,
+          "column": 1,
+          "bbox": [
+            49.07,
+            124.94,
+            124.72,
+            104.33
+          ],
+          "text": "合同签订日期- 2026年11月",
+          "textPreview": "合同签订日期- 2026年11月",
+          "fillColor": {
+            "type": "theme",
+            "value": "accent1",
+            "transform": {
+              "lighten": 0.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "合同签订日期- 2026年11月",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "合同签订日期",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 2,
+                  "text": "- 2026",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 3,
+                  "text": "年",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 4,
+                  "text": "11",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 5,
+                  "text": "月",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "row": 2,
+          "column": 2,
+          "rowSpan": 2,
+          "bbox": [
+            173.8,
+            124.94,
+            196.54,
+            171.95
+          ],
+          "text": "课题1：\n基于多模态大模型的工作票智能解析与时空关联技术研究",
+          "textPreview": "课题1： | 基于多模态大模型的工作票智能解析与时空关联技术研究",
+          "fillColor": {
+            "type": "theme",
+            "value": "accent1",
+            "transform": {
+              "lighten": 0.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "课题1：",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "课题",
+                  "fontSize": 18,
+                  "typeface": "Arial",
+                  "color": "dk1"
+                },
+                {
+                  "index": 2,
+                  "text": "1",
+                  "fontSize": 18,
+                  "typeface": "Arial",
+                  "color": "dk1"
+                },
+                {
+                  "index": 3,
+                  "text": "：",
+                  "fontSize": 18,
+                  "typeface": "Arial",
+                  "color": "dk1"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "text": "基于多模态大模型的工作票智能解析与时空关联技术研究",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "基于多模态大模型的工作票智能解析与时空关联技术研究",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "#000000"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "row": 2,
+          "column": 3,
+          "bbox": [
+            370.33,
+            124.94,
+            238.11,
+            104.33
+          ],
+          "text": "完成课题1：基于多模态大模型的工作票智能解析与时空关联技术研究\n",
+          "textPreview": "完成课题1：基于多模态大模型的工作票智能解析与时空关联技术研究 |",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "完成课题1：基于多模态大模型的工作票智能解析与时空关联技术研究",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "完成课题",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "#000000"
+                },
+                {
+                  "index": 2,
+                  "text": "1",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "#000000"
+                },
+                {
+                  "index": 3,
+                  "text": "：基于多模态大模型的工作票智能解析与时空关联技术研究",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "#000000"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "row": 2,
+          "column": 4,
+          "bbox": [
+            608.44,
+            124.94,
+            302.36,
+            104.33
+          ],
+          "text": "（1）基于多模态大模型的工作票关键信息抽取技术研究；\n（2）融合多模态语义理解的监控视频内容关联技术研究。",
+          "textPreview": "（1）基于多模态大模型的工作票关键信息抽取技术研究； | （2）融合多模态语义理解的监控视频内容关联技术研究。",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "（1）基于多模态大模型的工作票关键信息抽取技术研究；",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "（",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                },
+                {
+                  "index": 2,
+                  "text": "1",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                },
+                {
+                  "index": 3,
+                  "text": "）基于多模态大模型的工作票关键信息抽取技术研究；",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "text": "（2）融合多模态语义理解的监控视频内容关联技术研究。",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "（",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                },
+                {
+                  "index": 2,
+                  "text": "2",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                },
+                {
+                  "index": 3,
+                  "text": "）融合多模态语义理解的监控视频内容关联技术研究。",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "row": 3,
+          "column": 1,
+          "bbox": [
+            49.07,
+            229.27,
+            124.72,
+            67.62
+          ],
+          "text": "2026年11月",
+          "textPreview": "2026年11月",
+          "fillColor": {
+            "type": "theme",
+            "value": "accent1",
+            "transform": {
+              "lighten": 0.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "2026年11月",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "2026",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 2,
+                  "text": "年",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 3,
+                  "text": "11",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 4,
+                  "text": "月",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "row": 3,
+          "column": 2,
+          "bbox": [
+            173.8,
+            229.27,
+            196.54,
+            67.62
+          ],
+          "fillColor": {
+            "type": "theme",
+            "value": "accent1",
+            "transform": {
+              "lighten": 0.6
+            }
+          }
+        },
+        {
+          "index": 11,
+          "row": 3,
+          "column": 3,
+          "bbox": [
+            370.33,
+            229.27,
+            238.11,
+            67.62
+          ],
+          "text": "第一次中期检查",
+          "textPreview": "第一次中期检查",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "第一次中期检查",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "第一次中期检查",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "row": 3,
+          "column": 4,
+          "bbox": [
+            608.44,
+            229.27,
+            302.36,
+            67.62
+          ],
+          "text": "提交《基于多模态大模型的工作票智能解析与时空关联技术研究》技术分报告，申请并受理发明专利1项，发表中文核心或三大检索论文1篇",
+          "textPreview": "提交《基于多模态大模型的工作票智能解析与时空关联技术研究》技术分报告，申请并受理发明专利1项，发表中文核心或三大检索论文1篇",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "提交《基于多模态大模型的工作票智能解析与时空关联技术研究》技术分报告，申请并受理发明专利1项，发表中文核心或三大检索论文1篇",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "提交《基于多模态大模型的工作票智能解析与时空关联技术研究》技术分报告，申请并受理发明专利",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                },
+                {
+                  "index": 2,
+                  "text": "1",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                },
+                {
+                  "index": 3,
+                  "text": "项，发表中文核心或三大检索论文",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                },
+                {
+                  "index": 4,
+                  "text": "1",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                },
+                {
+                  "index": 5,
+                  "text": "篇",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "row": 4,
+          "column": 1,
+          "bbox": [
+            49.07,
+            296.89,
+            124.72,
+            101.76
+          ],
+          "text": "2026年11月-\n2027年10月",
+          "textPreview": "2026年11月- | 2027年10月",
+          "fillColor": {
+            "type": "theme",
+            "value": "accent1",
+            "transform": {
+              "lighten": 0.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "2026年11月-",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "2026",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                },
+                {
+                  "index": 2,
+                  "text": "年",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                },
+                {
+                  "index": 3,
+                  "text": "11",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                },
+                {
+                  "index": 4,
+                  "text": "月",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                },
+                {
+                  "index": 5,
+                  "text": "-",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "text": "2027年10月",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "2027",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                },
+                {
+                  "index": 2,
+                  "text": "年",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                },
+                {
+                  "index": 3,
+                  "text": "10",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                },
+                {
+                  "index": 4,
+                  "text": "月",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "dk1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 14,
+          "row": 4,
+          "column": 2,
+          "rowSpan": 2,
+          "bbox": [
+            173.8,
+            296.89,
+            196.54,
+            180.54
+          ],
+          "text": "课题2：\n基于视觉大/小模型融合的安全管控风险智能识别技术研究",
+          "textPreview": "课题2： | 基于视觉大/小模型融合的安全管控风险智能识别技术研究",
+          "fillColor": {
+            "type": "theme",
+            "value": "accent1",
+            "transform": {
+              "lighten": 0.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "课题2：",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "课题",
+                  "fontSize": 18,
+                  "typeface": "Arial",
+                  "color": "dk1"
+                },
+                {
+                  "index": 2,
+                  "text": "2",
+                  "fontSize": 18,
+                  "typeface": "Arial",
+                  "color": "dk1"
+                },
+                {
+                  "index": 3,
+                  "text": "：",
+                  "fontSize": 18,
+                  "typeface": "Arial",
+                  "color": "dk1"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "text": "基于视觉大/小模型融合的安全管控风险智能识别技术研究",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "基于视觉大/小模型融合的安全管控风险智能识别技术研究",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea",
+                  "color": "#000000"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "row": 4,
+          "column": 3,
+          "bbox": [
+            370.33,
+            296.89,
+            238.11,
+            101.76
+          ],
+          "text": "完成课题2：基于视觉大/小模型融合的安全管控风险智能识别技术研究",
+          "textPreview": "完成课题2：基于视觉大/小模型融合的安全管控风险智能识别技术研究",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "完成课题2：基于视觉大/小模型融合的安全管控风险智能识别技术研究",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "完成课题",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 2,
+                  "text": "2",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 3,
+                  "text": "：基于视觉大",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 4,
+                  "text": "/",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 5,
+                  "text": "小模型融合的安全管控风险智能识别技术研究",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "row": 4,
+          "column": 4,
+          "bbox": [
+            608.44,
+            296.89,
+            302.36,
+            101.76
+          ],
+          "text": "（1）现场行为的安全风险智能识别模型研究；\n（2）视觉大/小模型协同的违章行为二级复核机制研究。",
+          "textPreview": "（1）现场行为的安全风险智能识别模型研究； | （2）视觉大/小模型协同的违章行为二级复核机制研究。",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "（1）现场行为的安全风险智能识别模型研究；",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "（",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 2,
+                  "text": "1",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 3,
+                  "text": "）现场行为的安全风险智能识别模型研究；",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "text": "（2）视觉大/小模型协同的违章行为二级复核机制研究。",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "（",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 2,
+                  "text": "2",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 3,
+                  "text": "）视觉大",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 4,
+                  "text": "/",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 5,
+                  "text": "小模型协同的违章行为二级复核机制研究。",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "row": 5,
+          "column": 1,
+          "bbox": [
+            49.07,
+            398.66,
+            124.72,
+            78.78
+          ],
+          "text": "2027年10月",
+          "textPreview": "2027年10月",
+          "fillColor": {
+            "type": "theme",
+            "value": "accent1",
+            "transform": {
+              "lighten": 0.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "2027年10月",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "2027",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 2,
+                  "text": "年",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 3,
+                  "text": "10",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 4,
+                  "text": "月",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "row": 5,
+          "column": 2,
+          "bbox": [
+            173.8,
+            398.66,
+            196.54,
+            78.78
+          ],
+          "fillColor": {
+            "type": "theme",
+            "value": "accent1",
+            "transform": {
+              "lighten": 0.6
+            }
+          }
+        },
+        {
+          "index": 19,
+          "row": 5,
+          "column": 3,
+          "bbox": [
+            370.33,
+            398.66,
+            238.11,
+            78.78
+          ],
+          "text": "第二次中期检查",
+          "textPreview": "第二次中期检查",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "第二次中期检查",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "第二次中期检查",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 20,
+          "row": 5,
+          "column": 4,
+          "bbox": [
+            608.44,
+            398.66,
+            302.36,
+            78.78
+          ],
+          "text": "提交《基于视觉大/小模型融合的安全管控风险智能识别技术研究》技术分报告，申请并受理发明专利1项，发表中文核心或三大检索论文1篇",
+          "textPreview": "提交《基于视觉大/小模型融合的安全管控风险智能识别技术研究》技术分报告，申请并受理发明专利1项，发表中文核心或三大检索论文1篇",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "提交《基于视觉大/小模型融合的安全管控风险智能识别技术研究》技术分报告，申请并受理发明专利1项，发表中文核心或三大检索论文1篇",
+              "lineSpacingPercent": 100000,
+              "resolvedTextStyle": {
+                "alignment": "center"
+              },
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "提交《基于视觉大",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 2,
+                  "text": "/",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 3,
+                  "text": "小模型融合的安全管控风险智能识别技术研究》技术分报告，申请并受理发明专利",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 4,
+                  "text": "1",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 5,
+                  "text": "项，发表中文核心或三大检索论文",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 6,
+                  "text": "1",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                },
+                {
+                  "index": 7,
+                  "text": "篇",
+                  "fontSize": 18,
+                  "typeface": "+mj-ea"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "composeRuns": []
+}
