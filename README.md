@@ -5,16 +5,16 @@
 它包含两个功能模块：
 
 1. 结构化识别
-   - 上传工作票图片或 PDF；
+   - 一次可选择最多 20 个工作票图片或 PDF，按队列逐个处理；
    - 后端调用 PaddleOCR PPStructureV3 做版面、表格、文字识别；
    - 保存 PPStructureV3 的 Markdown / JSON 原始结果；
    - 再交给大语言模型整理成固定 JSON。
 
 2. 图片直传大模型
-   - 上传一张图片；
+   - 一次可选择最多 20 张图片，按队列逐个处理；
    - 不经过 PPStructureV3；
    - 直接把图片发给多模态大模型；
-   - 前端原样展示大模型返回的任何结果。
+   - 每张图片独立显示处理状态和模型返回结果，单个任务失败不会中断后续任务。
 
 ## 项目结构
 
@@ -110,6 +110,26 @@ http://127.0.0.1:8000
 ~~~
 
 ## API
+
+### 工作票业务能力
+
+结构化识别完成后，系统除原始 JSON 外还会生成：
+
+- 标准工作票档案（票号、地点、负责人、时间、作业内容、安全措施、风险点等）
+- 兼容旧 ticket 项目的 `entities` 与 `relationships`
+- 按工作票号保存到 `storage/tickets/`
+- 可通过受保护接口同步到智能安监工地、查询档案和生成违章关联报告
+
+受保护接口必须设置 `.env` 中的 `HAZARD_INTEGRATION_TOKEN`，并携带请求头：
+
+```text
+X-Integration-Token: 与 HAZARD_INTEGRATION_TOKEN 相同的值
+```
+
+- `POST /api/v1/parse_ticket`：兼容旧项目的识别入口，可带查询参数 `enable_hazard_sync=true&hazard_site_name=测试变电站`
+- `GET /api/v1/tickets/{ticket_no}`：读取已归档工作票
+- `POST /api/v1/apply_ticket_to_site`：将已归档工作票绑定到安监工地
+- `POST /api/v1/generate_violation_report`：结合工作票与摄像头违章结果生成报告
 
 ### 健康检查
 

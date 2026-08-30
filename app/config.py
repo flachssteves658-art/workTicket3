@@ -19,6 +19,7 @@ class Settings:
     app_port: int = int(os.getenv("APP_PORT", "8000"))
     upload_dir: Path = ROOT_DIR / os.getenv("UPLOAD_DIR", "storage/uploads")
     output_dir: Path = ROOT_DIR / os.getenv("OUTPUT_DIR", "storage/outputs")
+    ticket_store_dir: Path = ROOT_DIR / os.getenv("TICKET_STORE_DIR", "storage/tickets")
 
     llm_api_key: str = os.getenv("LLM_API_KEY", "")
     llm_base_url: str = os.getenv("LLM_BASE_URL", "https://api.openai.com/v1").rstrip("/")
@@ -29,6 +30,9 @@ class Settings:
     vision_model: str = os.getenv("VISION_MODEL", "gpt-4o-mini")
 
     llm_timeout_seconds: int = int(os.getenv("LLM_TIMEOUT_SECONDS", "120"))
+    hazard_dbm_base_url: str = os.getenv("HAZARD_DBM_BASE_URL", "http://127.0.0.1:8005").rstrip("/")
+    hazard_integration_token: str = os.getenv("HAZARD_INTEGRATION_TOKEN", "")
+    integration_timeout_seconds: int = int(os.getenv("INTEGRATION_TIMEOUT_SECONDS", "15"))
 
     ocr_save_json: bool = os.getenv("OCR_SAVE_JSON", "1").lower() in {"1", "true", "yes", "on"}
     ocr_save_markdown: bool = os.getenv("OCR_SAVE_MARKDOWN", "1").lower() in {"1", "true", "yes", "on"}
@@ -39,3 +43,4 @@ class Settings:
 settings = Settings()
 settings.upload_dir.mkdir(parents=True, exist_ok=True)
 settings.output_dir.mkdir(parents=True, exist_ok=True)
+settings.ticket_store_dir.mkdir(parents=True, exist_ok=True)

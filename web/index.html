@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>工作票智能识别台</title>
-    <link rel="stylesheet" href="/static/styles.css?v=20260626-6" />
+    <link rel="stylesheet" href="/static/styles.css?v=20260810-1" />
   </head>
   <body>
     <main class="app">
@@ -29,19 +29,19 @@
 
         <section class="mode mode--active" id="mode-structure">
           <div class="mode-copy">
-            <span>OCR + LLM</span>
-            <strong>工作票字段抽取</strong>
+            <span>OCR + LLM + 业务归档</span>
+            <strong>字段、实体关系与风险信息抽取</strong>
           </div>
 
           <label class="dropzone" id="structureDrop">
-            <input id="structureFile" type="file" accept=".jpg,.jpeg,.png,.bmp,.webp,.pdf" />
+            <input id="structureFile" type="file" accept=".jpg,.jpeg,.png,.bmp,.webp,.pdf" multiple />
             <span class="dropzone__icon">+</span>
-            <strong>选择工作票文件</strong>
-            <small id="structureName">JPG / PNG / BMP / WEBP / PDF</small>
+            <strong>选择工作票文件（可多选）</strong>
+            <small id="structureName">JPG / PNG / BMP / WEBP / PDF，最多 20 个</small>
           </label>
 
           <button class="primary-action" id="structureStreamBtn" type="button">
-            开始识别
+            开始批量识别
           </button>
         </section>
 
@@ -52,10 +52,10 @@
           </div>
 
           <label class="dropzone" id="visionDrop">
-            <input id="visionFile" type="file" accept=".jpg,.jpeg,.png,.bmp,.webp" />
+            <input id="visionFile" type="file" accept=".jpg,.jpeg,.png,.bmp,.webp" multiple />
             <span class="dropzone__icon">+</span>
-            <strong>选择图片</strong>
-            <small id="visionName">JPG / PNG / BMP / WEBP</small>
+            <strong>选择图片（可多选）</strong>
+            <small id="visionName">JPG / PNG / BMP / WEBP，最多 20 个</small>
           </label>
 
           <label class="prompt-field">
@@ -67,7 +67,7 @@
           </label>
 
           <button class="primary-action" id="visionStreamBtn" type="button">
-            开始识别
+            开始批量识别
           </button>
         </section>
       </aside>
@@ -104,6 +104,17 @@
           </article>
         </section>
 
+        <section class="batch-panel" id="batchPanel" hidden aria-live="polite">
+          <div class="batch-panel__head">
+            <div>
+              <p class="kicker">Batch Queue</p>
+              <h3>批量任务</h3>
+            </div>
+            <span id="batchSummary">0 个文件</span>
+          </div>
+          <div class="batch-list" id="batchList"></div>
+        </section>
+
         <section class="work-area">
           <article class="timeline-panel">
             <div class="panel-head">
@@ -132,6 +143,6 @@
     </main>
 
     <div class="toast" id="toast"></div>
-    <script src="/static/app.js?v=20260626-6"></script>
+    <script src="/static/app.js?v=20260810-1"></script>
   </body>
 </html>

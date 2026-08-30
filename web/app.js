@@ -1,10 +1,17 @@
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => Array.from(document.querySelectorAll(selector));
 
+const MAX_BATCH_FILES = 20;
+const IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".bmp", ".webp"]);
+const STRUCTURE_EXTENSIONS = new Set([...IMAGE_EXTENSIONS, ".pdf"]);
+
 const state = {
   activeMode: "structure",
-  structureFile: null,
-  visionFile: null,
+  structureFiles: [],
+  visionFiles: [],
+  batchJobs: [],
+  activeJobId: null,
+  isRunning: false,
   lastText: "{}",
   timeline: new Map(),
   runClock: null,
@@ -56,6 +63,12 @@ function formatTime(value) {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return value;
   return date.toLocaleString("zh-CN", { hour12: false });
+}
+
+function formatFileSize(bytes) {
+  const mb = Number(bytes || 0) / 1024 / 1024;
+  if (mb < 0.01) return `${Math.max(1, Math.round(Number(bytes || 0) / 1024))} KB`;
+  return `${mb.toFixed(2)} MB`;
 }
 
 function resetRun(modeLabel, mode) {
@@ -348,14 +361,39 @@ function bindTabs() {
   });
 }
 
-function bindDropzone(dropzone, input, nameEl, key) {
-  input.addEventListener("change", () => {
-    const file = input.files?.[0];
-    if (!file) return;
-    state[key] = file;
-    nameEl.textContent = `${file.name} · ${(file.size / 1024 / 1024).toFixed(2)} MB`;
-    dropzone.dataset.ready = "true";
-  });
+function fileExtension(filename) {
+  const dotIndex = filename.lastIndexOf(".");
+  return dotIndex >= 0 ? filename.slice(dotIndex).toLowerCase() : "";
+}
+
+function bindDropzone(dropzone, input, nameEl, key, allowedExtensions, emptyLabel) {
+  const updateFiles = (fileList) => {
+    const selected = Array.from(fileList || []);
+    const valid = selected.filter((file) => allowedExtensions.has(fileExtension(file.name)));
+    const rejectedCount = selected.length - valid.length;
+    const files = valid.slice(0, MAX_BATCH_FILES);
+
+    state[key] = files;
+    if (files.length === 0) {
+      nameEl.textContent = emptyLabel;
+      delete dropzone.dataset.ready;
+    } else if (files.length === 1) {
+      nameEl.textContent = `${files[0].name} · ${formatFileSize(files[0].size)}`;
+      dropzone.dataset.ready = "true";
+    } else {
+      const totalBytes = files.reduce((total, file) => total + file.size, 0);
+      nameEl.textContent = `已选择 ${files.length} 个文件 · 共 ${formatFileSize(totalBytes)}`;
+      dropzone.dataset.ready = "true";
+    }
+
+    if (valid.length > MAX_BATCH_FILES) {
+      showToast(`单次最多处理 ${MAX_BATCH_FILES} 个文件，已保留前 ${MAX_BATCH_FILES} 个`);
+    } else if (rejectedCount > 0) {
+      showToast(`已忽略 ${rejectedCount} 个不支持的文件`);
+    }
+  };
+
+  input.addEventListener("change", () => updateFiles(input.files));
 
   ["dragenter", "dragover"].forEach((eventName) => {
     dropzone.addEventListener(eventName, (event) => {
@@ -372,105 +410,236 @@ function bindDropzone(dropzone, input, nameEl, key) {
   });
 
   dropzone.addEventListener("drop", (event) => {
-    const file = event.dataTransfer.files?.[0];
-    if (!file) return;
-    state[key] = file;
-    nameEl.textContent = `${file.name} · ${(file.size / 1024 / 1024).toFixed(2)} MB`;
-    dropzone.dataset.ready = "true";
+    updateFiles(event.dataTransfer.files);
   });
 }
 
-async function runStructureStream() {
-  if (!state.structureFile) {
-    showToast("请先上传工作票文件");
-    return;
-  }
+function batchStatusLabel(status) {
+  return {
+    queued: "等待中",
+    running: "处理中",
+    done: "已完成",
+    error: "失败",
+  }[status] || status;
+}
 
-  const btn = $("#structureStreamBtn");
-  btn.disabled = true;
-  resetRun("结构化识别中", "structure");
+function showBatchJob(job) {
+  state.activeJobId = job.id;
+  renderBatchJobs();
 
-  const form = new FormData();
-  form.append("file", state.structureFile);
-
-  let accumulated = "";
-  try {
-    await streamFetch("/api/recognize-structure-stream", form, (msg) => {
-      applyClientTimingFromEvent(msg);
-      handleTimingEvent(msg);
-      if (msg.type === "ocr_complete") {
-        applyTimingSummary(msg.timing);
-      }
-      if (msg.type === "llm_chunk") {
-        accumulated += msg.data;
-        setResult(accumulated);
-      }
-      if (msg.type === "complete") {
-        applyTimingSummary(msg.timing);
-        setRunBadge("已完成", "done");
-        setStatus("流式结构化识别完成");
-        setResult(msg.parsed_json || msg.llm_output || accumulated);
-      }
-      if (msg.type === "error") {
-        applyTimingSummary(msg.timing);
-        throw new Error(msg.error || "结构化识别失败");
-      }
-    });
-  } catch (error) {
-    setRunBadge("失败", "error");
-    setStatus("结构化识别失败");
-    setResult({ error: error.message });
-  } finally {
-    btn.disabled = false;
+  if (job.status === "done") {
+    setResult(job.result);
+  } else if (job.status === "error") {
+    setResult({ file: job.file.name, error: job.error });
+  } else if (job.partialOutput) {
+    setResult(job.partialOutput);
+  } else {
+    setResult({ file: job.file.name, status: batchStatusLabel(job.status) });
   }
 }
 
-async function runVisionStream() {
-  if (!state.visionFile) {
-    showToast("请先上传图片");
+function renderBatchJobs() {
+  const panel = $("#batchPanel");
+  const list = $("#batchList");
+  const jobs = state.batchJobs;
+  panel.hidden = jobs.length === 0;
+  list.innerHTML = "";
+
+  const doneCount = jobs.filter((job) => job.status === "done").length;
+  const errorCount = jobs.filter((job) => job.status === "error").length;
+  const runningCount = jobs.filter((job) => job.status === "running").length;
+  const pendingCount = jobs.length - doneCount - errorCount - runningCount;
+  const summary = [`共 ${jobs.length} 个`, `完成 ${doneCount}`];
+  if (runningCount) summary.push(`处理中 ${runningCount}`);
+  if (pendingCount) summary.push(`等待 ${pendingCount}`);
+  if (errorCount) summary.push(`失败 ${errorCount}`);
+  $("#batchSummary").textContent = summary.join(" · ");
+
+  jobs.forEach((job) => {
+    const item = document.createElement("button");
+    item.type = "button";
+    item.className = "batch-item";
+    item.dataset.jobId = job.id;
+    item.dataset.status = job.status;
+    item.classList.toggle("batch-item--active", job.id === state.activeJobId);
+    item.setAttribute("aria-pressed", job.id === state.activeJobId ? "true" : "false");
+    item.title = job.file.name;
+
+    const meta = document.createElement("span");
+    meta.className = "batch-item__meta";
+    const name = document.createElement("strong");
+    name.textContent = job.file.name;
+    const detail = document.createElement("small");
+    detail.textContent = `${job.index + 1}/${jobs.length} · ${formatFileSize(job.file.size)}`;
+    meta.append(name, detail);
+
+    const status = document.createElement("span");
+    status.className = "batch-item__status";
+    status.textContent = batchStatusLabel(job.status);
+    item.append(meta, status);
+    list.appendChild(item);
+  });
+}
+
+function setBatchControlsDisabled(disabled) {
+  state.isRunning = disabled;
+  $("#structureStreamBtn").disabled = disabled;
+  $("#visionStreamBtn").disabled = disabled;
+  $("#structureFile").disabled = disabled;
+  $("#visionFile").disabled = disabled;
+}
+
+async function processStructureJob(job) {
+  const form = new FormData();
+  form.append("file", job.file);
+
+  let finalResult = null;
+  let receivedComplete = false;
+  job.partialOutput = "";
+
+  await streamFetch("/api/recognize-structure-stream", form, (msg) => {
+    applyClientTimingFromEvent(msg);
+    handleTimingEvent(msg);
+    if (msg.timing) job.timing = msg.timing;
+    if (msg.type === "ocr_complete") {
+      applyTimingSummary(msg.timing);
+    }
+    if (msg.type === "llm_chunk") {
+      job.partialOutput += msg.data;
+      if (state.activeJobId === job.id) setResult(job.partialOutput);
+    }
+    if (msg.type === "complete") {
+      receivedComplete = true;
+      applyTimingSummary(msg.timing);
+      finalResult = msg.ticket_record ?? msg.parsed_json ?? msg.llm_output ?? job.partialOutput;
+      if (state.activeJobId === job.id) setResult(finalResult);
+    }
+    if (msg.type === "error") {
+      applyTimingSummary(msg.timing);
+      throw new Error(msg.error || "结构化识别失败");
+    }
+  });
+
+  if (!receivedComplete) {
+    throw new Error("连接已结束，但没有收到完整识别结果");
+  }
+  return finalResult;
+}
+
+async function processVisionJob(job, prompt) {
+  const form = new FormData();
+  form.append("file", job.file);
+  form.append("prompt", prompt);
+
+  let finalResult = null;
+  let receivedComplete = false;
+  job.partialOutput = "";
+
+  await streamFetch("/api/direct-vision-stream", form, (msg) => {
+    applyClientTimingFromEvent(msg);
+    handleTimingEvent(msg);
+    if (msg.timing) job.timing = msg.timing;
+    if (msg.type === "chunk") {
+      job.partialOutput += msg.data;
+      if (state.activeJobId === job.id) setResult(job.partialOutput);
+    }
+    if (msg.type === "complete") {
+      receivedComplete = true;
+      applyTimingSummary(msg.timing);
+      finalResult = msg.llm_output || job.partialOutput || "模型没有返回内容";
+      if (state.activeJobId === job.id) setResult(finalResult);
+    }
+    if (msg.type === "error") {
+      applyTimingSummary(msg.timing);
+      throw new Error(msg.error || "图片识别失败");
+    }
+  });
+
+  if (!receivedComplete) {
+    throw new Error("连接已结束，但没有收到完整识别结果");
+  }
+  return finalResult;
+}
+
+async function runBatch(mode) {
+  if (state.isRunning) return;
+  const files = mode === "structure" ? state.structureFiles : state.visionFiles;
+  if (files.length === 0) {
+    showToast(mode === "structure" ? "请先选择工作票文件" : "请先选择图片");
     return;
   }
 
-  const btn = $("#visionStreamBtn");
-  btn.disabled = true;
-  resetRun("图片识别中", "vision");
+  const batchId = Date.now().toString(36);
+  state.batchJobs = files.map((file, index) => ({
+    id: `${batchId}-${index}`,
+    index,
+    mode,
+    file,
+    status: "queued",
+    result: null,
+    error: null,
+    partialOutput: "",
+    timing: null,
+  }));
+  state.activeJobId = state.batchJobs[0]?.id || null;
+  renderBatchJobs();
+  setBatchControlsDisabled(true);
 
-  const form = new FormData();
-  form.append("file", state.visionFile);
-  form.append("prompt", $("#visionPrompt").value.trim());
+  const prompt = mode === "vision" ? $("#visionPrompt").value.trim() : "";
+  let successCount = 0;
 
-  let accumulated = "";
   try {
-    await streamFetch("/api/direct-vision-stream", form, (msg) => {
-      applyClientTimingFromEvent(msg);
-      handleTimingEvent(msg);
-      if (msg.type === "chunk") {
-        accumulated += msg.data;
-        setResult(accumulated);
+    for (const job of state.batchJobs) {
+      job.status = "running";
+      state.activeJobId = job.id;
+      renderBatchJobs();
+      resetRun(`处理中 ${job.index + 1}/${state.batchJobs.length}`, mode);
+      setStatus(`正在处理：${job.file.name}`);
+
+      try {
+        job.result = mode === "structure"
+          ? await processStructureJob(job)
+          : await processVisionJob(job, prompt);
+        job.status = "done";
+        successCount += 1;
+      } catch (error) {
+        job.status = "error";
+        job.error = error instanceof Error ? error.message : String(error);
+        setResult({ file: job.file.name, error: job.error });
       }
-      if (msg.type === "complete") {
-        applyTimingSummary(msg.timing);
-        setRunBadge("已完成", "done");
-        setStatus("流式图片识别完成");
-        setResult(msg.llm_output || accumulated || "模型没有返回内容");
-      }
-      if (msg.type === "error") {
-        applyTimingSummary(msg.timing);
-        throw new Error(msg.error || "图片识别失败");
-      }
-    });
-  } catch (error) {
-    setRunBadge("失败", "error");
-    setStatus("图片识别失败");
-    setResult({ error: error.message });
+      renderBatchJobs();
+    }
   } finally {
-    btn.disabled = false;
+    setBatchControlsDisabled(false);
   }
+
+  const failedCount = state.batchJobs.length - successCount;
+  if (failedCount === 0) {
+    setRunBadge(`${successCount}/${state.batchJobs.length} 已完成`, "done");
+    setStatus(`批量处理完成，共 ${successCount} 个文件`);
+  } else {
+    setRunBadge(`${successCount}/${state.batchJobs.length} 已完成`, "error");
+    setStatus(`批量处理结束：成功 ${successCount} 个，失败 ${failedCount} 个`);
+  }
+}
+
+async function runStructureStream() {
+  await runBatch("structure");
+}
+
+async function runVisionStream() {
+  await runBatch("vision");
 }
 
 function bindActions() {
   $("#structureStreamBtn").addEventListener("click", runStructureStream);
   $("#visionStreamBtn").addEventListener("click", runVisionStream);
+  $("#batchList").addEventListener("click", (event) => {
+    const item = event.target.closest("[data-job-id]");
+    if (!item) return;
+    const job = state.batchJobs.find((candidate) => candidate.id === item.dataset.jobId);
+    if (job) showBatchJob(job);
+  });
   $("#copyBtn").addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText(state.lastText);
@@ -499,7 +668,21 @@ async function checkHealth() {
 }
 
 bindTabs();
-bindDropzone($("#structureDrop"), $("#structureFile"), $("#structureName"), "structureFile");
-bindDropzone($("#visionDrop"), $("#visionFile"), $("#visionName"), "visionFile");
+bindDropzone(
+  $("#structureDrop"),
+  $("#structureFile"),
+  $("#structureName"),
+  "structureFiles",
+  STRUCTURE_EXTENSIONS,
+  "JPG / PNG / BMP / WEBP / PDF，最多 20 个",
+);
+bindDropzone(
+  $("#visionDrop"),
+  $("#visionFile"),
+  $("#visionName"),
+  "visionFiles",
+  IMAGE_EXTENSIONS,
+  "JPG / PNG / BMP / WEBP，最多 20 个",
+);
 bindActions();
 checkHealth();

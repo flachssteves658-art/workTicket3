@@ -7,10 +7,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Annotated
 
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi import FastAPI, File, Form, Header, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel, Field
 
 from app.config import ROOT_DIR, settings
 from app.llm_client import LLMConfigError, direct_vision_extract, extract_work_ticket, image_to_data_url
@@ -20,6 +21,13 @@ from app.llm_stream import (
     direct_vision_extract_stream,
 )
 from app.ppstructure_v3 import run_ppstructure_v3, safe_filename, save_upload_file
+from app.ticket_integration import (
+    build_local_violation_report,
+    build_ticket_record,
+    load_ticket_record,
+    save_ticket_record,
+    sync_ticket_to_site,
+)
 
 
 app = FastAPI(title="Work Ticket OCR", version="1.0.0")
@@ -71,6 +79,29 @@ def _sse(payload: dict[str, object]) -> str:
     return f"data: {json.dumps(payload, ensure_ascii=False)}\n\n"
 
 
+def _archive_ticket(parsed_json: object | None, input_path: Path, job_dir: str) -> dict[str, object]:
+    record = build_ticket_record(parsed_json, str(input_path), Path(job_dir).name)
+    record_path = save_ticket_record(record)
+    return {"ticket_record": record, "ticket_record_path": str(record_path)}
+
+
+def _require_integration_token(token: str | None) -> None:
+    if not settings.hazard_integration_token:
+        raise HTTPException(status_code=503, detail="服务端尚未配置 HAZARD_INTEGRATION_TOKEN")
+    if token != settings.hazard_integration_token:
+        raise HTTPException(status_code=401, detail="无效的集成令牌")
+
+
+class TicketSyncRequest(BaseModel):
+    ticket_no: str
+    site_name: str | None = None
+
+
+class ViolationReportRequest(BaseModel):
+    ticket_no: str
+    violation: dict[str, object] = Field(default_factory=dict)
+
+
 @app.get("/")
 async def index() -> FileResponse:
     return FileResponse(WEB_DIR / "index.html")
@@ -83,11 +114,13 @@ async def health() -> dict[str, object]:
         "llm_configured": bool(settings.llm_api_key and settings.llm_api_key != "replace_with_your_key"),
         "upload_dir": str(settings.upload_dir),
         "output_dir": str(settings.output_dir),
+        "ticket_store_dir": str(settings.ticket_store_dir),
+        "hazard_sync_configured": bool(settings.hazard_integration_token),
         "config_debug": {
-            "llm_api_key": settings.llm_api_key[:10] + "..." if settings.llm_api_key else "NOT_SET",
+            "llm_api_key_configured": bool(settings.llm_api_key),
             "llm_base_url": settings.llm_base_url,
             "llm_model": settings.llm_model,
-            "vision_api_key": settings.vision_api_key[:10] + "..." if settings.vision_api_key else "NOT_SET",
+            "vision_api_key_configured": bool(settings.vision_api_key),
             "vision_base_url": settings.vision_base_url,
             "vision_model": settings.vision_model,
             "llm_timeout_seconds": settings.llm_timeout_seconds,
@@ -114,6 +147,7 @@ async def recognize_structure(file: Annotated[UploadFile, File(...)]) -> dict[st
         raise HTTPException(status_code=500, detail=str(exc)) from exc
 
     parsed_json = _try_parse_json(llm_output)
+    integration = _archive_ticket(parsed_json, input_path, ocr_result["job_dir"])
 
     result_path = Path(ocr_result["job_dir"]) / "llm_result.json"
     result_path.write_text(
@@ -122,6 +156,7 @@ async def recognize_structure(file: Annotated[UploadFile, File(...)]) -> dict[st
                 "input_file": str(input_path),
                 "llm_output": llm_output,
                 "parsed_json": parsed_json,
+                **integration,
                 "ocr_artifacts": {
                     "job_dir": ocr_result["job_dir"],
                     "json_dir": ocr_result["json_dir"],
@@ -150,6 +185,7 @@ async def recognize_structure(file: Annotated[UploadFile, File(...)]) -> dict[st
         ],
         "llm_output": llm_output,
         "parsed_json": parsed_json,
+        **integration,
         "result_path": str(result_path),
     }
 
@@ -323,6 +359,7 @@ async def recognize_structure_stream(file: Annotated[UploadFile, File(...)]) -> 
 
             llm_output = "".join(llm_output_chunks)
             parsed_json = _try_parse_json(llm_output)
+            integration = _archive_ticket(parsed_json, input_path, ocr_result["job_dir"])
             result_path = Path(ocr_result["job_dir"]) / "llm_result.json"
             total_ms = _elapsed_ms(request_start)
             request_ended_at = _utc_now_iso()
@@ -338,6 +375,7 @@ async def recognize_structure_stream(file: Annotated[UploadFile, File(...)]) -> 
                         "input_file": str(input_path),
                         "llm_output": llm_output,
                         "parsed_json": parsed_json,
+                        **integration,
                         "ocr_artifacts": ocr_info["ocr_artifacts"],
                         "timing": timings,
                     },
@@ -363,6 +401,7 @@ async def recognize_structure_stream(file: Annotated[UploadFile, File(...)]) -> 
                     "type": "complete",
                     "llm_output": llm_output,
                     "parsed_json": parsed_json,
+                    **integration,
                     "result_path": str(result_path),
                     "timing": timings,
                 }
@@ -386,6 +425,69 @@ async def recognize_structure_stream(file: Annotated[UploadFile, File(...)]) -> 
             )
 
     return StreamingResponse(stream_generator(), media_type="text/event-stream")
+
+
+# Authenticated compatibility API for the original ticket/hazard integration.
+@app.post("/api/v1/parse_ticket")
+async def parse_ticket_compat(
+    file: Annotated[UploadFile, File(...)],
+    x_integration_token: Annotated[str | None, Header()] = None,
+    enable_hazard_sync: bool = False,
+    hazard_site_name: str | None = None,
+) -> dict[str, object]:
+    _require_integration_token(x_integration_token)
+    result = await recognize_structure(file)
+    record = result["ticket_record"]
+    sync_result = await sync_ticket_to_site(record, hazard_site_name) if enable_hazard_sync else None
+    return {
+        "success": True,
+        "ticket_id": record["ticket_id"],
+        "ticket_no": record["ticket_no"],
+        "entities": record["entities"],
+        "relationships": record["relationships"],
+        "structured_data": record["structured_data"],
+        "hazard_sync": sync_result,
+        "result_path": result["result_path"],
+    }
+
+
+@app.get("/api/v1/tickets/{ticket_no}")
+async def ticket_detail(
+    ticket_no: str,
+    x_integration_token: Annotated[str | None, Header()] = None,
+) -> dict[str, object]:
+    _require_integration_token(x_integration_token)
+    record = load_ticket_record(ticket_no)
+    if record is None:
+        raise HTTPException(status_code=404, detail="未找到该工作票")
+    return record
+
+
+@app.post("/api/v1/apply_ticket_to_site")
+async def apply_ticket_to_site(
+    request: TicketSyncRequest,
+    x_integration_token: Annotated[str | None, Header()] = None,
+) -> dict[str, object]:
+    _require_integration_token(x_integration_token)
+    record = load_ticket_record(request.ticket_no)
+    if record is None:
+        raise HTTPException(status_code=404, detail="未找到该工作票，请先完成识别")
+    result = await sync_ticket_to_site(record, request.site_name)
+    if not result.get("ok") and not result.get("skipped"):
+        raise HTTPException(status_code=502, detail=result)
+    return result
+
+
+@app.post("/api/v1/generate_violation_report")
+async def generate_violation_report(
+    request: ViolationReportRequest,
+    x_integration_token: Annotated[str | None, Header()] = None,
+) -> dict[str, object]:
+    _require_integration_token(x_integration_token)
+    record = load_ticket_record(request.ticket_no)
+    if record is None:
+        raise HTTPException(status_code=404, detail="未找到该工作票，请先完成识别")
+    return {"success": True, "report": build_local_violation_report(record, request.violation)}
 
 
 @app.post("/api/direct-vision-stream")
