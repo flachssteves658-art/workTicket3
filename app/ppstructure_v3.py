@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import json
+import os
 import shutil
+import threading
 import time
 import uuid
 from pathlib import Path
@@ -67,18 +69,37 @@ def _read_text_files(folder: Path, suffixes: tuple[str, ...]) -> list[dict[str, 
 
 
 _pipeline = None
+_pipeline_lock = threading.Lock()
 
 
 def _get_pipeline():
     global _pipeline
     if _pipeline is None:
+        # Paddle's oneDNN path is unstable on some Windows CPU/Python builds.
+        # Set these before importing PaddleOCR so the native runtime sees them.
+        if not settings.ocr_enable_mkldnn:
+            os.environ.setdefault("FLAGS_use_mkldnn", "0")
+        os.environ.setdefault("OMP_NUM_THREADS", str(settings.ocr_cpu_threads))
+        os.environ.setdefault("MKL_NUM_THREADS", str(settings.ocr_cpu_threads))
         try:
             from paddleocr import PPStructureV3
         except Exception as exc:
             raise RuntimeError(
                 "Cannot import PPStructureV3. Please install PaddleOCR 3.x and a compatible paddlepaddle build."
             ) from exc
-        _pipeline = PPStructureV3()
+        _pipeline = PPStructureV3(
+            device=settings.ocr_device,
+            enable_mkldnn=settings.ocr_enable_mkldnn,
+            cpu_threads=settings.ocr_cpu_threads,
+            text_detection_model_name=settings.ocr_text_detection_model,
+            text_recognition_model_name=settings.ocr_text_recognition_model,
+            use_doc_orientation_classify=settings.ocr_use_doc_orientation,
+            use_doc_unwarping=settings.ocr_use_doc_unwarping,
+            use_textline_orientation=settings.ocr_use_textline_orientation,
+            use_formula_recognition=settings.ocr_use_formula_recognition,
+            use_chart_recognition=settings.ocr_use_chart_recognition,
+            use_seal_recognition=settings.ocr_use_seal_recognition,
+        )
     return _pipeline
 
 
@@ -105,7 +126,10 @@ def run_ppstructure_v3(input_path: Path, output_root: Path) -> dict[str, Any]:
     timing["pipeline_load_ms"] = round((time.perf_counter() - pipeline_start) * 1000, 2)
 
     predict_start = time.perf_counter()
-    results = pipeline.predict(input=str(input_path))
+    # Paddle predictors are not thread-safe. Serialize inference and materialize
+    # the generator here so predict_call_ms measures the real native inference.
+    with _pipeline_lock:
+        results = list(pipeline.predict(input=str(input_path)))
     timing["predict_call_ms"] = round((time.perf_counter() - predict_start) * 1000, 2)
 
     pages: list[dict[str, Any]] = []

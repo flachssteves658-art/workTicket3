@@ -1,9 +1,11 @@
 fastapi==0.115.6
 uvicorn[standard]==0.32.1
 python-multipart==0.0.20
-httpx==0.28.1
+httpx[socks]==0.28.1
 pydantic==2.10.4
 python-dotenv==1.0.1
+openpyxl>=3.1.5
+xlrd>=2.0.1
 
 # PaddleOCR / PaddlePaddle are large and platform-sensitive.
 # Install them according to your CUDA/CPU environment if they are not already installed.

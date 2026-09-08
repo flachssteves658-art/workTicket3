@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>工作票智能识别台</title>
-    <link rel="stylesheet" href="/static/styles.css?v=20260810-1" />
+    <link rel="stylesheet" href="/static/styles.css?v=20260830-1" />
   </head>
   <body>
     <main class="app">
@@ -25,6 +25,7 @@
         <div class="mode-tabs" role="tablist" aria-label="识别模式">
           <button class="tab tab--active" type="button" data-tab="structure">结构化识别</button>
           <button class="tab" type="button" data-tab="vision">图片直传</button>
+          <button class="tab" type="button" data-tab="catalog">台账配置</button>
         </div>
 
         <section class="mode mode--active" id="mode-structure">
@@ -69,6 +70,27 @@
           <button class="primary-action" id="visionStreamBtn" type="button">
             开始批量识别
           </button>
+        </section>
+
+        <section class="mode" id="mode-catalog">
+          <div class="mode-copy">
+            <span>Asset Catalog</span>
+            <strong>导入设备与摄像头清单</strong>
+          </div>
+          <label class="catalog-field">
+            <span>摄像头清单（.xlsx）</span>
+            <input id="cameraCatalogFile" type="file" accept=".xlsx" />
+          </label>
+          <label class="catalog-field">
+            <span>设备清单（.xls）</span>
+            <input id="equipmentCatalogFile" type="file" accept=".xls" />
+          </label>
+          <label class="catalog-field">
+            <span>集成令牌</span>
+            <input id="catalogToken" type="password" autocomplete="off" placeholder="与 .env 中 HAZARD_INTEGRATION_TOKEN 一致" />
+          </label>
+          <button class="primary-action" id="catalogImportBtn" type="button">导入并建立匹配目录</button>
+          <p class="catalog-status" id="catalogStatus">尚未检查台账状态</p>
         </section>
       </aside>
 
@@ -115,6 +137,37 @@
           <div class="batch-list" id="batchList"></div>
         </section>
 
+        <section class="asset-panel" id="assetPanel" hidden aria-live="polite">
+          <div class="asset-panel__head">
+            <div>
+              <p class="kicker">Ticket → Equipment → Camera → AI</p>
+              <h3>工作票设备与摄像头匹配</h3>
+            </div>
+            <span id="assetMatchSummary">等待识别结果</span>
+          </div>
+          <div class="ticket-camera-summary">
+            <article>
+              <span>识别工作地点</span>
+              <strong id="recognizedWorkLocation">--</strong>
+            </article>
+            <article>
+              <span>匹配摄像头 IP</span>
+              <strong id="matchedCameraIps">--</strong>
+            </article>
+          </div>
+          <div class="asset-toolbar">
+            <label class="asset-token-field">
+              <span>集成令牌</span>
+              <input id="taskToken" type="password" autocomplete="off" placeholder="与两个项目 .env 中的集成令牌一致" />
+            </label>
+            <button class="ghost-action" id="loadStreamsBtn" type="button">加载可用视频流</button>
+            <button class="primary-action asset-confirm" id="confirmCamerasBtn" type="button">确认摄像头并启动 AI 检测</button>
+            <button class="ghost-action" id="cancelTaskBtn" type="button">取消任务</button>
+          </div>
+          <p class="asset-message" id="assetMessage">先核对候选摄像头；自动匹配项已默认勾选。</p>
+          <div class="camera-match-list" id="cameraMatchList"></div>
+        </section>
+
         <section class="work-area">
           <article class="timeline-panel">
             <div class="panel-head">
@@ -143,6 +196,6 @@
     </main>
 
     <div class="toast" id="toast"></div>
-    <script src="/static/app.js?v=20260810-1"></script>
+    <script src="/static/app.js?v=20260908-1"></script>
   </body>
 </html>

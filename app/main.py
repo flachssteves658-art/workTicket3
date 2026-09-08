@@ -1,12 +1,15 @@
 from __future__ import annotations
 
+import hmac
 import json
 import re
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Annotated
+from uuid import uuid4
 
+import httpx
 from fastapi import FastAPI, File, Form, Header, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, StreamingResponse
@@ -21,6 +24,17 @@ from app.llm_stream import (
     direct_vision_extract_stream,
 )
 from app.ppstructure_v3 import run_ppstructure_v3, safe_filename, save_upload_file
+from app.asset_database_client import (
+    bind_camera_streams,
+    cancel_detection_task as cancel_detection_task_remote,
+    catalog_status,
+    confirm_cameras,
+    import_catalogs,
+    list_stream_options,
+    load_detection_task,
+    load_match_result,
+    match_ticket_assets,
+)
 from app.ticket_integration import (
     build_local_violation_report,
     build_ticket_record,
@@ -79,17 +93,58 @@ def _sse(payload: dict[str, object]) -> str:
     return f"data: {json.dumps(payload, ensure_ascii=False)}\n\n"
 
 
-def _archive_ticket(parsed_json: object | None, input_path: Path, job_dir: str) -> dict[str, object]:
+async def _archive_ticket(parsed_json: object | None, input_path: Path, job_dir: str) -> dict[str, object]:
     record = build_ticket_record(parsed_json, str(input_path), Path(job_dir).name)
+    try:
+        asset_matching = await match_ticket_assets(record)
+    except httpx.HTTPStatusError as exc:
+        try:
+            detail = exc.response.json().get("detail", str(exc))
+        except Exception:
+            detail = str(exc)
+        asset_matching = {
+            "status": (
+                "match_conflict"
+                if exc.response.status_code == 409
+                else "database_unavailable"
+            ),
+            "storage": "mysql",
+            "message": detail,
+        }
+    except Exception as exc:
+        asset_matching = {
+            "status": "database_unavailable",
+            "storage": "mysql",
+            "message": str(exc),
+        }
+    record["asset_matching"] = asset_matching
     record_path = save_ticket_record(record)
-    return {"ticket_record": record, "ticket_record_path": str(record_path)}
+    return {
+        "ticket_record": record,
+        "ticket_record_path": str(record_path),
+        "asset_matching": asset_matching,
+    }
 
 
 def _require_integration_token(token: str | None) -> None:
     if not settings.hazard_integration_token:
         raise HTTPException(status_code=503, detail="服务端尚未配置 HAZARD_INTEGRATION_TOKEN")
-    if token != settings.hazard_integration_token:
+    if not token or not hmac.compare_digest(token, settings.hazard_integration_token):
         raise HTTPException(status_code=401, detail="无效的集成令牌")
+
+
+def _raise_upstream_error(exc: httpx.HTTPError) -> None:
+    if isinstance(exc, httpx.HTTPStatusError):
+        try:
+            payload = exc.response.json()
+            detail = payload.get("detail", str(exc))
+        except Exception:
+            detail = str(exc)
+        raise HTTPException(
+            status_code=exc.response.status_code,
+            detail=detail,
+        ) from exc
+    raise HTTPException(status_code=502, detail=str(exc)) from exc
 
 
 class TicketSyncRequest(BaseModel):
@@ -100,6 +155,20 @@ class TicketSyncRequest(BaseModel):
 class ViolationReportRequest(BaseModel):
     ticket_no: str
     violation: dict[str, object] = Field(default_factory=dict)
+
+
+class CameraConfirmationRequest(BaseModel):
+    camera_ids: list[str] = Field(min_length=1)
+
+
+class CameraStreamBinding(BaseModel):
+    camera_id: str = Field(min_length=1, max_length=80)
+    stream_config_id: int | None = Field(default=None, ge=1)
+
+
+class CameraStreamBindingRequest(BaseModel):
+    bindings: list[CameraStreamBinding] = Field(min_length=1)
+    allow_station_mismatch: bool = False
 
 
 @app.get("/")
@@ -116,6 +185,7 @@ async def health() -> dict[str, object]:
         "output_dir": str(settings.output_dir),
         "ticket_store_dir": str(settings.ticket_store_dir),
         "hazard_sync_configured": bool(settings.hazard_integration_token),
+        "asset_catalog": await catalog_status(),
         "config_debug": {
             "llm_api_key_configured": bool(settings.llm_api_key),
             "llm_base_url": settings.llm_base_url,
@@ -126,6 +196,39 @@ async def health() -> dict[str, object]:
             "llm_timeout_seconds": settings.llm_timeout_seconds,
         }
     }
+
+
+@app.get("/api/catalog/status")
+async def asset_catalog_status() -> dict[str, object]:
+    return await catalog_status()
+
+
+@app.post("/api/catalog/import")
+async def import_asset_catalog(
+    camera_file: Annotated[UploadFile, File(...)],
+    equipment_file: Annotated[UploadFile, File(...)],
+    x_integration_token: Annotated[str | None, Header()] = None,
+) -> dict[str, object]:
+    _require_integration_token(x_integration_token)
+    import_dir = settings.catalog_dir / "_imports" / uuid4().hex
+    import_dir.mkdir(parents=True, exist_ok=True)
+    camera_path = import_dir / safe_filename(camera_file.filename or "cameras.xlsx")
+    equipment_path = import_dir / safe_filename(equipment_file.filename or "equipment.xls")
+    try:
+        save_upload_file(camera_file.file, camera_path)
+        save_upload_file(equipment_file.file, equipment_path)
+        result = await import_catalogs(camera_path, equipment_path)
+    except httpx.HTTPError as exc:
+        _raise_upstream_error(exc)
+    except Exception as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    finally:
+        await camera_file.close()
+        await equipment_file.close()
+        camera_path.unlink(missing_ok=True)
+        equipment_path.unlink(missing_ok=True)
+        import_dir.rmdir()
+    return {"success": True, **result}
 
 
 @app.post("/api/recognize-structure")
@@ -147,7 +250,7 @@ async def recognize_structure(file: Annotated[UploadFile, File(...)]) -> dict[st
         raise HTTPException(status_code=500, detail=str(exc)) from exc
 
     parsed_json = _try_parse_json(llm_output)
-    integration = _archive_ticket(parsed_json, input_path, ocr_result["job_dir"])
+    integration = await _archive_ticket(parsed_json, input_path, ocr_result["job_dir"])
 
     result_path = Path(ocr_result["job_dir"]) / "llm_result.json"
     result_path.write_text(
@@ -359,7 +462,7 @@ async def recognize_structure_stream(file: Annotated[UploadFile, File(...)]) -> 
 
             llm_output = "".join(llm_output_chunks)
             parsed_json = _try_parse_json(llm_output)
-            integration = _archive_ticket(parsed_json, input_path, ocr_result["job_dir"])
+            integration = await _archive_ticket(parsed_json, input_path, ocr_result["job_dir"])
             result_path = Path(ocr_result["job_dir"]) / "llm_result.json"
             total_ms = _elapsed_ms(request_start)
             request_ended_at = _utc_now_iso()
@@ -461,6 +564,105 @@ async def ticket_detail(
     if record is None:
         raise HTTPException(status_code=404, detail="未找到该工作票")
     return record
+
+
+@app.post("/api/v1/tickets/{ticket_no}/match-assets")
+async def rematch_ticket_assets(
+    ticket_no: str,
+    x_integration_token: Annotated[str | None, Header()] = None,
+) -> dict[str, object]:
+    _require_integration_token(x_integration_token)
+    record = load_ticket_record(ticket_no)
+    if record is None:
+        raise HTTPException(status_code=404, detail="未找到该工作票")
+    result = await match_ticket_assets(record)
+    record["asset_matching"] = result
+    save_ticket_record(record)
+    return result
+
+
+@app.get("/api/v1/tickets/{ticket_no}/asset-matches")
+async def ticket_asset_matches(
+    ticket_no: str,
+    x_integration_token: Annotated[str | None, Header()] = None,
+) -> dict[str, object]:
+    _require_integration_token(x_integration_token)
+    result = await load_match_result(ticket_no)
+    if result is None:
+        raise HTTPException(status_code=404, detail="尚未生成设备和摄像头匹配结果")
+    return result
+
+
+@app.post("/api/v1/tickets/{ticket_no}/confirm-cameras")
+async def confirm_ticket_cameras(
+    ticket_no: str,
+    request: CameraConfirmationRequest,
+    x_integration_token: Annotated[str | None, Header()] = None,
+) -> dict[str, object]:
+    _require_integration_token(x_integration_token)
+    try:
+        task = await confirm_cameras(ticket_no, request.camera_ids)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except httpx.HTTPError as exc:
+        _raise_upstream_error(exc)
+    return {"success": True, "detection_task": task}
+
+
+@app.get("/api/v1/stream-options")
+async def stream_options(
+    x_integration_token: Annotated[str | None, Header()] = None,
+) -> dict[str, object]:
+    _require_integration_token(x_integration_token)
+    try:
+        return await list_stream_options()
+    except httpx.HTTPError as exc:
+        _raise_upstream_error(exc)
+
+
+@app.post("/api/v1/cameras/bind-streams")
+async def bind_ticket_camera_streams(
+    request: CameraStreamBindingRequest,
+    x_integration_token: Annotated[str | None, Header()] = None,
+) -> dict[str, object]:
+    _require_integration_token(x_integration_token)
+    try:
+        return await bind_camera_streams(
+            [binding.model_dump() for binding in request.bindings],
+            request.allow_station_mismatch,
+        )
+    except httpx.HTTPError as exc:
+        _raise_upstream_error(exc)
+
+
+@app.get("/api/v1/tickets/{ticket_no}/detection-task")
+async def ticket_detection_task(
+    ticket_no: str,
+    x_integration_token: Annotated[str | None, Header()] = None,
+) -> dict[str, object]:
+    _require_integration_token(x_integration_token)
+    try:
+        task = await load_detection_task(ticket_no)
+    except httpx.HTTPError as exc:
+        _raise_upstream_error(exc)
+    if task is None:
+        raise HTTPException(status_code=404, detail="尚未生成AI检测任务")
+    return task
+
+
+@app.post("/api/v1/tickets/{ticket_no}/cancel-detection-task")
+async def cancel_ticket_detection_task(
+    ticket_no: str,
+    x_integration_token: Annotated[str | None, Header()] = None,
+) -> dict[str, object]:
+    _require_integration_token(x_integration_token)
+    try:
+        task = await cancel_detection_task_remote(ticket_no)
+    except httpx.HTTPError as exc:
+        _raise_upstream_error(exc)
+    if task is None:
+        raise HTTPException(status_code=404, detail="尚未生成AI检测任务")
+    return {"success": True, "detection_task": task}
 
 
 @app.post("/api/v1/apply_ticket_to_site")

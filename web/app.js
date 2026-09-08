@@ -15,6 +15,8 @@ const state = {
   lastText: "{}",
   timeline: new Map(),
   runClock: null,
+  assetResult: null,
+  streamOptions: [],
 };
 
 const metricEls = {
@@ -40,6 +42,267 @@ function setResult(value) {
   const text = typeof value === "string" ? value : JSON.stringify(value, null, 2);
   state.lastText = text;
   $("#result").textContent = text || "{}";
+}
+
+function normalizeName(value) {
+  return String(value || "").toUpperCase().replace(/[\s:：,，。;；()（）\-_/]/g, "");
+}
+
+function extractAssetMatch(value) {
+  if (!value || typeof value !== "object") return null;
+  if (value.asset_matching) return value.asset_matching;
+  if (value.ticket_record?.asset_matching) return value.ticket_record.asset_matching;
+  if (Array.isArray(value.camera_matches)) return value;
+  return null;
+}
+
+function displayField(value) {
+  if (Array.isArray(value)) return value.filter(Boolean).join("；");
+  if (value && typeof value === "object") return JSON.stringify(value);
+  return String(value || "").trim();
+}
+
+function renderAssetMatches(value) {
+  const panel = $("#assetPanel");
+  const list = $("#cameraMatchList");
+  const match = extractAssetMatch(value);
+  if (!match) {
+    state.assetResult = null;
+    panel.hidden = true;
+    list.innerHTML = "";
+    $("#recognizedWorkLocation").textContent = "--";
+    $("#matchedCameraIps").textContent = "--";
+    return;
+  }
+
+  const ticketNo = match.ticket_no || value?.ticket_no || value?.ticket_id || "";
+  const cameras = Array.isArray(match.camera_matches) ? match.camera_matches : [];
+  const equipment = Array.isArray(match.equipment_matches) ? match.equipment_matches : [];
+  state.assetResult = { ticketNo, match, cameras };
+  panel.hidden = false;
+  const workLocation = displayField(
+    match.work_location
+      || value?.structured_data?.work_location
+      || value?.ticket_record?.structured_data?.work_location,
+  );
+  const cameraIps = [...new Set(cameras.map((camera) => camera.ip_address).filter(Boolean))];
+  $("#recognizedWorkLocation").textContent = workLocation || "未识别到工作地点";
+  $("#matchedCameraIps").textContent = cameraIps.length
+    ? cameraIps.join("、")
+    : "匹配结果中尚未填写IP";
+  $("#assetMatchSummary").textContent = match.status === "database_unavailable"
+    ? "数据库连接失败"
+    : `设备 ${equipment.length} 条 · 摄像头候选 ${cameras.length} 个`;
+  $("#assetMessage").textContent = match.message
+    || (cameras.length
+      ? "先核对候选摄像头；自动匹配项已默认勾选。"
+      : "没有匹配到摄像头，请检查台账、站点名称和工作地点。 ");
+  list.innerHTML = "";
+
+  cameras.forEach((camera) => {
+    const row = document.createElement("article");
+    row.className = "camera-match";
+    row.dataset.cameraId = camera.camera_id || "";
+    row.dataset.stationName = camera.station_name || match.station_name || "";
+    row.dataset.decision = camera.decision || "candidate";
+
+    const identity = document.createElement("label");
+    identity.className = "camera-match__identity";
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "camera-match__check";
+    checkbox.checked = Boolean(camera.confirmed) || camera.decision === "auto_matched";
+    const identityText = document.createElement("span");
+    const identityTitle = document.createElement("strong");
+    identityTitle.textContent = `${camera.camera_id || "未编号"} · ${camera.ip_address || "IP未填写"} · ${Math.round(Number(camera.confidence || 0) * 100)}%`;
+    const identityMeta = document.createElement("small");
+    identityMeta.textContent = camera.decision === "auto_matched" ? "自动匹配" : "需要人工确认";
+    identityText.append(identityTitle, identityMeta);
+    identity.append(checkbox, identityText);
+
+    const detail = document.createElement("div");
+    detail.className = "camera-match__detail";
+    const location = document.createElement("strong");
+    location.textContent = `安装位置：${camera.install_location || "未填写"}`;
+    const reasons = document.createElement("small");
+    reasons.textContent = Array.isArray(camera.reasons) && camera.reasons.length
+      ? camera.reasons.join("；")
+      : `站点：${camera.station_name || match.station_name || "未知"}`;
+    const monitorArea = document.createElement("small");
+    monitorArea.textContent = `监控区域：${camera.monitor_area || "未填写"}`;
+    detail.append(location, monitorArea, reasons);
+
+    const select = document.createElement("select");
+    select.className = "camera-match__stream";
+    select.dataset.currentStreamId = camera.stream_config_id || "";
+    const placeholder = document.createElement("option");
+    placeholder.value = camera.stream_config_id ? String(camera.stream_config_id) : "";
+    placeholder.textContent = camera.stream_config_id
+      ? `当前绑定：视频流 #${camera.stream_config_id}`
+      : camera.ip_address
+        ? "确认后根据IP自动创建视频流"
+        : "IP未填写，无法创建视频流";
+    select.appendChild(placeholder);
+
+    row.append(identity, detail, select);
+    list.appendChild(row);
+  });
+}
+
+function integrationToken() {
+  return $("#taskToken").value.trim() || $("#catalogToken").value.trim();
+}
+
+async function responseJson(resp, fallback) {
+  const data = await resp.json().catch(() => ({}));
+  if (!resp.ok) {
+    const detail = typeof data.detail === "string"
+      ? data.detail
+      : JSON.stringify(data.detail || data || fallback);
+    throw new Error(detail || fallback);
+  }
+  return data;
+}
+
+async function loadStreamOptionsForMatches() {
+  const token = integrationToken();
+  if (!token) {
+    showToast("请输入集成令牌");
+    return;
+  }
+  const button = $("#loadStreamsBtn");
+  button.disabled = true;
+  try {
+    const resp = await fetch("/api/v1/stream-options", {
+      headers: { "X-Integration-Token": token },
+    });
+    const data = await responseJson(resp, "加载视频流失败");
+    state.streamOptions = Array.isArray(data.streams) ? data.streams : [];
+
+    $$(".camera-match").forEach((row) => {
+      const select = row.querySelector(".camera-match__stream");
+      const currentId = String(select.dataset.currentStreamId || "");
+      const cameraStation = normalizeName(row.dataset.stationName);
+      select.innerHTML = "";
+      const empty = document.createElement("option");
+      empty.value = "";
+      empty.textContent = "不绑定视频流";
+      select.appendChild(empty);
+      let sameStationCount = 0;
+      state.streamOptions.forEach((stream) => {
+        const option = document.createElement("option");
+        option.value = String(stream.stream_config_id);
+        const sameStation = cameraStation === normalizeName(stream.station_name);
+        if (sameStation) sameStationCount += 1;
+        option.disabled = !sameStation && option.value !== currentId;
+        option.textContent = `${stream.station_name} / ${stream.stream_name} (#${stream.stream_config_id})${sameStation ? "" : " - 站点不一致"}`;
+        option.selected = option.value === currentId;
+        select.appendChild(option);
+      });
+      if (!sameStationCount && !currentId) {
+        empty.textContent = "无同站点视频流，请先在智能安监中新增";
+      }
+    });
+    $("#assetMessage").textContent = `已加载 ${state.streamOptions.length} 条视频流；只能选择与摄像头同站点的流。`;
+  } catch (error) {
+    $("#assetMessage").textContent = error instanceof Error ? error.message : String(error);
+  } finally {
+    button.disabled = false;
+  }
+}
+
+async function confirmMatchedCameras() {
+  const token = integrationToken();
+  const ticketNo = state.assetResult?.ticketNo;
+  if (!token) {
+    showToast("请输入集成令牌");
+    return;
+  }
+  if (!ticketNo) {
+    showToast("当前识别结果没有工作票编号");
+    return;
+  }
+  const selectedRows = $$(".camera-match").filter(
+    (row) => row.querySelector(".camera-match__check")?.checked,
+  );
+  if (!selectedRows.length) {
+    showToast("请至少勾选一个摄像头");
+    return;
+  }
+
+  const button = $("#confirmCamerasBtn");
+  button.disabled = true;
+  try {
+    const bindings = selectedRows
+      .map((row) => ({
+        camera_id: row.dataset.cameraId,
+        stream_config_id: Number(row.querySelector(".camera-match__stream")?.value || 0) || null,
+      }))
+      .filter((binding) => binding.stream_config_id !== null);
+    if (bindings.length) {
+      const bindResp = await fetch("/api/v1/cameras/bind-streams", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Integration-Token": token,
+        },
+        body: JSON.stringify({ bindings, allow_station_mismatch: false }),
+      });
+      await responseJson(bindResp, "摄像头与视频流绑定失败");
+    }
+
+    const cameraIds = selectedRows.map((row) => row.dataset.cameraId);
+    const resp = await fetch(
+      `/api/v1/tickets/${encodeURIComponent(ticketNo)}/confirm-cameras`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Integration-Token": token,
+        },
+        body: JSON.stringify({ camera_ids: cameraIds }),
+      },
+    );
+    const data = await responseJson(resp, "生成AI检测任务失败");
+    const task = data.detection_task || data;
+    $("#assetMessage").textContent = `任务 #${task.task_id}：${task.message}`;
+    const runnable = task.status === "active" || task.status === "scheduled";
+    showToast(
+      runnable
+        ? "AI检测任务已就绪"
+        : task.status === "expired"
+          ? "历史任务已保存"
+          : "任务已保存，仍需绑定视频流",
+    );
+  } catch (error) {
+    $("#assetMessage").textContent = error instanceof Error ? error.message : String(error);
+    showToast("生成AI检测任务失败");
+  } finally {
+    button.disabled = false;
+  }
+}
+
+async function cancelCurrentDetectionTask() {
+  const token = integrationToken();
+  const ticketNo = state.assetResult?.ticketNo;
+  if (!token || !ticketNo) {
+    showToast("需要工作票编号和集成令牌");
+    return;
+  }
+  try {
+    const resp = await fetch(
+      `/api/v1/tickets/${encodeURIComponent(ticketNo)}/cancel-detection-task`,
+      {
+        method: "POST",
+        headers: { "X-Integration-Token": token },
+      },
+    );
+    const data = await responseJson(resp, "取消任务失败");
+    $("#assetMessage").textContent = data.detection_task?.message || "任务已取消";
+    showToast("AI检测任务已取消");
+  } catch (error) {
+    $("#assetMessage").textContent = error instanceof Error ? error.message : String(error);
+  }
 }
 
 function setRunBadge(text, tone = "idle") {
@@ -97,6 +360,7 @@ function resetRun(modeLabel, mode) {
   setRunBadge(modeLabel, "running");
   setStatus("请求已提交，等待服务端返回步骤事件");
   setResult("");
+  renderAssetMatches(null);
 }
 
 function setMetric(name, value, stateName = "done") {
@@ -429,12 +693,16 @@ function showBatchJob(job) {
 
   if (job.status === "done") {
     setResult(job.result);
+    renderAssetMatches(job.result);
   } else if (job.status === "error") {
     setResult({ file: job.file.name, error: job.error });
+    renderAssetMatches(null);
   } else if (job.partialOutput) {
     setResult(job.partialOutput);
+    renderAssetMatches(null);
   } else {
     setResult({ file: job.file.name, status: batchStatusLabel(job.status) });
+    renderAssetMatches(null);
   }
 }
 
@@ -512,7 +780,10 @@ async function processStructureJob(job) {
       receivedComplete = true;
       applyTimingSummary(msg.timing);
       finalResult = msg.ticket_record ?? msg.parsed_json ?? msg.llm_output ?? job.partialOutput;
-      if (state.activeJobId === job.id) setResult(finalResult);
+      if (state.activeJobId === job.id) {
+        setResult(finalResult);
+        renderAssetMatches(finalResult);
+      }
     }
     if (msg.type === "error") {
       applyTimingSummary(msg.timing);
@@ -634,6 +905,16 @@ async function runVisionStream() {
 function bindActions() {
   $("#structureStreamBtn").addEventListener("click", runStructureStream);
   $("#visionStreamBtn").addEventListener("click", runVisionStream);
+  $("#catalogImportBtn").addEventListener("click", importCatalogs);
+  $("#loadStreamsBtn").addEventListener("click", loadStreamOptionsForMatches);
+  $("#confirmCamerasBtn").addEventListener("click", confirmMatchedCameras);
+  $("#cancelTaskBtn").addEventListener("click", cancelCurrentDetectionTask);
+  $("#catalogToken").addEventListener("input", (event) => {
+    $("#taskToken").value = event.target.value;
+  });
+  $("#taskToken").addEventListener("input", (event) => {
+    $("#catalogToken").value = event.target.value;
+  });
   $("#batchList").addEventListener("click", (event) => {
     const item = event.target.closest("[data-job-id]");
     if (!item) return;
@@ -648,6 +929,54 @@ function bindActions() {
       showToast("复制失败，请手动选择结果");
     }
   });
+}
+
+async function refreshCatalogStatus() {
+  try {
+    const resp = await fetch("/api/catalog/status");
+    const data = await resp.json();
+    $("#catalogStatus").textContent = data.ready
+      ? `目录已就绪：设备 ${data.equipment_count} 条，摄像头 ${data.camera_count} 条${data.imported_at ? `；导入时间 ${formatTime(data.imported_at)}` : ""}`
+      : data.message || "尚未导入台账";
+  } catch {
+    $("#catalogStatus").textContent = "无法读取台账状态";
+  }
+}
+
+async function importCatalogs() {
+  const camera = $("#cameraCatalogFile").files[0];
+  const equipment = $("#equipmentCatalogFile").files[0];
+  const token = $("#catalogToken").value.trim();
+  if (!camera || !equipment) {
+    showToast("请选择摄像头清单和设备清单");
+    return;
+  }
+  if (!token) {
+    showToast("请输入集成令牌");
+    return;
+  }
+  const button = $("#catalogImportBtn");
+  button.disabled = true;
+  $("#catalogStatus").textContent = "正在导入并建立目录…";
+  const form = new FormData();
+  form.append("camera_file", camera);
+  form.append("equipment_file", equipment);
+  try {
+    const resp = await fetch("/api/catalog/import", {
+      method: "POST",
+      headers: { "X-Integration-Token": token },
+      body: form,
+    });
+    const data = await resp.json();
+    if (!resp.ok) throw new Error(data.detail || "导入失败");
+    $("#catalogStatus").textContent = `导入成功：设备 ${data.equipment_count} 条，摄像头 ${data.camera_count} 条`;
+    showToast("台账导入成功，后续识别将自动匹配");
+  } catch (error) {
+    $("#catalogStatus").textContent = error instanceof Error ? error.message : String(error);
+    showToast("台账导入失败");
+  } finally {
+    button.disabled = false;
+  }
 }
 
 async function checkHealth() {
@@ -686,3 +1015,4 @@ bindDropzone(
 );
 bindActions();
 checkHealth();
+refreshCatalogStatus();

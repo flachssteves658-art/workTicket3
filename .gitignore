@@ -6,3 +6,10 @@ storage/uploads/*
 storage/outputs/*
 !storage/uploads/.gitkeep
 !storage/outputs/.gitkeep
+storage/catalog/*.json
+storage/matches/*.json
+!storage/catalog/.gitkeep
+!storage/matches/.gitkeep
+
+# Local launcher process IDs and logs
+.launcher/
