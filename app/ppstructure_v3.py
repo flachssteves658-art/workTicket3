@@ -174,14 +174,8 @@ def run_ppstructure_v3(input_path: Path, output_root: Path) -> dict[str, Any]:
     llm_input_parts: list[str] = []
     for item in markdown_files:
         llm_input_parts.append(f"\n\n## Markdown: {item['name']}\n\n{item['content']}")
-    for item in json_files:
-        content = item["content"]
-        if len(content) > 20000:
-            content = content[:20000] + "\n...[truncated]"
-        llm_input_parts.append(f"\n\n## JSON: {item['name']}\n\n{content}")
-
     if not llm_input_parts:
-        llm_input_parts.append(json.dumps({"pages": pages}, ensure_ascii=False, indent=2)[:60000])
+        raise RuntimeError("OCR 未生成 Markdown 文本，无法进行大模型抽取。请确认 OCR_SAVE_MARKDOWN 已开启。")
 
     return {
         "job_dir": str(job_dir),
