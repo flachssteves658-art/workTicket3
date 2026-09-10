@@ -92,7 +92,7 @@ def image_to_data_url(path: Path) -> str:
     return f"data:{mime};base64,{encoded}"
 
 
-async def extract_work_ticket(markdown_and_json: str) -> str:
+def build_work_ticket_messages(markdown_and_json: str) -> list[dict[str, str]]:
     prompt = f"""
 你是一个工作票信息结构化助手。
 
@@ -108,6 +108,8 @@ async def extract_work_ticket(markdown_and_json: str) -> str:
 5. 保留关键字段的 OCR 原文证据。
 6. 如果字段冲突、模糊或识别质量差，放入 uncertain_fields。
 7. 表格内容不要丢失，放入 tables 字段。
+8. 必须使用下面的英文键名，不要用中文表头替换键名。ticket_no 保留前导零。
+9. station_name 是变电站名称；work_location 是具体工作地点或地段，多个地点用分号分隔，不能丢失。
 
 目标 JSON：
 
@@ -118,6 +120,7 @@ async def extract_work_ticket(markdown_and_json: str) -> str:
   "work_team": null,
   "work_leader": null,
   "work_members": [],
+  "station_name": null,
   "work_location": null,
   "work_content": null,
   "planned_start_time": null,
@@ -144,11 +147,15 @@ OCR 内容如下：
 {markdown_and_json}
 """.strip()
 
-    return await call_chat_completion(
-        messages=[
+    return [
             {"role": "system", "content": "你擅长从中文工作票 OCR 结果中抽取可靠的结构化字段。"},
             {"role": "user", "content": prompt},
-        ],
+        ]
+
+
+async def extract_work_ticket(markdown_and_json: str) -> str:
+    return await call_chat_completion(
+        messages=build_work_ticket_messages(markdown_and_json),
         model=settings.llm_model,
     )
 

@@ -58,8 +58,43 @@ def _safe_id(value: str) -> str:
     return cleaned[:120] or "unnamed_ticket"
 
 
+def normalize_ticket_fields(parsed: object | None) -> dict[str, Any]:
+    """Preserve source fields while adapting Chinese form labels to the API schema."""
+    data = dict(parsed) if isinstance(parsed, dict) else {}
+    aliases = {
+        "ticket_no": ("编号", "工作票编号"),
+        "ticket_type": ("工作票类型",),
+        "work_unit": ("单位", "工作单位"),
+        "work_team": ("班组",),
+        "work_leader": ("工作负责人（监护人）", "工作负责人"),
+        "work_members": ("工作班人员（不包括工作负责人）", "工作班人员"),
+        "station_name": ("变电站名称", "工作的变、配电站名称及设备双重名称", "site_name"),
+        "work_location": ("工作地点或地段", "工作地点"),
+        "work_content": ("工作内容",),
+        "safety_measures": ("注意事项（安全措施）", "安全措施"),
+    }
+    for field, names in aliases.items():
+        if not _values(data.get(field)):
+            for name in names:
+                if _values(data.get(name)):
+                    data[field] = data[name]
+                    break
+
+    tasks = data.get("工作任务", [])
+    if isinstance(tasks, dict):
+        tasks = [tasks]
+    if isinstance(tasks, list):
+        for field, source in (("work_location", "工作地点或地段"), ("work_content", "工作内容")):
+            if not _values(data.get(field)):
+                values = [text for task in tasks if isinstance(task, dict)
+                          for text in _values(task.get(source))]
+                if values:
+                    data[field] = "；".join(dict.fromkeys(values))
+    return data
+
+
 def build_ticket_record(parsed: object | None, input_file: str, fallback_id: str) -> dict[str, Any]:
-    data = parsed if isinstance(parsed, dict) else {}
+    data = normalize_ticket_fields(parsed)
     uncertain = set(_values(data.get("uncertain_fields")))
     ticket_no = next(iter(_values(data.get("ticket_no"))), "")
     ticket_id = ticket_no or fallback_id
@@ -91,7 +126,8 @@ def build_ticket_record(parsed: object | None, input_file: str, fallback_id: str
     return {
         "ticket_id": ticket_id,
         "ticket_no": ticket_no or None,
-        "site_name": next(iter(_values(data.get("work_location"))), None),
+        "site_name": next(iter(_values(data.get("station_name"))), None)
+        or next(iter(_values(data.get("work_location"))), None),
         "planned_start_time": next(iter(_values(data.get("planned_start_time"))), None),
         "planned_end_time": next(iter(_values(data.get("planned_end_time"))), None),
         "structured_data": data,

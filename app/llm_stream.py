@@ -13,6 +13,7 @@ from app.llm_client import (
     image_to_data_url,
     _ensure_configured,
     _first_configured_api_key,
+    build_work_ticket_messages,
 )
 
 
@@ -78,27 +79,8 @@ async def call_chat_completion_stream(
 
 async def extract_work_ticket_stream(markdown_and_json: str):
     """Stream work ticket extraction."""
-    prompt = f"""你是一个工作票信息结构化助手。
-
-下面内容来自 PaddleOCR PPStructureV3 对工作票的识别结果，包括 Markdown 文本、表格和页码信息。
-
-请根据 OCR 内容整理为指定 JSON。
-
-要求：
-1. 只输出 JSON，不要输出 Markdown，不要解释。
-2. 不要编造信息。
-3. 无法确定的字段填 null。
-
-OCR 内容如下：
-
-{markdown_and_json}
-""".strip()
-
     async for chunk in call_chat_completion_stream(
-        messages=[
-            {"role": "system", "content": "你擅长从中文工作票 OCR 结果中抽取可靠的结构化字段。"},
-            {"role": "user", "content": prompt},
-        ],
+        messages=build_work_ticket_messages(markdown_and_json),
         model=settings.llm_model,
     ):
         yield chunk
