@@ -1,0 +1,53 @@
+{
+  "ticket_id": "test_7b123526",
+  "ticket_no": null,
+  "site_name": null,
+  "planned_start_time": null,
+  "planned_end_time": null,
+  "structured_data": {
+    "工作票类型": "变电站（发电厂）第二种工作票",
+    "单位": "牡丹江电业局继电保护所",
+    "编号": "0201076",
+    "工作负责人（监护人）": "赵博",
+    "班组": "继电保护一班",
+    "工作班人员（不包括工作负责人）": [
+      "白彦博"
+    ],
+    "工作班人员共几人": null,
+    "工作的变、配电站名称及设备双重名称": "110kV长汀变电站",
+    "工作任务": [
+      {
+        "工作地点或地段": "110kV长红线保护测控屏",
+        "工作内容": "相位测量"
+      },
+      {
+        "工作地点或地段": "110kV母线保护屏",
+        "工作内容": "相位测量"
+      }
+    ],
+    "计划工作时间": "自22010年12月20日10时00分至2010年12月20日19时00分",
+    "工作条件（停电或不停电，或邻近及保留带电设备名称）": "不停电；相邻的UPS馈线屏、变压器保护屏、电压并列屏、电池柜、消弧线圈屏均在运行中。",
+    "注意事项（安全措施）": "1、在110kV长红线保护测控屏、110kV母线保护屏前后分别悬挂“在此工作”标示牌；2、在相邻的UPS馈线屏、变压器保护屏、电压并列屏前后、电池柜、消弧线圈屏前分别悬挂“运行中”红布慢；3、工作中严禁CT二次回路开路，PT二次及直流回路短路、接地；4、工作中严禁误动、误碰运行设备：5、工作中使用绝缘工具、做好监护。",
+    "页码": null,
+    "总页数": null
+  },
+  "entities": [],
+  "relationships": [],
+  "source_file": "D:\\work\\workTicket3\\storage\\uploads\\test_7b123526.png",
+  "created_at": "2026-09-10T09:43:38+00:00",
+  "asset_matching": {
+    "status": "needs_manual_mapping",
+    "storage": "mysql",
+    "ticket_no": "test_7b123526",
+    "station_name": null,
+    "work_location": null,
+    "equipment_matches": [],
+    "camera_matches": [],
+    "summary": {
+      "equipment_count": 0,
+      "camera_count": 0,
+      "auto_matched_camera_count": 0,
+      "needs_confirmation": false
+    }
+  }
+}

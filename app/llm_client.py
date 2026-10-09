@@ -92,11 +92,13 @@ def image_to_data_url(path: Path) -> str:
     return f"data:{mime};base64,{encoded}"
 
 
-async def extract_work_ticket(markdown_and_json: str) -> str:
+def build_work_ticket_messages(ocr_content: str) -> list[dict[str, str]]:
     prompt = f"""
 你是一个工作票信息结构化助手。
 
-下面内容来自 PaddleOCR PPStructureV3 对工作票的识别结果，包括 Markdown 文本、表格和页码信息。
+下面内容来自 PaddleOCR PPStructureV3 对工作票的识别结果，包括 Markdown 结构化内容和
+overall_ocr_res.rec_texts 完整纯文本。Markdown 用于理解标题、表格和布局，rec_texts 用于
+补充 Markdown 可能遗漏的文字；两部分可能包含重复内容，不要重复提取。
 
 请根据 OCR 内容整理为指定 JSON。
 
@@ -108,6 +110,13 @@ async def extract_work_ticket(markdown_and_json: str) -> str:
 5. 保留关键字段的 OCR 原文证据。
 6. 如果字段冲突、模糊或识别质量差，放入 uncertain_fields。
 7. 表格内容不要丢失，放入 tables 字段。
+8. 必须使用下面的英文键名，不要用中文表头替换键名。ticket_no 保留前导零。
+9. station_name 是变电站名称；work_location 是具体工作地点或地段，二者不能混淆。
+10. 必须单独提取顶层 work_location。无论原表格使用“工作地点”“工作地点或地段”“工作地点或设备”“工作地点及设备双重名称”等哪一种表头，都要提取其每一行的地点值。
+11. 如果地点分散在“工作任务”表格或 work_tasks 数组中，必须按原顺序去重，用中文分号“；”连接后写入顶层 work_location；不能只把地点保留在工作任务明细中。
+12. work_location 只填写工作区域名称。对于“区域：设备或具体位置”格式，取第一个中文或英文冒号前的区域；不要混入设备详情和工作内容。只要 OCR 中存在明确地点，work_location 就不能为 null。
+13. 示例：若两行“工作地点及设备双重名称”分别为“1000kV设备区：室外场地处”和“主变及无功补偿设备区：室外场地处”，则必须输出 "work_location": "1000kV设备区；主变及无功补偿设备区"。
+14. 如果 Markdown 中缺少某个字段，但 rec_texts 中存在该字段，必须结合上下文提取。两者内容冲突或无法确定时，放入 uncertain_fields。
 
 目标 JSON：
 
@@ -118,6 +127,7 @@ async def extract_work_ticket(markdown_and_json: str) -> str:
   "work_team": null,
   "work_leader": null,
   "work_members": [],
+  "station_name": null,
   "work_location": null,
   "work_content": null,
   "planned_start_time": null,
@@ -141,14 +151,18 @@ async def extract_work_ticket(markdown_and_json: str) -> str:
 
 OCR 内容如下：
 
-{markdown_and_json}
+{ocr_content}
 """.strip()
 
-    return await call_chat_completion(
-        messages=[
+    return [
             {"role": "system", "content": "你擅长从中文工作票 OCR 结果中抽取可靠的结构化字段。"},
             {"role": "user", "content": prompt},
-        ],
+        ]
+
+
+async def extract_work_ticket(markdown_and_json: str) -> str:
+    return await call_chat_completion(
+        messages=build_work_ticket_messages(markdown_and_json),
         model=settings.llm_model,
     )
 

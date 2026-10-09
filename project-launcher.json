@@ -1,0 +1,12 @@
+{
+  "ticket_root": "D:/work/workTicket3",
+  "hazard_root": "D:/工作票项目文件/项目demo/项目demo/Construction-Hazard-Detection",
+  "hazard_python": "D:/Conda/envs/construction-hazard/python.exe",
+  "legacy_python": "D:/Conda/envs/ticket-service/python.exe",
+  "node_executable": "",
+  "mysql_container": "my-mysql",
+  "redis_container": "my-redis",
+  "detection_api": true,
+  "notifications": "auto",
+  "startup_timeout_seconds": 120
+}

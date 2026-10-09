@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import json
+import os
 import shutil
+import threading
 import time
 import uuid
 from pathlib import Path
@@ -66,19 +68,95 @@ def _read_text_files(folder: Path, suffixes: tuple[str, ...]) -> list[dict[str, 
     return items
 
 
+def _print_rec_texts(json_files: list[dict[str, str]]) -> None:
+    """Print each page's raw OCR text so it can be inspected in backend logs."""
+    total_lines = 0
+    total_chars = 0
+    for item in json_files:
+        try:
+            ocr_json = json.loads(item["content"])
+            rec_texts = ocr_json.get("overall_ocr_res", {}).get("rec_texts", [])
+            if not isinstance(rec_texts, list):
+                rec_texts = []
+            rec_texts = [str(text) for text in rec_texts]
+            ocr_text = "\n".join(rec_texts)
+            total_lines += len(rec_texts)
+            total_chars += len(ocr_text)
+            print(
+                f"\n[OCR rec_texts] file={item['path']} "
+                f"lines={len(rec_texts)} chars={len(ocr_text)}\n"
+                f"{ocr_text}\n"
+                "[OCR rec_texts end]",
+                flush=True,
+            )
+        except (json.JSONDecodeError, TypeError, AttributeError) as exc:
+            print(
+                f"[OCR rec_texts] 无法读取 {item['path']}: "
+                f"{type(exc).__name__}: {exc}",
+                flush=True,
+            )
+    print(
+        f"[OCR rec_texts summary] files={len(json_files)} "
+        f"lines={total_lines} chars={total_chars}",
+        flush=True,
+    )
+
+
+def _extract_rec_texts_files(json_files: list[dict[str, str]]) -> list[dict[str, Any]]:
+    """Extract compact plain text from saved PPStructure JSON artifacts."""
+    items: list[dict[str, Any]] = []
+    for item in json_files:
+        try:
+            ocr_json = json.loads(item["content"])
+            rec_texts = ocr_json.get("overall_ocr_res", {}).get("rec_texts", [])
+            if not isinstance(rec_texts, list):
+                rec_texts = []
+            lines = [str(text).strip() for text in rec_texts if str(text).strip()]
+            items.append(
+                {
+                    "name": item["name"],
+                    "path": item["path"],
+                    "lines": lines,
+                    "content": "\n".join(lines),
+                }
+            )
+        except (json.JSONDecodeError, TypeError, AttributeError):
+            continue
+    return items
+
+
 _pipeline = None
+_pipeline_lock = threading.Lock()
 
 
 def _get_pipeline():
     global _pipeline
     if _pipeline is None:
+        # Paddle's oneDNN path is unstable on some Windows CPU/Python builds.
+        # Set these before importing PaddleOCR so the native runtime sees them.
+        if not settings.ocr_enable_mkldnn:
+            os.environ.setdefault("FLAGS_use_mkldnn", "0")
+        os.environ.setdefault("OMP_NUM_THREADS", str(settings.ocr_cpu_threads))
+        os.environ.setdefault("MKL_NUM_THREADS", str(settings.ocr_cpu_threads))
         try:
             from paddleocr import PPStructureV3
         except Exception as exc:
             raise RuntimeError(
                 "Cannot import PPStructureV3. Please install PaddleOCR 3.x and a compatible paddlepaddle build."
             ) from exc
-        _pipeline = PPStructureV3()
+        _pipeline = PPStructureV3(
+            device=settings.ocr_device,
+            enable_mkldnn=settings.ocr_enable_mkldnn,
+            cpu_threads=settings.ocr_cpu_threads,
+            text_detection_model_name=settings.ocr_text_detection_model,
+            text_recognition_model_name=settings.ocr_text_recognition_model,
+            use_doc_orientation_classify=settings.ocr_use_doc_orientation,
+            use_doc_unwarping=settings.ocr_use_doc_unwarping,
+            use_textline_orientation=settings.ocr_use_textline_orientation,
+            use_formula_recognition=settings.ocr_use_formula_recognition,
+            use_chart_recognition=settings.ocr_use_chart_recognition,
+            use_seal_recognition=settings.ocr_use_seal_recognition,
+        )
     return _pipeline
 
 
@@ -105,7 +183,10 @@ def run_ppstructure_v3(input_path: Path, output_root: Path) -> dict[str, Any]:
     timing["pipeline_load_ms"] = round((time.perf_counter() - pipeline_start) * 1000, 2)
 
     predict_start = time.perf_counter()
-    results = pipeline.predict(input=str(input_path))
+    # Paddle predictors are not thread-safe. Serialize inference and materialize
+    # the generator here so predict_call_ms measures the real native inference.
+    with _pipeline_lock:
+        results = list(pipeline.predict(input=str(input_path)))
     timing["predict_call_ms"] = round((time.perf_counter() - predict_start) * 1000, 2)
 
     pages: list[dict[str, Any]] = []
@@ -147,17 +228,19 @@ def run_ppstructure_v3(input_path: Path, output_root: Path) -> dict[str, Any]:
     json_files = _read_text_files(json_dir, (".json",))
     timing["read_artifacts_ms"] = round((time.perf_counter() - collect_start) * 1000, 2)
 
+    _print_rec_texts(json_files)
+    rec_text_files = _extract_rec_texts_files(json_files)
+
     llm_input_parts: list[str] = []
     for item in markdown_files:
         llm_input_parts.append(f"\n\n## Markdown: {item['name']}\n\n{item['content']}")
-    for item in json_files:
-        content = item["content"]
-        if len(content) > 20000:
-            content = content[:20000] + "\n...[truncated]"
-        llm_input_parts.append(f"\n\n## JSON: {item['name']}\n\n{content}")
-
+    for item in rec_text_files:
+        if item["content"]:
+            llm_input_parts.append(
+                f"\n\n## OCR完整纯文本（rec_texts）: {item['name']}\n\n{item['content']}"
+            )
     if not llm_input_parts:
-        llm_input_parts.append(json.dumps({"pages": pages}, ensure_ascii=False, indent=2)[:60000])
+        raise RuntimeError("OCR 未生成 Markdown 或 rec_texts 文本，无法进行大模型抽取。")
 
     return {
         "job_dir": str(job_dir),
@@ -167,6 +250,7 @@ def run_ppstructure_v3(input_path: Path, output_root: Path) -> dict[str, Any]:
         "pages": pages,
         "markdown_files": markdown_files,
         "json_files": json_files,
+        "rec_text_files": rec_text_files,
         "llm_input": "\n".join(llm_input_parts),
         "timing": timing,
     }
