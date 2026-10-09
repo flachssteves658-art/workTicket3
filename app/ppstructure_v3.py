@@ -68,6 +68,63 @@ def _read_text_files(folder: Path, suffixes: tuple[str, ...]) -> list[dict[str, 
     return items
 
 
+def _print_rec_texts(json_files: list[dict[str, str]]) -> None:
+    """Print each page's raw OCR text so it can be inspected in backend logs."""
+    total_lines = 0
+    total_chars = 0
+    for item in json_files:
+        try:
+            ocr_json = json.loads(item["content"])
+            rec_texts = ocr_json.get("overall_ocr_res", {}).get("rec_texts", [])
+            if not isinstance(rec_texts, list):
+                rec_texts = []
+            rec_texts = [str(text) for text in rec_texts]
+            ocr_text = "\n".join(rec_texts)
+            total_lines += len(rec_texts)
+            total_chars += len(ocr_text)
+            print(
+                f"\n[OCR rec_texts] file={item['path']} "
+                f"lines={len(rec_texts)} chars={len(ocr_text)}\n"
+                f"{ocr_text}\n"
+                "[OCR rec_texts end]",
+                flush=True,
+            )
+        except (json.JSONDecodeError, TypeError, AttributeError) as exc:
+            print(
+                f"[OCR rec_texts] 无法读取 {item['path']}: "
+                f"{type(exc).__name__}: {exc}",
+                flush=True,
+            )
+    print(
+        f"[OCR rec_texts summary] files={len(json_files)} "
+        f"lines={total_lines} chars={total_chars}",
+        flush=True,
+    )
+
+
+def _extract_rec_texts_files(json_files: list[dict[str, str]]) -> list[dict[str, Any]]:
+    """Extract compact plain text from saved PPStructure JSON artifacts."""
+    items: list[dict[str, Any]] = []
+    for item in json_files:
+        try:
+            ocr_json = json.loads(item["content"])
+            rec_texts = ocr_json.get("overall_ocr_res", {}).get("rec_texts", [])
+            if not isinstance(rec_texts, list):
+                rec_texts = []
+            lines = [str(text).strip() for text in rec_texts if str(text).strip()]
+            items.append(
+                {
+                    "name": item["name"],
+                    "path": item["path"],
+                    "lines": lines,
+                    "content": "\n".join(lines),
+                }
+            )
+        except (json.JSONDecodeError, TypeError, AttributeError):
+            continue
+    return items
+
+
 _pipeline = None
 _pipeline_lock = threading.Lock()
 
@@ -171,11 +228,19 @@ def run_ppstructure_v3(input_path: Path, output_root: Path) -> dict[str, Any]:
     json_files = _read_text_files(json_dir, (".json",))
     timing["read_artifacts_ms"] = round((time.perf_counter() - collect_start) * 1000, 2)
 
+    _print_rec_texts(json_files)
+    rec_text_files = _extract_rec_texts_files(json_files)
+
     llm_input_parts: list[str] = []
     for item in markdown_files:
         llm_input_parts.append(f"\n\n## Markdown: {item['name']}\n\n{item['content']}")
+    for item in rec_text_files:
+        if item["content"]:
+            llm_input_parts.append(
+                f"\n\n## OCR完整纯文本（rec_texts）: {item['name']}\n\n{item['content']}"
+            )
     if not llm_input_parts:
-        raise RuntimeError("OCR 未生成 Markdown 文本，无法进行大模型抽取。请确认 OCR_SAVE_MARKDOWN 已开启。")
+        raise RuntimeError("OCR 未生成 Markdown 或 rec_texts 文本，无法进行大模型抽取。")
 
     return {
         "job_dir": str(job_dir),
@@ -185,6 +250,7 @@ def run_ppstructure_v3(input_path: Path, output_root: Path) -> dict[str, Any]:
         "pages": pages,
         "markdown_files": markdown_files,
         "json_files": json_files,
+        "rec_text_files": rec_text_files,
         "llm_input": "\n".join(llm_input_parts),
         "timing": timing,
     }

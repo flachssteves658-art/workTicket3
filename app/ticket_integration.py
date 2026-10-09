@@ -53,6 +53,15 @@ def _values(value: Any) -> list[str]:
     return [text] if text else []
 
 
+def _work_area(value: Any) -> str:
+    """Return the area before the first equipment-detail separator."""
+    text = next(iter(_values(value)), "")
+    if not text:
+        return ""
+    area = re.split(r"[：:]", text, maxsplit=1)[0].strip()
+    return area or text
+
+
 def _safe_id(value: str) -> str:
     cleaned = re.sub(r"[^0-9A-Za-z\u4e00-\u9fff._-]+", "_", value).strip("._")
     return cleaned[:120] or "unnamed_ticket"
@@ -63,15 +72,20 @@ def normalize_ticket_fields(parsed: object | None) -> dict[str, Any]:
     data = dict(parsed) if isinstance(parsed, dict) else {}
     aliases = {
         "ticket_no": ("编号", "工作票编号"),
-        "ticket_type": ("工作票类型",),
+        "ticket_type": ("工作票类型", "票类型"),
         "work_unit": ("单位", "工作单位"),
         "work_team": ("班组",),
         "work_leader": ("工作负责人（监护人）", "工作负责人"),
         "work_members": ("工作班人员（不包括工作负责人）", "工作班人员"),
-        "station_name": ("变电站名称", "工作的变、配电站名称及设备双重名称", "site_name"),
+        "station_name": (
+            "变电站名称",
+            "工作的变电站名称",
+            "工作的变、配电站名称及设备双重名称",
+            "site_name",
+        ),
         "work_location": ("工作地点或地段", "工作地点"),
         "work_content": ("工作内容",),
-        "safety_measures": ("注意事项（安全措施）", "安全措施"),
+        "safety_measures": ("注意事项（安全措施）", "注意事项安全措施", "安全措施"),
     }
     for field, names in aliases.items():
         if not _values(data.get(field)):
@@ -80,16 +94,47 @@ def normalize_ticket_fields(parsed: object | None) -> dict[str, Any]:
                     data[field] = data[name]
                     break
 
-    tasks = data.get("工作任务", [])
-    if isinstance(tasks, dict):
-        tasks = [tasks]
-    if isinstance(tasks, list):
-        for field, source in (("work_location", "工作地点或地段"), ("work_content", "工作内容")):
-            if not _values(data.get(field)):
-                values = [text for task in tasks if isinstance(task, dict)
-                          for text in _values(task.get(source))]
-                if values:
-                    data[field] = "；".join(dict.fromkeys(values))
+    tasks: list[dict[str, Any]] = []
+    for task_group in (data.get("工作任务"), data.get("work_tasks")):
+        if isinstance(task_group, dict):
+            tasks.append(task_group)
+        elif isinstance(task_group, list):
+            tasks.extend(task for task in task_group if isinstance(task, dict))
+    location_sources = (
+        "工作地点或地段",
+        "工作地点或设备",
+        "工作地点及设备双重名称",
+        "location_and_equipment",
+        "work_location",
+    )
+    task_locations: list[str] = []
+    for task in tasks:
+        for source in location_sources:
+            location = _work_area(task.get(source))
+            if location:
+                task_locations.append(location)
+                break
+    if task_locations:
+        # Task rows are the source of truth; do not depend on the model's
+        # separately generated work_location value.
+        data["work_location"] = "；".join(dict.fromkeys(task_locations))
+
+    if not _values(data.get("work_content")):
+        contents = [
+            text
+            for task in tasks
+            for source in ("工作内容", "content", "work_content")
+            for text in _values(task.get(source))
+        ]
+        if contents:
+            data["work_content"] = "；".join(dict.fromkeys(contents))
+
+    planned_time = data.get("计划工作时间")
+    if isinstance(planned_time, dict):
+        if not _values(data.get("planned_start_time")):
+            data["planned_start_time"] = planned_time.get("开始")
+        if not _values(data.get("planned_end_time")):
+            data["planned_end_time"] = planned_time.get("结束")
     return data
 
 

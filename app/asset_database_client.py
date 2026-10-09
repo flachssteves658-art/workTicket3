@@ -9,6 +9,7 @@ from urllib.parse import quote
 import httpx
 
 from app.config import settings
+from app.ticket_integration import normalize_ticket_fields
 
 
 EQUIPMENT_FIELDS = [
@@ -183,6 +184,7 @@ async def catalog_status() -> dict[str, Any]:
 
 async def match_ticket_assets(record: dict[str, Any]) -> dict[str, Any]:
     ticket_no = str(record.get("ticket_no") or record.get("ticket_id"))
+    structured_data = normalize_ticket_fields(record.get("structured_data"))
     async with httpx.AsyncClient(timeout=120, trust_env=False) as client:
         response = await client.post(
             _url("/integration/tickets/match"),
@@ -190,7 +192,7 @@ async def match_ticket_assets(record: dict[str, Any]) -> dict[str, Any]:
             json={
                 "ticket_no": ticket_no,
                 "source_file": str(record.get("source_file") or ""),
-                "structured_data": record.get("structured_data", {}),
+                "structured_data": structured_data,
             },
         )
         response.raise_for_status()

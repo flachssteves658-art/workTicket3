@@ -62,6 +62,28 @@ function displayField(value) {
   return String(value || "").trim();
 }
 
+function extractWorkArea(value) {
+  const text = displayField(value);
+  return text ? text.split(/[：:]/, 1)[0].trim() : "";
+}
+
+function extractWorkLocation(data) {
+  if (!data || typeof data !== "object") return "";
+  const taskGroups = [data.work_tasks, data["工作任务"]];
+  const locations = taskGroups
+    .flatMap((tasks) => Array.isArray(tasks) ? tasks : (tasks ? [tasks] : []))
+    .map((task) => extractWorkArea(
+      task?.location_and_equipment
+        || task?.work_location
+        || task?.["工作地点或地段"]
+        || task?.["工作地点或设备"]
+        || task?.["工作地点及设备双重名称"],
+    ))
+    .filter(Boolean);
+  if (locations.length) return [...new Set(locations)].join("；");
+  return displayField(data.work_location || data["工作地点或地段"] || data["工作地点"]);
+}
+
 function renderAssetMatches(value) {
   const panel = $("#assetPanel");
   const list = $("#cameraMatchList");
@@ -80,11 +102,9 @@ function renderAssetMatches(value) {
   const equipment = Array.isArray(match.equipment_matches) ? match.equipment_matches : [];
   state.assetResult = { ticketNo, match, cameras };
   panel.hidden = false;
-  const workLocation = displayField(
-    match.work_location
-      || value?.structured_data?.work_location
-      || value?.ticket_record?.structured_data?.work_location,
-  );
+  const workLocation = displayField(match.work_location)
+    || extractWorkLocation(value?.structured_data)
+    || extractWorkLocation(value?.ticket_record?.structured_data);
   const cameraIps = [...new Set(cameras.map((camera) => camera.ip_address).filter(Boolean))];
   $("#recognizedWorkLocation").textContent = workLocation || "未识别到工作地点";
   $("#matchedCameraIps").textContent = cameraIps.length
